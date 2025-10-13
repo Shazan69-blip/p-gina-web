@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acerca de Nosotros | Grupo FE</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header class="header">
+    <div class="nav-container">
+      <div class="logo">🏗️ GRUPO FE</div>
+      <ul class="nav-links">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/acerca">Acerca de nosotros</a></li>
+        <li><a href="/servicios">Servicios</a></li>
+         <li><a href="/formulario">Formulario</a></li>
+        <li><a href="/contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero-container">
+    <img src="{{ url_for('static', filename='fondo.png') }}" alt="Construcción Grupo FE" class="hero-image">
+    <div class="hero-text">
+      <h1>Construyendo Futuro con Propósito</h1>
+      <p>En <strong>GRUPO FE</strong> creemos que construir no es solo levantar paredes, sino dar vida a espacios donde las personas puedan desarrollarse, sentirse seguras y orgullosas de su entorno. Somos una <strong>empresa constructora comprometida con la calidad, la transparencia y el cumplimiento</strong>, enfocada en ofrecer resultados que superen las expectativas de nuestros clientes.</p>
+      <a href="/contacto" class="cta-button">Contáctanos</a>
+    </div>
+  </section>
+
+  <section class="sobre-nosotros">
+    <h2>Misión</h2>
+    <p>Brindar soluciones habitacionales de calidad a las familias costarricenses de menores ingresos, mediante procesos constructivos eficientes, sostenibles y humanos, garantizando el cumplimiento de los estándares del BANHVI y promoviendo el desarrollo social y económico de las comunidades.</p>
+
+    <h2>Visión</h2>
+    <p>Ser la empresa constructora líder en Costa Rica en el desarrollo de proyectos de vivienda de interés social, reconocida por su compromiso con la excelencia, la innovación y la dignificación de la vivienda como base del bienestar familiar y comunitario.</p>
+
+    <h2>Valores Corporativos</h2>
+    <ul class="valores">
+      <li><strong>Compromiso social:</strong> Trabajamos con empatía hacia las familias que más lo necesitan.</li>
+      <li><strong>Transparencia:</strong> Actuamos con ética, claridad y rendición de cuentas.</li>
+      <li><strong>Calidad:</strong> Buscamos la excelencia en cada etapa del proceso constructivo.</li>
+      <li><strong>Innovación:</strong> Aplicamos soluciones modernas y eficientes que generan valor.</li>
+      <li><strong>Trabajo en equipo:</strong> Fomentamos la colaboración y el respeto mutuo.</li>
+      <li><strong>Sostenibilidad:</strong> Cuidamos el ambiente y promovemos prácticas responsables.</li>
+    </ul>
+
+    <h2>Objetivos Estratégicos</h2>
+    <ol class="objetivos">
+      <li>Ejecutar proyectos habitacionales con altos estándares técnicos y normativos.</li>
+      <li>Contribuir activamente a la reducción del déficit habitacional en Costa Rica.</li>
+      <li>Implementar prácticas constructivas sostenibles y ecoeficientes.</li>
+      <li>Incorporar tecnologías modernas como sistemas prefabricados (Prefablock).</li>
+      <li>Promover un entorno laboral seguro y motivador para el personal.</li>
+      <li>Mantener una gestión administrativa y financiera transparente.</li>
+    </ol>
+  </section>
+
+  <footer class="footer">
+    © 2025 Grupo FE | Todos los derechos reservados
+  </footer>
+</body>
+</html>

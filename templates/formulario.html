@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Formulario | Grupo Fe</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='color de formulario.css') }}">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <img src="{{ url_for('static', filename='logo de arriba.jpeg') }}" alt="Logo" class="logo-img">
+      <h1>GRUPO FE</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/acerca">Acerca de nosotros</a></li>
+        <li><a href="/servicios">Servicios</a></li>
+        <li><a class="activo" href="/formulario">Formulario</a></li>
+        <li><a href="/contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="contenedor">
+    <h2>Formulario de aplicación al Bono Familiar de Vivienda – Artículo 59 (Ley 7052)</h2>
+
+    <div class="top-actions">
+      <a class="btn btn-gold" href="{{ url_for('static', filename='Formulario_Beneficiario_Art59_GrupoFe.docx') }}" download>
+        📄 Descargar formulario (.docx)
+      </a>
+      <button id="btn-fill-online" class="btn btn-outline">🖊️ Llenar en línea</button>
+    </div>
+
+    <!-- Formulario: submitea a /enviar-formulario -->
+    <form id="mainForm" class="formulario" action="/enviar-formulario" method="POST">
+      <!-- 1. Datos del Beneficiario Principal -->
+      <section class="card">
+        <h3>1. Datos del Beneficiario Principal</h3>
+        <label>Nombre completo:
+          <input type="text" name="beneficiario_nombre" required>
+        </label>
+
+        <label>Número de cédula:
+          <input type="text" name="beneficiario_cedula" required>
+        </label>
+
+        <label>Teléfono:
+          <input type="tel" name="beneficiario_telefono" required>
+        </label>
+
+        <label>Correo electrónico:
+          <input type="email" name="beneficiario_email" required>
+        </label>
+
+        <label>Estado civil:
+          <select name="beneficiario_estado_civil" id="estadoCivil" required>
+            <option value="">Seleccione...</option>
+            <option value="Soltero">Soltero</option>
+            <option value="Casado">Casado</option>
+            <option value="Divorciado">Divorciado</option>
+            <option value="Viudo">Viudo</option>
+            <option value="Separado">Separado</option>
+            <option value="Union Libre">Unión Libre</option>
+          </select>
+        </label>
+
+        <div id="tiempoUnionWrapper" style="display:none;">
+          <label>Tiempo de unión (meses/años):
+            <input type="text" name="beneficiario_tiempo_union" placeholder="Ej: 3 años">
+          </label>
+        </div>
+
+        <label>Nacionalidad:
+          <input type="text" name="beneficiario_nacionalidad">
+        </label>
+
+        <label>Escolaridad:
+          <input type="text" name="beneficiario_escolaridad">
+        </label>
+
+        <label>Dirección exacta de residencia actual:
+          <textarea name="beneficiario_direccion" rows="2"></textarea>
+        </label>
+
+        <div class="row">
+          <label>Provincia: <input type="text" name="beneficiario_provincia"></label>
+          <label>Cantón: <input type="text" name="beneficiario_canton"></label>
+          <label>Distrito: <input type="text" name="beneficiario_distrito"></label>
+        </div>
+        <label>Barrio: <input type="text" name="beneficiario_barrio"></label>
+      </section>
+
+      <!-- 2. Composición del Grupo Familiar -->
+      <section class="card">
+        <h3>2. Composición del Grupo Familiar</h3>
+        <p>Indique todos los miembros del grupo familiar que habitarán la vivienda (hasta 12)</p>
+
+        <div id="familyList">
+          <div class="family-row">
+            <input type="text" name="f_nombre[]" placeholder="Nombre">
+            <input type="text" name="f_parentesco[]" placeholder="Parentesco">
+            <input type="number" name="f_edad[]" placeholder="Edad" min="0">
+            <input type="text" name="f_ocupacion[]" placeholder="Ocupación">
+            <input type="number" name="f_ingreso[]" placeholder="Ingreso mensual (₡)" min="0">
+            <button type="button" class="small-btn remove-row" title="Eliminar">✖</button>
+          </div>
+        </div>
+
+        <div class="row-actions">
+          <button type="button" id="addMember" class="btn">+ Agregar miembro</button>
+          <small class="muted">Puedes agregar hasta 12 miembros</small>
+        </div>
+
+        <label>¿Existe algún miembro en estado de gestación?
+          <select name="gestacion_existe" id="gestacion" >
+            <option value="No">No</option>
+            <option value="Si">Sí</option>
+          </select>
+        </label>
+        <div id="gestacionMeses" style="display:none;">
+          <label>Meses de gestación:
+            <input type="number" name="gestacion_meses" min="0">
+          </label>
+        </div>
+
+        <label>¿Algún miembro con discapacidad?
+          <select name="discapacidad_existe" id="discapacidad">
+            <option value="No">No</option>
+            <option value="Si">Sí</option>
+          </select>
+        </label>
+        <div id="discapacidadDetalle" style="display:none;">
+          <label>Explique:
+            <textarea name="discapacidad_detalle" rows="3"></textarea>
+          </label>
+        </div>
+      </section>
+
+      <!-- 3. Información Socioeconómica -->
+      <section class="card">
+        <h3>3. Información Socioeconómica</h3>
+        <label>Actividad económica principal del beneficiario:
+          <input type="text" name="actividad_economica">
+        </label>
+
+        <label>Tiempo de laborar:
+          <input type="text" name="tiempo_laborar" placeholder="Ej: 5 años">
+        </label>
+
+        <label>Cotiza en la CCSS:
+          <select name="cotiza_ccss">
+            <option>Si</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label>Ingreso mensual familiar total (₡):
+          <input type="number" name="ingreso_mensual" min="0">
+        </label>
+
+        <label>¿Recibe algún subsidio o ayuda estatal?
+          <select name="recibe_subsidio">
+            <option>No</option>
+            <option>Si</option>
+          </select>
+        </label>
+        <label>¿Cuál?:
+          <input type="text" name="cual_subsidio">
+        </label>
+
+        <label>Recibe pensión alimentaria:
+          <select name="recibe_pension">
+            <option>No</option>
+            <option>Si</option>
+          </select>
+        </label>
+
+        <label>Voluntaria / Obligatoria:
+          <select name="pension_tipo">
+            <option>Voluntaria</option>
+            <option>Obligatoria</option>
+          </select>
+        </label>
+
+        <label>Monto pensión alimentaria (₡):
+          <input type="number" name="pension_monto" min="0">
+        </label>
+
+        <label>¿Posee vehículo?
+          <select name="posee_vehiculo">
+            <option>No</option>
+            <option>Si</option>
+          </select>
+        </label>
+        <label>Marca/Modelo:
+          <input type="text" name="vehiculo_marca_modelo">
+        </label>
+      </section>
+
+      <!-- 4. Información del Proyecto o Lote -->
+      <section class="card">
+        <h3>4. Información del Proyecto o Lote</h3>
+        <label>Nombre del proyecto:
+          <input type="text" name="proyecto_nombre">
+        </label>
+
+        <label>Ubicación exacta del lote o vivienda:
+          <textarea name="proyecto_ubicacion" rows="2"></textarea>
+        </label>
+
+        <label>Número de lote / identificación catastral:
+          <input type="text" name="proyecto_numero_lote">
+        </label>
+
+        <label>Propietario del terreno:
+          <input type="text" name="propietario_terreno">
+        </label>
+
+        <label>Número de cédula del vendedor:
+          <input type="text" name="vendedor_cedula">
+        </label>
+
+        <label>Teléfono del vendedor:
+          <input type="tel" name="vendedor_telefono">
+        </label>
+
+        <label>Dirección del vendedor:
+          <input type="text" name="vendedor_direccion">
+        </label>
+
+        <label>Monto del terreno (₡):
+          <input type="number" name="monto_terreno" min="0">
+        </label>
+
+        <label>Sistema constructivo:
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="sistema_constructivo_prefablock" checked> Prefablock</label>
+            <label><input type="checkbox" name="sistema_constructivo_otro"> Otro</label>
+            <input type="text" name="sistema_constructivo_otro_text" placeholder="Si 'Otro', especifique">
+          </div>
+        </label>
+
+        <label>Tipo de vivienda:
+          <div class="radio-group">
+            <label><input type="radio" name="tipo_vivienda" value="Nueva" checked> Nueva</label>
+            <label><input type="radio" name="tipo_vivienda" value="Ampliacion"> Ampliación</label>
+            <label><input type="radio" name="tipo_vivienda" value="Reparacion"> Reparación</label>
+          </div>
+        </label>
+      </section>
+
+      <!-- 5. Declaración Jurada -->
+      <section class="card">
+        <h3>5. Declaración Jurada del Beneficiario</h3>
+        <p>Declaro bajo juramento que la información suministrada en este formulario es veraz y completa, y que conozco que cualquier falsedad puede anular mi solicitud al Bono Familiar de Vivienda conforme al Artículo 59 de la Ley 7052 y las regulaciones del BANHVI.</p>
+
+        <label>Firma del Beneficiario (nombre impreso):
+          <input type="text" name="firma_beneficiario">
+        </label>
+
+        <label>Fecha:
+          <input type="date" name="firma_fecha">
+        </label>
+      </section>
+
+      <!-- 6. Uso Exclusivo de Grupo Fe -->
+      <section class="card">
+        <h3>6. Uso Exclusivo de Grupo Fe</h3>
+        <label>Verificación social realizada por:
+          <input type="text" name="verificacion_social_por">
+        </label>
+        <label>Fecha verificación social:
+          <input type="date" name="verificacion_social_fecha">
+        </label>
+
+        <label>Verificación técnica realizada por:
+          <input type="text" name="verificacion_tecnica_por">
+        </label>
+        <label>Fecha verificación técnica:
+          <input type="date" name="verificacion_tecnica_fecha">
+        </label>
+
+        <label>Observaciones:
+          <textarea name="observaciones" rows="3"></textarea>
+        </label>
+      </section>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-gold">Enviar formulario</button>
+      </div>
+    </form>
+
+    <footer class="foot">
+      <small>Documento de uso interno – Grupo Fe Constructora de Vivienda de Interés Social</small>
+    </footer>
+  </main>
+
+
+
+
+  <script>
+(function(){
+  const addMemberBtn = document.getElementById('addMember');
+  const familyList = document.getElementById('familyList');
+
+  // Agregar miembros del grupo familiar
+  function newFamilyRow() {
+    const row = document.createElement('div');
+    row.className = 'family-row';
+    row.innerHTML = `
+      <input type="text" name="f_nombre[]" placeholder="Nombre">
+      <input type="text" name="f_parentesco[]" placeholder="Parentesco">
+      <input type="number" name="f_edad[]" placeholder="Edad" min="0">
+      <input type="text" name="f_ocupacion[]" placeholder="Ocupación">
+      <input type="number" name="f_ingreso[]" placeholder="Ingreso mensual (₡)" min="0">
+      <button type="button" class="small-btn remove-row" title="Eliminar">✖</button>
+    `;
+    return row;
+  }
+
+  addMemberBtn.addEventListener('click', () => {
+    const count = familyList.querySelectorAll('.family-row').length;
+    if (count >= 12) return alert('Máximo 12 miembros.');
+    familyList.appendChild(newFamilyRow());
+  });
+
+  familyList.addEventListener('click', (e) => {
+    if (e.target.classList.contains('remove-row')) {
+      e.target.closest('.family-row').remove();
+    }
+  });
+
+  // Mostrar/ocultar campos condicionales
+  document.getElementById('gestacion').addEventListener('change', (e) => {
+    document.getElementById('gestacionMeses').style.display = e.target.value === 'Si' ? 'block' : 'none';
+  });
+
+  document.getElementById('discapacidad').addEventListener('change', (e) => {
+    document.getElementById('discapacidadDetalle').style.display = e.target.value === 'Si' ? 'block' : 'none';
+  });
+
+  document.getElementById('estadoCivil').addEventListener('change', (e) => {
+    document.getElementById('tiempoUnionWrapper').style.display = e.target.value === 'Union Libre' ? 'block' : 'none';
+  });
+
+  document.getElementById('btn-fill-online').addEventListener('click', () => {
+    document.querySelector('.formulario').scrollIntoView({behavior:'smooth'});
+  });
+
+  // 🚀 Enviar formulario abriendo Gmail
+  const form = document.getElementById('mainForm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault(); // Evita envío al servidor
+
+    const data = new FormData(form);
+    let body = "";
+
+    // 🔸 Sección 1
+    body += "----- DATOS DEL BENEFICIARIO PRINCIPAL -----\n";
+    body += `Nombre completo: ${data.get("beneficiario_nombre")}\n`;
+    body += `Cédula: ${data.get("beneficiario_cedula")}\n`;
+    body += `Teléfono: ${data.get("beneficiario_telefono")}\n`;
+    body += `Correo: ${data.get("beneficiario_email")}\n`;
+    body += `Estado civil: ${data.get("beneficiario_estado_civil")}\n`;
+    if (data.get("beneficiario_tiempo_union"))
+      body += `Tiempo de unión: ${data.get("beneficiario_tiempo_union")}\n`;
+    body += `Nacionalidad: ${data.get("beneficiario_nacionalidad")}\n`;
+    body += `Escolaridad: ${data.get("beneficiario_escolaridad")}\n`;
+    body += `Dirección: ${data.get("beneficiario_direccion")}\n`;
+    body += `Provincia: ${data.get("beneficiario_provincia")}, Cantón: ${data.get("beneficiario_canton")}, Distrito: ${data.get("beneficiario_distrito")}, Barrio: ${data.get("beneficiario_barrio")}\n\n`;
+
+    // 🔸 Sección 2
+    body += "----- COMPOSICIÓN DEL GRUPO FAMILIAR -----\n";
+    const nombres = document.querySelectorAll('input[name="f_nombre[]"]');
+    const parentescos = document.querySelectorAll('input[name="f_parentesco[]"]');
+    const edades = document.querySelectorAll('input[name="f_edad[]"]');
+    const ocupaciones = document.querySelectorAll('input[name="f_ocupacion[]"]');
+    const ingresos = document.querySelectorAll('input[name="f_ingreso[]"]');
+    for (let i = 0; i < nombres.length; i++) {
+      if (nombres[i].value.trim()) {
+        body += `${i + 1}. ${nombres[i].value} | ${parentescos[i].value} | ${edades[i].value} años | ${ocupaciones[i].value} | ₡${ingresos[i].value}\n`;
+      }
+    }
+    body += `\nGestación: ${data.get("gestacion_existe")} (${data.get("gestacion_meses") || "-"} meses)\n`;
+    body += `Discapacidad: ${data.get("discapacidad_existe")} ${data.get("discapacidad_detalle") ? "(" + data.get("discapacidad_detalle") + ")" : ""}\n\n`;
+
+    // 🔸 Sección 3
+    body += "----- INFORMACIÓN SOCIOECONÓMICA -----\n";
+    body += `Actividad económica: ${data.get("actividad_economica")}\n`;
+    body += `Tiempo de laborar: ${data.get("tiempo_laborar")}\n`;
+    body += `Cotiza en la CCSS: ${data.get("cotiza_ccss")}\n`;
+    body += `Ingreso mensual familiar total: ₡${data.get("ingreso_mensual")}\n`;
+    body += `Recibe subsidio/ayuda estatal: ${data.get("recibe_subsidio")} - ${data.get("cual_subsidio")}\n`;
+    body += `Pensión alimentaria: ${data.get("recibe_pension")} (${data.get("pension_tipo")}) ₡${data.get("pension_monto")}\n`;
+    body += `Posee vehículo: ${data.get("posee_vehiculo")} - ${data.get("vehiculo_marca_modelo")}\n\n`;
+
+    // 🔸 Sección 4
+    body += "----- INFORMACIÓN DEL PROYECTO O LOTE -----\n";
+    body += `Proyecto: ${data.get("proyecto_nombre")}\n`;
+    body += `Ubicación: ${data.get("proyecto_ubicacion")}\n`;
+    body += `Número de lote: ${data.get("proyecto_numero_lote")}\n`;
+    body += `Propietario del terreno: ${data.get("propietario_terreno")}\n`;
+    body += `Cédula del vendedor: ${data.get("vendedor_cedula")}\n`;
+    body += `Teléfono del vendedor: ${data.get("vendedor_telefono")}\n`;
+    body += `Dirección del vendedor: ${data.get("vendedor_direccion")}\n`;
+    body += `Monto del terreno: ₡${data.get("monto_terreno")}\n`;
+    body += `Sistema constructivo: Prefablock ${data.get("sistema_constructivo_otro") ? ", Otro: " + data.get("sistema_constructivo_otro_text") : ""}\n`;
+    body += `Tipo de vivienda: ${data.get("tipo_vivienda")}\n\n`;
+
+    // 🔸 Sección 5
+    body += "----- DECLARACIÓN JURADA -----\n";
+    body += `Firma (nombre impreso): ${data.get("firma_beneficiario")}\n`;
+    body += `Fecha: ${data.get("firma_fecha")}\n\n`;
+
+    // 🔸 Sección 6
+    body += "----- USO EXCLUSIVO GRUPO FE -----\n";
+    body += `Verificación social: ${data.get("verificacion_social_por")} (${data.get("verificacion_social_fecha")})\n`;
+    body += `Verificación técnica: ${data.get("verificacion_tecnica_por")} (${data.get("verificacion_tecnica_fecha")})\n`;
+    body += `Observaciones: ${data.get("observaciones")}\n\n`;
+    body += "---------------------------------------------\n";
+    body += "Enviado desde el formulario en línea de Grupo Fe.\n";
+
+    // Codificar para URL
+    const subject = encodeURIComponent("Formulario Bono Familiar - Grupo Fe");
+    const mailBody = encodeURIComponent(body);
+
+    // Abrir Gmail o cliente predeterminado
+    const mailtoLink = `mailto:informaciongrupofe@gmail.com?subject=${subject}&body=${mailBody}`;
+    window.location.href = mailtoLink;
+  });
+})();
+</script>
+
+</body>
+</html>

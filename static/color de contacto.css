@@ -1,0 +1,310 @@
+/* ======= RESETEO GENERAL ======= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: radial-gradient(circle at center, #0f0f0f 0%, #050505 100%);
+  color: #eaeaea;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ======= NAVBAR ======= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #1a1d1f, #0e1613, #1a1d1f); /* tono gris oscuro-verde metálico */
+  padding: 14px 60px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo img {
+  width: 55px;
+  height: auto;
+  filter: brightness(0.95) contrast(1.1);
+}
+
+.logo h1 {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.4em;
+  letter-spacing: 1px;
+}
+
+/* MENÚ */
+.menu {
+  display: flex;
+  gap: 35px;
+}
+
+.menu a {
+  color: #eaeaea;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1em;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+/* Hover y activo */
+.menu a:hover,
+.menu a.activo {
+  color: #00ff99; /* color moderno que combina con el fondo */
+}
+
+/* Subrayado animado */
+.menu a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #00ff99;
+  transition: width 0.3s ease;
+}
+
+.menu a:hover::after,
+.menu a.activo::after {
+  width: 100%;
+}
+
+/* ======= SECCIÓN CONTACTO ======= */
+.contacto {
+  text-align: center;
+  padding: 100px 20px;
+  background: radial-gradient(circle at center, #0f0f0f 0%, #050505 100%);
+  color: #eaeaea;
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100vh - 80px);
+}
+
+/* Fondo animado con brillo sutil */
+.contacto::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, #ffffff10, #00ff8850, #ffffff10);
+  animation: rotate-bg 10s linear infinite;
+  z-index: 0;
+}
+
+@keyframes rotate-bg {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.contacto h2 {
+  font-size: 2.4em;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 2;
+  color: #fff;
+}
+
+.contacto p {
+  font-size: 1em;
+  color: #c2c2c2;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ======= OPCIONES ======= */
+.contact-options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
+}
+
+.contact-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.4s ease;
+  border-radius: 20px;
+  padding: 20px;
+  width: 120px;
+  height: 120px;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+/* Efecto de borde brillante */
+.contact-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 2px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  transition: 0.4s ease;
+}
+
+/* Ícono */
+.icon-wrapper {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.icon-wrapper img {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.4s ease;
+}
+
+/* Tipos de botones */
+.gmail {
+  background: linear-gradient(135deg, #b22222, #ff4b2b);
+}
+
+.whatsapp {
+  background: linear-gradient(135deg, #128c7e, #25d366);
+}
+
+/* Hover premium */
+.contact-btn:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+}
+
+.contact-btn:hover::before {
+  background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0.1));
+}
+
+.contact-btn:hover .icon-wrapper {
+  transform: rotate(8deg) scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.contact-btn:hover img {
+  transform: rotate(-8deg) scale(1.1);
+}
+
+.contact-btn span {
+  font-weight: 600;
+  font-size: 1em;
+  margin-top: 8px;
+}
+
+/* ======= MENÚ HORIZONTAL FIJO ======= */
+.menu {
+  display: flex;         /* flexbox para alineación horizontal */
+  flex-direction: row;   /* asegura que estén en fila */
+  flex-wrap: nowrap;     /* evita que se apilen verticalmente */
+  align-items: center;   /* centrar verticalmente los enlaces */
+  gap: 35px;             /* espacio entre cada enlace */
+}
+
+.menu a {
+  display: inline-block; /* asegurar que estén uno al lado del otro */
+  padding: 8px 12px;     /* área clickeable más cómoda */
+  white-space: nowrap;    /* evita que el texto se divida en varias líneas */
+}
+
+/* ======= RESPONSIVE ======= */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 15px 25px;
+  }
+
+  .menu {
+    flex-wrap: wrap;       /* permitir que los enlaces se ajusten si hace falta */
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .contacto h2 {
+    font-size: 2em;
+  }
+
+  .contact-btn {
+    width: 110px;
+    height: 110px;
+    padding: 18px;
+  }
+
+  .icon-wrapper {
+    width: 50px;
+    height: 50px;
+  }
+
+  .icon-wrapper img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .contact-options {
+    gap: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contacto {
+    padding: 60px 10px;
+  }
+
+  .contact-btn {
+    width: 100px;
+    height: 100px;
+  }
+
+  .icon-wrapper {
+    width: 45px;
+    height: 45px;
+  }
+
+  .icon-wrapper img {
+    width: 26px;
+    height: 26px;
+  }
+
+  .contact-options {
+    gap: 20px;
+  }
+
+  .menu {
+    flex-direction: column; /* vertical en móviles muy pequeños */
+    gap: 10px;
+  }
+}

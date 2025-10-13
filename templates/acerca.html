@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acerca de Nosotros | GRUPO FE</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='color de acerca.css') }}">
+</head>
+<body>
+  <!-- Barra de navegación (idéntica a la de Requisitos) -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="{{ url_for('static', filename='logo de arriba.jpeg') }}" alt="Logo de GRUPO FE">
+        <span>GRUPO FE</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/acerca" class="active">Acerca de nosotros</a></li>
+        <li><a href="/servicios">Servicios</a></li>
+        <li><a href="/formulario">Formulario</a></li>
+        <li><a href="/contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Contenido principal centrado -->
+  <main>
+    <section class="contenido">
+      <h1>Acerca de Nosotros</h1>
+      <p>
+        En el <strong>GRUPO FE</strong> aspiramos a ser la constructora de referencia en la región, 
+        reconocida por transformar espacios en obras que inspiran confianza, sostenibilidad y progreso.
+      </p>
+      <p>
+        Queremos dejar una huella positiva y duradera en cada proyecto, construyendo no solo infraestructuras 
+        de calidad, sino también relaciones sólidas con las comunidades y clientes.
+      </p>
+      <p>
+        Nuestro compromiso es innovar constantemente, integrar prácticas responsables con el medio ambiente 
+        y contribuir al desarrollo urbano y social, dejando un legado que trascienda generaciones.
+      </p>
+
+      <!-- Texto adicional agregado -->
+      <p>
+        En <strong>GRUPO FE</strong> creemos que cada proyecto es una oportunidad para construir con propósito 
+        y dejar una marca positiva en la comunidad. Nos esforzamos por crear espacios que combinen funcionalidad, 
+        estética y seguridad, cuidando cada detalle desde la planificación hasta la ejecución.
+      </p>
+
+      <p>
+        Nuestra mayor fortaleza radica en la <strong>experiencia y compromiso de nuestro equipo humano</strong>. 
+        Cada integrante aporta su conocimiento y dedicación para garantizar resultados de excelencia, 
+        cumpliendo con los más altos estándares técnicos y éticos del sector construcción.
+      </p>
+
+      <p>
+        Entendemos que una obra no solo representa materiales y planos, sino también 
+        <strong>confianza, esfuerzo y visión de quienes la impulsan</strong>. Por eso, trabajamos con responsabilidad 
+        y respeto, ofreciendo soluciones constructivas claras y eficientes que se adaptan a las necesidades de cada cliente.
+      </p>
+
+      <p>
+        En <strong>GRUPO FE</strong> también creemos en la importancia de la innovación. Incorporamos herramientas modernas, 
+        técnicas constructivas actualizadas y una gestión ordenada que nos permite optimizar tiempos y recursos sin comprometer 
+        la calidad del resultado final.
+      </p>
+
+      <p>
+        Nuestra meta es seguir creciendo con integridad, aportando al desarrollo del país y siendo un referente en el sector 
+        por nuestra seriedad, compromiso y pasión por construir. Cada proyecto que realizamos refleja nuestra esencia: 
+        <strong>trabajar con fe, esfuerzo y visión de futuro</strong>.
+      </p>
+    </section>
+  </main>
+</body>
+</html>

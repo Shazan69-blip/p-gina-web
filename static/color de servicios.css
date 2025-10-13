@@ -1,0 +1,253 @@
+/* 🌐 ======= CONFIGURACIÓN GENERAL ======= */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  text-align: center;
+
+  /* Fondo con imagen */
+  background: url("../static/fondo.jpg") center/cover no-repeat fixed;
+  position: relative;
+  overflow-x: hidden;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Capa de desenfoque y contraste sobre el fondo */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25); /* oscurece ligeramente */
+  backdrop-filter: blur(6px);
+  z-index: -1;
+}
+
+/* Animación general */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ======= NAVBAR ======= */
+.navbar {
+  background: rgba(0, 123, 255, 0.85);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  transition: background 0.4s ease;
+}
+
+.navbar:hover {
+  background: rgba(0, 123, 255, 0.95);
+}
+
+/* ======= LOGO ======= */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.logo img {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.08);
+  filter: brightness(1.2);
+}
+
+/* ======= ENLACES ======= */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #ffeb3b;
+  transform: scale(1.05);
+}
+
+/* ======= CONTENIDO PRINCIPAL ======= */
+.contenido {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 20px;
+  color: #f4f4f4;
+  animation: slideUp 1s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  color: #ffffff;
+  font-size: 42px;
+  margin-bottom: 50px;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  letter-spacing: 1px;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+/* ======= CONTENEDOR DE TARJETAS ======= */
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  align-items: stretch;
+  margin-top: 20px;
+}
+
+/* ======= TARJETAS ======= */
+.card {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 25px;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.35);
+  width: 450px;
+  padding: 30px;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.5s ease, box-shadow 0.5s ease, background 0.5s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 500px;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+/* Efecto 3D y brillo */
+.card:hover {
+  transform: scale(1.06) translateY(-10px);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.4);
+  background: rgba(255,255,255,0.25);
+}
+
+/* ======= TÍTULOS DE TARJETAS ======= */
+.card h2 {
+  font-size: 28px;
+  color: #ffeb3b;
+  margin: 0;
+  transition: transform 0.3s ease, color 0.3s ease;
+  text-shadow: 1px 1px 8px rgba(0,0,0,0.6);
+}
+
+.card:hover h2 {
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+/* ======= MINI INFO ======= */
+.card .mini-info {
+  font-size: 16px;
+  color: #e0e0e0;
+  margin-top: 8px;
+  margin-bottom: 15px;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* ======= CONTENIDO DESPLEGABLE ======= */
+.card-content {
+  display: none;
+  margin-top: 15px;
+  padding-right: 10px;
+  overflow-y: auto;
+  flex-grow: 1;
+  scrollbar-width: thin;
+  scrollbar-color: #ffeb3b rgba(255,255,255,0.1);
+}
+
+/* Scroll personalizado */
+.card-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.card-content::-webkit-scrollbar-thumb {
+  background-color: #ffeb3b;
+  border-radius: 10px;
+}
+
+.card-content::-webkit-scrollbar-track {
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 10px;
+}
+
+/* ======= ICONOS DE LISTA ======= */
+.card-content li {
+  font-size: 18px;
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 30px;
+  line-height: 1.6;
+  color: #fff;
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.4);
+}
+
+.card-content li::before {
+  content: "✔";
+  color: #ffeb3b;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: bold;
+}
+
+/* Mostrar contenido cuando está activo */
+.card.active .card-content {
+  display: block;
+  animation: fadeIn 0.6s ease;
+}
+
+/* ======= RESPONSIVE ======= */
+@media (max-width: 1000px) {
+  .card-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+    min-height: auto;
+  }
+
+  .logo img {
+    height: 38px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+}

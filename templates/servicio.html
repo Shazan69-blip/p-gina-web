@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Requisitos | Sonabacu</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='color de servicios.css') }}">
+</head>
+<body>
+  <!-- Barra de navegación -->
+  <header>
+    <nav class="navbar">
+      <!-- Logo con imagen + texto -->
+      <div class="logo">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo de Grupo FE">
+        <span>GRUPO FE</span>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/acerca">Acerca de nosotros</a></li>
+        <li><a href="/servicios" class="active">Servicios</a></li>
+        <li><a href="/formulario">Formulario</a></li>
+        <li><a href="/contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Contenido principal -->
+  <main class="contenido">
+    <h1>Requisitos</h1>
+
+    <div class="card-container">
+      <!-- Tarjeta 1 -->
+      <div class="card">
+        <h2>Requisitos para los vendedores</h2>
+        <p class="mini-info">Documentos básicos que deben aportar los vendedores.</p>
+        <ul class="card-content">
+          <li>Plano catastro con visado municipal.</li>
+          <li>Escritura.</li>
+          <li>Uso de suelo.</li>
+          <li>Disponibilidad de agua y electricidad con no más de un año de emitida.</li>
+          <li>Certificación de impuestos municipales al día (ojalá pagados hasta diciembre 2025).</li>
+          <li>Si adquirieron la propiedad por medio de compra y dentro del matrimonio deben aportar la copia de la cédula del cónyuge.</li>
+          <li>La propiedad debe estar libre de gravámenes (hipotecas, practicados, embargos, entre otros).</li>
+          <li>Opción de compra venta por 12 meses.</li>
+          <li>Sólo se paga sobre los 300 m².</li>
+          <li>Durante la aprobación del bono el terreno debe estar limpio, marcado e identificado.</li>
+          <li>Si los vendedores son extranjeros deben tener cédula de residencia y certificación de estado civil.</li>
+          <li>Si son personas jurídicas deben aportar la certificación de personería jurídica, capital accionario y cédulas de los representantes legales.</li>
+          <li>Estar al día con el pago del impuesto sobre las personas jurídicas.</li>
+        </ul>
+      </div>
+
+      <!-- Tarjeta 2 -->
+      <div class="card">
+        <h2>Requisitos para las familias</h2>
+        <p class="mini-info">Documentos que deben aportar las familias para validar el proceso.</p>
+        <ul class="card-content">
+          <li>Cédula de identidad de los mayores de edad.</li>
+          <li>Reporte de ingresos de la CCSS de todos los mayores de edad.</li>
+          <li>Constancia de ingresos.</li>
+          <li>Constancia de pensión si aplica.</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <!-- Script para abrir/cerrar tarjetas -->
+  <script>
+    const cards = document.querySelectorAll('.card');
+
+    cards.forEach(card => {
+      const content = card.querySelector('.card-content');
+      content.style.display = 'none'; // ocultamos al inicio
+
+      card.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isVisible = content.style.display === 'block';
+
+        // Cerrar todos los demás
+        document.querySelectorAll('.card-content').forEach(c => c.style.display = 'none');
+
+        // Mostrar u ocultar el actual
+        content.style.display = isVisible ? 'none' : 'block';
+      });
+    });
+  </script>
+</body>
+</html>
