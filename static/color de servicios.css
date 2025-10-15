@@ -1,119 +1,188 @@
-/* ======= GENERAL ======= */
+/* ======= ESTILO GENERAL ======= */
 body {
-  margin: 0;
   font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
   background: radial-gradient(circle at center, #0f0f0f 0%, #050505 100%);
-  color: #eaeaea;
-  min-height: 100vh;
+  color: #f1f1f1;
+  overflow-x: hidden;
 }
 
 /* ======= NAVBAR ======= */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #050505;
-  padding: 10px 50px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  padding: 15px 30px;
+  text-align: center;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.logo img {
-  width: 45px;
-  height: auto;
-}
-
-.logo h1 {
-  color: #fcd535;
-  font-size: 1.6rem;
-  letter-spacing: 1px;
-}
-
-.nav-links {
+.navbar ul {
   list-style: none;
-  display: flex;
-  gap: 30px;
+  margin: 0;
+  padding: 0;
 }
 
-.nav-links a {
+.navbar li {
+  display: inline-block;
+  margin: 0 15px;
+}
+
+.navbar a {
   color: #eaeaea;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
-.nav-links a:hover {
-  color: #fcd535;
+.navbar a:hover {
+  color: #ffcc00;
 }
 
-.nav-links .active {
-  color: #fcd535;
-}
-
-/* ======= HEADER ======= */
-header {
+/* ======= SECCIÓN SERVICIOS ======= */
+.servicios {
   text-align: center;
-  padding: 50px 20px 20px;
+  padding: 80px 20px;
+  transition: all 0.4s ease;
+  min-height: 100vh;
+  position: relative;
 }
 
-header h2 {
-  color: #fcd535;
-  font-size: 2rem;
+.servicios.enfocado {
+  background: rgba(0, 0, 0, 0.95);
+}
+
+/* ======= TÍTULOS ======= */
+.servicios h1 {
+  color: #ffcc00;
+  font-size: 2.5em;
   margin-bottom: 10px;
 }
 
-header p {
-  color: #bdbdbd;
+.subtitulo {
+  color: #cccccc;
+  font-size: 1.1em;
+  margin-bottom: 50px;
 }
 
-/* ======= SERVICIOS ======= */
-.servicios-container {
+/* ======= CONTENEDOR DE BONOS ======= */
+.contenedor-bonos {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
-  flex-wrap: wrap;
-  padding: 40px;
+  transition: all 0.5s ease;
 }
 
-.servicio-card {
-  background-color: #111;
+/* ======= TARJETAS DE BONOS ======= */
+.bono {
+  background: #111;
+  color: #fff;
   border-radius: 20px;
+  box-shadow: 0 0 15px rgba(255, 204, 0, 0.1);
+  width: 320px;
   padding: 25px;
-  width: 300px;
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.15);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  transition: all 0.6s ease;
+  overflow: hidden;
+  position: relative;
 }
 
-.servicio-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+.bono:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(255, 204, 0, 0.3);
 }
 
-.servicio-card h3 {
-  color: #fcd535;
+.bono h2 {
+  color: #ffcc00;
+  font-size: 1.3em;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+/* ======= CONTENIDO INTERNO ======= */
+.bono .contenido {
+  display: none;
+  text-align: left;
+  margin-top: 20px;
+}
+
+/* ======= BONO EXPANDIDO (CENTRADO) ======= */
+.bono.expandido {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.05);
+  width: 85%;
+  max-width: 850px;
+  padding: 50px;
+  z-index: 999;
+  background: #151515;
+  box-shadow: 0 0 60px rgba(255, 204, 0, 0.4);
+  cursor: default;
+  border: 1px solid rgba(255, 204, 0, 0.2);
+}
+
+.bono.expandido .contenido {
+  display: block;
+  opacity: 1;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Oculta los otros bonos suavemente */
+.bono.oculto {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.85);
+  transition: all 0.4s ease;
+}
+
+/* ======= LISTAS ======= */
+.bono p {
+  font-size: 0.95em;
+  line-height: 1.5em;
+  margin-bottom: 15px;
+}
+
+.bono h3 {
+  color: #ffcc00;
+  font-size: 1.1em;
   margin-bottom: 10px;
 }
 
-.servicio-card h4 {
-  color: #fff;
-  margin-top: 15px;
-  font-size: 1.1rem;
-}
-
-.servicio-card ul {
+.bono ul {
   list-style: none;
-  padding-left: 0;
+  padding: 0;
 }
 
-.servicio-card li {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 8px;
+.bono li {
+  background: #222;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 0.9em;
+}
+
+/* ======= BOTÓN VOLVER ======= */
+.volver {
+  background: #ffcc00;
+  border: none;
+  color: #111;
+  font-weight: 600;
+  padding: 10px 22px;
   border-radius: 8px;
-  margin: 6px 0;
-  font-size: 0.95rem;
+  margin-top: 25px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.volver:hover {
+  background: #e0b700;
+  transform: scale(1.05);
+}
+
+/* ======= ANIMACIONES ======= */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

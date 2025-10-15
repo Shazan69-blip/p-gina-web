@@ -4,61 +4,100 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Servicios | Grupo Fe</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='color de servicios.css') }}">
+ <link rel="stylesheet" href="{{ url_for('static', filename='color de servicios.css') }}">
+
 </head>
 <body>
-    <header class="header">
-    <div class="nav-container">
-      <div class="logo">🏗️ GRUPO FE</div>
-      <ul class="nav-links">
+  <nav class="navbar">
+    <ul>
+ <ul class="nav-links">
         <li><a href="/">Inicio</a></li>
-        <li><a href="/acerca">Acerca de nosotros</a></li>
+        <li><a href="/acerca" class="active">Acerca de nosotros</a></li>
         <li><a href="/servicios">Servicios</a></li>
-         <li><a href="/formulario">Formulario</a></li>
+        <li><a href="/formulario">Formulario</a></li>
         <li><a href="/contacto">Contacto</a></li>
       </ul>
-    </div>
+    </nav>
   </header>
+  </nav>
 
-  <!-- ======= CONTENIDO PRINCIPAL ======= -->
-  <header>
-    <h2>Nuestros Servicios</h2>
-    <p>Seleccione el tipo de bono según su situación</p>
-  </header>
+  <section class="servicios">
+    <h1>Nuestros Servicios</h1>
+    <p class="subtitulo">Seleccione el tipo de bono según su situación</p>
 
-  <section class="servicios-container">
-    <div class="servicio-card">
-      <h3>Bono para persona con discapacidad</h3>
-      <p>Apoyo económico dirigido a personas con discapacidad que necesitan ayuda para mejorar su calidad de vida.</p>
-      <h4>Requisitos:</h4>
-      <ul>
-        <li>Certificado médico de discapacidad.</li>
-        <li>Cédula de identidad vigente.</li>
-        <li>Comprobante de residencia.</li>
-      </ul>
-    </div>
+    <div class="contenedor-bonos">
+      <!-- BONO 1 -->
+      <div class="bono" onclick="expandirBono(this)">
+        <h2>Bono para persona con discapacidad</h2>
+        <div class="contenido">
+          <p>Apoyo económico dirigido a personas con discapacidad que necesitan ayuda para mejorar su calidad de vida.</p>
+          <h3>Requisitos:</h3>
+          <ul>
+            <li>Certificado médico de discapacidad.</li>
+            <li>Cédula de identidad vigente.</li>
+            <li>Comprobante de residencia.</li>
+          </ul>
+          <button class="volver" onclick="volver(event)">Volver</button>
+        </div>
+      </div>
 
-    <div class="servicio-card">
-      <h3>Bono para persona adulta mayor</h3>
-      <p>Dirigido a personas adultas mayores en condición de vulnerabilidad o sin ingresos fijos.</p>
-      <h4>Requisitos:</h4>
-      <ul>
-        <li>Tener 65 años o más.</li>
-        <li>Cédula de identidad al día.</li>
-        <li>Declaración de ingresos o condición económica.</li>
-      </ul>
-    </div>
+      <!-- BONO 2 -->
+      <div class="bono" onclick="expandirBono(this)">
+        <h2>Bono para persona adulta mayor</h2>
+        <div class="contenido">
+          <p>Dirigido a personas adultas mayores en condición de vulnerabilidad o sin ingresos fijos.</p>
+          <h3>Requisitos:</h3>
+          <ul>
+            <li>Tener 65 años o más.</li>
+            <li>Cédula de identidad al día.</li>
+            <li>Declaración de ingresos o condición económica.</li>
+          </ul>
+          <button class="volver" onclick="volver(event)">Volver</button>
+        </div>
+      </div>
 
-    <div class="servicio-card">
-      <h3>Bono por extrema necesidad</h3>
-      <p>Ayuda económica temporal para familias o individuos en situaciones críticas.</p>
-      <h4>Requisitos:</h4>
-      <ul>
-        <li>Estudio socioeconómico aprobado.</li>
-        <li>Cédula de identidad.</li>
-        <li>Informe de trabajador social.</li>
-      </ul>
+      <!-- BONO 3 -->
+      <div class="bono" onclick="expandirBono(this)">
+        <h2>Bono por extrema necesidad</h2>
+        <div class="contenido">
+          <p>Ayuda económica temporal para familias o individuos en situaciones críticas.</p>
+          <h3>Requisitos:</h3>
+          <ul>
+            <li>Estudio socioeconómico aprobado.</li>
+            <li>Cédula de identidad.</li>
+            <li>Informe de trabajador social.</li>
+          </ul>
+          <button class="volver" onclick="volver(event)">Volver</button>
+        </div>
+      </div>
     </div>
   </section>
+
+  <script>
+    function expandirBono(bonoSeleccionado) {
+      const bonos = document.querySelectorAll('.bono');
+      const seccion = document.querySelector('.servicios');
+      
+      bonos.forEach(b => {
+        if (b !== bonoSeleccionado) {
+          b.classList.add('oculto');
+        }
+      });
+      
+      bonoSeleccionado.classList.add('expandido');
+      seccion.classList.add('enfocado');
+    }
+
+    function volver(event) {
+      event.stopPropagation();
+      const bonos = document.querySelectorAll('.bono');
+      const seccion = document.querySelector('.servicios');
+
+      bonos.forEach(b => {
+        b.classList.remove('oculto', 'expandido');
+      });
+      seccion.classList.remove('enfocado');
+    }
+  </script>
 </body>
 </html>
