@@ -118,6 +118,23 @@ body {
   box-shadow: 0 0 60px rgba(255, 204, 0, 0.4);
   cursor: default;
   border: 1px solid rgba(255, 204, 0, 0.2);
+
+  /* === NUEVO: permite scroll interno sin afectar el resto === */
+  max-height: 80vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+/* Barra de desplazamiento personalizada */
+.bono.expandido::-webkit-scrollbar {
+  width: 8px;
+}
+.bono.expandido::-webkit-scrollbar-thumb {
+  background-color: #ffcc00;
+  border-radius: 10px;
+}
+.bono.expandido::-webkit-scrollbar-track {
+  background: #222;
 }
 
 .bono.expandido .contenido {
