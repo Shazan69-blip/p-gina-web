@@ -4,21 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Servicios | Grupo Fe</title>
- <link rel="stylesheet" href="{{ url_for('static', filename='color de servicios.css') }}">
-
+  <link rel="stylesheet" href="{{ url_for('static', filename='color de servicios.css') }}">
 </head>
 <body>
   <nav class="navbar">
-    <ul>
- <ul class="nav-links">
-        <li><a href="/">Inicio</a></li>
-        <li><a href="/acerca" class="active">Acerca de nosotros</a></li>
-        <li><a href="/servicios">Servicios</a></li>
-        <li><a href="/formulario">Formulario</a></li>
-        <li><a href="/contacto">Contacto</a></li>
-      </ul>
-    </nav>
-  </header>
+    <ul class="nav-links">
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/acerca" class="active">Acerca de nosotros</a></li>
+      <li><a href="/servicios">Servicios</a></li>
+      <li><a href="/formulario">Formulario</a></li>
+      <li><a href="/contacto">Contacto</a></li>
+    </ul>
   </nav>
 
   <section class="servicios">
@@ -30,24 +26,30 @@
       <div class="bono" onclick="expandirBono(this)">
         <h2>Bono para persona con discapacidad</h2>
         <div class="contenido">
-          <p>Las familias que cuenten con uno o más integrantes con una discapacidad física total y permanente pueden acceder a un bono familiar y medio destinado a la construcción de una vivienda adaptada a sus necesidades. Este beneficio busca garantizar espacios accesibles, seguros y cómodos que mejoren la calidad de vida de las personas con discapacidad.
+          <p>
+            Las familias que cuenten con uno o más integrantes con una discapacidad física total y permanente pueden acceder a un bono familiar y medio destinado a la construcción de una vivienda adaptada a sus necesidades. Este beneficio busca garantizar espacios accesibles, seguros y cómodos que mejoren la calidad de vida de las personas con discapacidad.
+          </p>
+          <p>
+            Para solicitar este bono especial, es necesario obtener un certificado médico emitido por la Comisión Calificadora de la Caja Costarricense del Seguro Social (CCSS). Dicho certificado debe confirmar que la persona presenta una condición física total y permanente.
+          </p>
+          <p>
+            En los casos en que la persona con discapacidad no cuente con una familia que le brinde apoyo y pueda valerse por sí misma, deberá presentar también una certificación del Consejo Nacional de la Persona con Discapacidad (CONAPDIS).
+          </p>
+          <p>
+            Además, la Ley N.º 9821 permite que las familias puedan acceder a un segundo bono cuando, después de haber recibido el primero, algún miembro del hogar desarrolle una discapacidad certificada que haga necesario mejorar, ampliar o adaptar la vivienda. El monto de este segundo subsidio se determina según las necesidades particulares de cada caso y los requisitos establecidos.
+          </p>
+          <p>
+            La condición de discapacidad debe estar certificada por el Servicio de Certificación de la Discapacidad (SECDIS).
+          </p>
 
-Para solicitar este bono especial, es necesario obtener un certificado médico para el bono de vivienda emitido por la Comisión Calificadora de la Caja Costarricense del Seguro Social (CCSS). Dicho certificado debe confirmar que la persona presenta una condición física total y permanente.
-
-En los casos en que la persona con discapacidad no cuente con una familia que le brinde apoyo y pueda valerse por sí misma, deberá presentar también una certificación del Consejo Nacional de la Persona con Discapacidad (CONAPDIS).
-
-Además, la Ley N.° 9821 permite que las familias puedan acceder a un segundo bono cuando, después de haber recibido el primero, algún miembro del hogar desarrolle una discapacidad certificada que haga necesario mejorar, ampliar o adaptar la vivienda.
-El monto de este segundo subsidio se determina según las necesidades particulares de cada caso y los requisitos establecidos.
-
-La condición de discapacidad debe estar certificada por el Servicio de Certificación de la Discapacidad (SECDIS).</p>
           <h3>Requisitos:</h3>
-          <ul>
-            <p>1-Familia con uno o más miembros con impedimento físico total y permanente: para comprobar esta condición, debe solicitarse el certificado médico para el bono de vivienda donde se indique el porcentaje de discapacidad del miembro de la familia..</p>
-            <p>2-No tener casa propia o más de una propiedad: si la familia tiene un lote puede utilizar el bono y medio para construir la vivienda y si tiene una casa, pero requiere de ampliaciones, reparaciones o mejoras puede utilizarlo para este fin. También puede utilizar el bono para compra de lote y construcción o compra de una vivienda existente.</p>
-            <p>3-Tener un ingreso familiar menor a ¢1 907 496, es decir, seis salarios mínimos de un obrero no especializado de la industria de la construcción, el cual es ajustado semestralmente..</p>
-            <p>4-Ser costarricense o tener una situación de residencia legalizada.</p>
-            <p>5-Nota de IMAS donde avala la propuesta técnica de la solución.</p>
-            <p>6-Realizar los trámites en alguna de las entidades autorizadas por el BANHVI y suministrar los documentos solicitados.</p>
+          <ul class="requisitos-lista">
+            <li>Familia con uno o más miembros con impedimento físico total y permanente. Se debe solicitar el certificado médico para el bono de vivienda donde se indique el porcentaje de discapacidad del miembro de la familia.</li>
+            <li>No tener casa propia o más de una propiedad. Si la familia tiene un lote, puede utilizar el bono para construir la vivienda o ampliarla. También puede usarse para comprar lote y construir, o para comprar una vivienda existente.</li>
+            <li>Tener un ingreso familiar menor a ₡1 907 496 (seis salarios mínimos de un obrero no especializado de la industria de la construcción, ajustado semestralmente).</li>
+            <li>Ser costarricense o tener una situación de residencia legalizada.</li>
+            <li>Nota del IMAS que avale la propuesta técnica de la solución habitacional.</li>
+            <li>Realizar los trámites en alguna de las entidades autorizadas por el BANHVI y suministrar los documentos solicitados.</li>
           </ul>
           <button class="volver" onclick="volver(event)">Volver</button>
         </div>
@@ -57,12 +59,14 @@ La condición de discapacidad debe estar certificada por el Servicio de Certific
       <div class="bono" onclick="expandirBono(this)">
         <h2>Bono para persona adulta mayor</h2>
         <div class="contenido">
-          <p>Dirigido a personas adultas mayores en condición de vulnerabilidad o sin ingresos fijos.</p>
+          <p>
+            Este bono está dirigido a personas adultas mayores en condición de vulnerabilidad o sin ingresos fijos, con el objetivo de garantizar un espacio digno y seguro para su bienestar.
+          </p>
           <h3>Requisitos:</h3>
-          <ul>
+          <ul class="requisitos-lista">
             <li>Tener 65 años o más.</li>
-            <li>Cédula de identidad al día.</li>
-            <li>Declaración de ingresos o condición económica.</li>
+            <li>Presentar cédula de identidad vigente.</li>
+            <li>Declaración de ingresos o constancia de situación económica emitida por una autoridad competente.</li>
           </ul>
           <button class="volver" onclick="volver(event)">Volver</button>
         </div>
@@ -72,12 +76,32 @@ La condición de discapacidad debe estar certificada por el Servicio de Certific
       <div class="bono" onclick="expandirBono(this)">
         <h2>Bono por extrema necesidad</h2>
         <div class="contenido">
-          <p>Ayuda económica temporal para familias o individuos en situaciones críticas.</p>
+          <p>
+            Este bono está dirigido a familias o personas en situaciones críticas, tales como pérdida total de vivienda por desastres naturales, condiciones precarias o emergencias habitacionales.
+          </p>
           <h3>Requisitos:</h3>
-          <ul>
-            <li>Estudio socioeconómico aprobado.</li>
-            <li>Cédula de identidad.</li>
-            <li>Informe de trabajador social.</li>
+          <ul class="requisitos-lista">
+            <li>Contar con un estudio socioeconómico aprobado por las entidades correspondientes.</li>
+            <li>Presentar cédula de identidad vigente.</li>
+            <li>Informe elaborado por un trabajador social autorizado.</li>
+          </ul>
+          <button class="volver" onclick="volver(event)">Volver</button>
+        </div>
+      </div>
+
+      <!-- BONO 4 NUEVO -->
+      <div class="bono" onclick="expandirBono(this)">
+        <h2>Servicios privados</h2>
+        <div class="contenido">
+          <p>
+            En Grupo Fe también ofrecemos servicios privados orientados a brindar soluciones personalizadas en el área social, habitacional y de bienestar familiar. Estos servicios están disponibles para quienes deseen obtener asistencia profesional fuera de los programas estatales.
+          </p>
+          <h3>Ejemplos de servicios:</h3>
+          <ul class="requisitos-lista">
+            <li>Asesorías para financiamiento de vivienda privada.</li>
+            <li>Gestión de trámites y documentación.</li>
+            <li>Consultoría técnica y social en proyectos habitacionales.</li>
+            <li>Acompañamiento personalizado durante todo el proceso.</li>
           </ul>
           <button class="volver" onclick="volver(event)">Volver</button>
         </div>
