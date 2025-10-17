@@ -5,19 +5,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Servicios | Grupo Fe</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='color de servicios.css') }}">
+  <style>
+    /* ======= INTRODUCCIÓN SERVICIOS ======= */
+    #intro-servicios {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      color: #ffcc00;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      text-align: center;
+      animation: fadeOutIntro 3s ease 3s forwards;
+    }
+
+    .intro-contenido h1 {
+      font-size: 2.2em;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    .intro-contenido p {
+      font-size: 1.2em;
+      color: #eaeaea;
+      opacity: 0.9;
+    }
+
+    @keyframes fadeOutIntro {
+      0% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { opacity: 0; visibility: hidden; }
+    }
+  </style>
 </head>
 <body>
+
+  <!-- INTRODUCCIÓN -->
+  <div id="intro-servicios">
+    <div class="intro-contenido">
+      <h1>Bienvenido al apartado de servicios</h1>
+      <p>Estos son los servicios que te ofrecemos</p>
+    </div>
+  </div>
+
   <nav class="navbar">
     <ul class="nav-links">
       <li><a href="/">Inicio</a></li>
-      <li><a href="/acerca" class="active">Acerca de nosotros</a></li>
-      <li><a href="/servicios">Servicios</a></li>
+      <li><a href="/acerca">Acerca de nosotros</a></li>
+      <a href="/servicios">Servicios</a>
       <li><a href="/formulario">Formulario</a></li>
       <li><a href="/contacto">Contacto</a></li>
     </ul>
   </nav>
 
-  <section class="servicios">
+  <section class="servicios" id="seccion-servicios" style="opacity: 0; transition: opacity 1s ease;">
     <h1>Nuestros Servicios</h1>
     <p class="subtitulo">Seleccione el tipo de bono según su situación</p>
 
@@ -89,7 +135,7 @@
         </div>
       </div>
 
-      <!-- BONO 4 NUEVO -->
+      <!-- BONO 4 -->
       <div class="bono" onclick="expandirBono(this)">
         <h2>Servicios privados</h2>
         <div class="contenido">
@@ -110,16 +156,20 @@
   </section>
 
   <script>
+    // Mostrar servicios después de la intro
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById("intro-servicios").style.display = "none";
+        document.getElementById("seccion-servicios").style.opacity = "1";
+      }, 1000); // 3s visible + 3s fadeOut
+    });
+
     function expandirBono(bonoSeleccionado) {
       const bonos = document.querySelectorAll('.bono');
       const seccion = document.querySelector('.servicios');
-      
       bonos.forEach(b => {
-        if (b !== bonoSeleccionado) {
-          b.classList.add('oculto');
-        }
+        if (b !== bonoSeleccionado) b.classList.add('oculto');
       });
-      
       bonoSeleccionado.classList.add('expandido');
       seccion.classList.add('enfocado');
     }
@@ -128,12 +178,10 @@
       event.stopPropagation();
       const bonos = document.querySelectorAll('.bono');
       const seccion = document.querySelector('.servicios');
-
-      bonos.forEach(b => {
-        b.classList.remove('oculto', 'expandido');
-      });
+      bonos.forEach(b => b.classList.remove('oculto', 'expandido'));
       seccion.classList.remove('enfocado');
     }
   </script>
+
 </body>
 </html>
