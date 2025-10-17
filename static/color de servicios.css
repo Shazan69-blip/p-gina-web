@@ -7,6 +7,8 @@ body {
   color: #f1f1f1;
   overflow-x: hidden;
   line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* ======= NAVBAR ======= */
@@ -156,10 +158,13 @@ body {
 /* ======= TEXTOS Y LISTAS ======= */
 .bono p {
   font-size: 1em;
-  line-height: 1.7em;
+  line-height: 1.6em;
   margin-bottom: 15px;
   color: #dddddd;
   text-align: justify;
+  word-spacing: normal;
+  hyphens: auto;
+  overflow-wrap: break-word;
 }
 
 .bono h3 {
@@ -209,4 +214,39 @@ body {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* ======= RESPONSIVE (MEJORA EN TELÉFONOS) ======= */
+@media (max-width: 768px) {
+  .servicios {
+    padding: 60px 15px;
+  }
+
+  .servicios h1 {
+    font-size: 2em;
+  }
+
+  .subtitulo {
+    font-size: 1em;
+  }
+
+  .bono {
+    width: 90%;
+    padding: 20px;
+    text-align: left;
+  }
+
+  .bono p,
+  .bono li {
+    font-size: 0.95em;
+    line-height: 1.5em;
+    text-align: left;
+    word-spacing: 0;
+  }
+
+  .bono.expandido {
+    width: 95%;
+    padding: 30px;
+    font-size: 0.95em;
+  }
 }
