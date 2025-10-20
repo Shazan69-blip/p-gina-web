@@ -1,64 +1,92 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Acerca de Nosotros | Grupo FE</title>
+
+  <!-- SEO -->
+  <meta name="description" content="En Grupo FE construimos futuro con propósito. Empresa costarricense comprometida con la calidad, la transparencia y el bienestar social.">
+  <meta name="keywords" content="Grupo FE, construcción, BANHVI, vivienda social, Costa Rica, constructora">
+  <meta name="author" content="Grupo FE">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+  <!-- Fuente -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Ícono -->
+  <link rel="icon" href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.todoparatucasa.mx%2Fblog%2Fprincipios-basicos%2F7-pasos-para-planear-la-construccion-de-tu-casa%2F%3Fsrsltid%3DAfmBOorEJ1PTNuJcxfkK-SodBeWCT33XfQxNQjLZk2AuyBJVMq4N5Nwv&psig=AOvVaw1JSOEL286OtuhNP9L7mXwe&ust=1761058148882000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCPCivIWDs5ADFQAAAAAdAAAAABAE" />
 </head>
 <body>
+  <!-- HEADER -->
   <header class="header">
-    <div class="nav-container">
-      <div class="logo">🏗️ GRUPO FE</div>
-      <ul class="nav-links">
-        <li><a href="/">Inicio</a></li>
-        <li><a href="/acerca">Acerca de nosotros</a></li>
-        <li><a href="/servicios">Servicios</a></li>
-         <li><a href="/formulario">Formulario</a></li>
-        <li><a href="/contacto">Contacto</a></li>
-      </ul>
+    <div class="container nav-container">
+      <div class="logo">
+        🏗️ <span>GRUPO FE</span>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/" class="active">Inicio</a></li>
+          <li><a href="/acerca">Acerca de nosotros</a></li>
+          <li><a href="/servicios">Servicios</a></li>
+          <li><a href="/formulario">Formulario</a></li>
+          <li><a href="/contacto">Contacto</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <section class="hero-container">
-    <img src="{{ url_for('static', filename='fondo.jpg') }}" alt="Construcción Grupo FE" class="hero-image">
+  <!-- HERO -->
+  <section class="hero container">
     <div class="hero-text">
       <h1>Construyendo Futuro con Propósito</h1>
-      <p>En <strong>GRUPO FE</strong> creemos que construir no es solo levantar paredes, sino dar vida a espacios donde las personas puedan desarrollarse, sentirse seguras y orgullosas de su entorno. Somos una <strong>empresa constructora comprometida con la calidad, la transparencia y el cumplimiento</strong>, enfocada en ofrecer resultados que superen las expectativas de nuestros clientes.</p>
+      <p>
+        En <strong>GRUPO FE</strong> creemos que construir no es solo levantar paredes, sino dar vida a espacios donde las personas puedan desarrollarse, sentirse seguras y orgullosas de su entorno. Somos una <strong>empresa constructora comprometida con la calidad, la transparencia y el cumplimiento</strong>, enfocada en ofrecer resultados que superen las expectativas de nuestros clientes.
+      </p>
       <a href="/contacto" class="cta-button">Contáctanos</a>
+    </div>
+    <div class="hero-image">
+      <img src="fondo.jpg" alt="Edificio en construcción">
     </div>
   </section>
 
-  <section class="sobre-nosotros">
-    <h2>Misión</h2>
-    <p>Brindar soluciones habitacionales de calidad a las familias costarricenses de menores ingresos, mediante procesos constructivos eficientes, sostenibles y humanos, garantizando el cumplimiento de los estándares del BANHVI y promoviendo el desarrollo social y económico de las comunidades.</p>
-
-    <h2>Visión</h2>
-    <p>Ser la empresa constructora líder en Costa Rica en el desarrollo de proyectos de vivienda de interés social, reconocida por su compromiso con la excelencia, la innovación y la dignificación de la vivienda como base del bienestar familiar y comunitario.</p>
-
-    <h2>Valores Corporativos</h2>
-    <ul class="valores">
-      <li><strong>Compromiso social:</strong> Trabajamos con empatía hacia las familias que más lo necesitan.</li>
-      <li><strong>Transparencia:</strong> Actuamos con ética, claridad y rendición de cuentas.</li>
-      <li><strong>Calidad:</strong> Buscamos la excelencia en cada etapa del proceso constructivo.</li>
-      <li><strong>Innovación:</strong> Aplicamos soluciones modernas y eficientes que generan valor.</li>
-      <li><strong>Trabajo en equipo:</strong> Fomentamos la colaboración y el respeto mutuo.</li>
-      <li><strong>Sostenibilidad:</strong> Cuidamos el ambiente y promovemos prácticas responsables.</li>
-    </ul>
-
-    <h2>Objetivos Estratégicos</h2>
-    <ol class="objetivos">
-      <li>Ejecutar proyectos habitacionales con altos estándares técnicos y normativos.</li>
-      <li>Contribuir activamente a la reducción del déficit habitacional en Costa Rica.</li>
-      <li>Implementar prácticas constructivas sostenibles y ecoeficientes.</li>
-      <li>Incorporar tecnologías modernas como sistemas prefabricados (Prefablock).</li>
-      <li>Promover un entorno laboral seguro y motivador para el personal.</li>
-      <li>Mantener una gestión administrativa y financiera transparente.</li>
-    </ol>
+  <!-- SOBRE NOSOTROS -->
+   <center>
+  <section class="sobre-nosotros container">
+    <h2>Sobre Nosotros</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">🎯</div>
+        <h3>Misión</h3>
+        <p>Brindar soluciones habitacionales de calidad a las familias costarricenses mediante procesos sostenibles, humanos y eficientes.</p>
+      </div>
+      <div class="card">
+        <div class="icon">👁️</div>
+        <h3>Visión</h3>
+        <p>Ser la empresa constructora líder en Costa Rica en proyectos de vivienda de interés social con innovación y excelencia.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🤝</div>
+        <h3>Valores Corporativos</h3>
+        <p>Compromiso social, transparencia, calidad, innovación, trabajo en equipo y sostenibilidad.</p>
+      </div>
+    </div>
   </section>
-
+</center>
+  <!-- FOOTER -->
   <footer class="footer">
-    © 2025 Grupo FE | Todos los derechos reservados
+    <div class="container footer-content">
+      <p>© 2025 Grupo FE | Todos los derechos reservados</p>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
   </footer>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
