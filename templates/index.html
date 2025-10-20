@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <!-- Ícono -->
-  <link rel="icon" href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.todoparatucasa.mx%2Fblog%2Fprincipios-basicos%2F7-pasos-para-planear-la-construccion-de-tu-casa%2F%3Fsrsltid%3DAfmBOorEJ1PTNuJcxfkK-SodBeWCT33XfQxNQjLZk2AuyBJVMq4N5Nwv&psig=AOvVaw1JSOEL286OtuhNP9L7mXwe&ust=1761058148882000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCPCivIWDs5ADFQAAAAAdAAAAABAE" />
+  <link rel="icon" href="favicon.ico" />
 </head>
 <body>
   <!-- HEADER -->
@@ -40,6 +40,7 @@
 
   <!-- HERO -->
   <section class="hero container">
+    <!-- TEXTO A LA IZQUIERDA -->
     <div class="hero-text">
       <h1>Construyendo Futuro con Propósito</h1>
       <p>
@@ -47,15 +48,16 @@
       </p>
       <a href="/contacto" class="cta-button">Contáctanos</a>
     </div>
+
+    <!-- IMAGEN A LA DERECHA -->
     <div class="hero-image">
-      <img src="fondo.jpg" alt="Edificio en construcción">
+    <img src="{{ url_for('static', filename='fondo.jpg') }}" alt="Logo de GRUPO FE">
     </div>
   </section>
-
+<center>
   <!-- SOBRE NOSOTROS -->
-   <center>
   <section class="sobre-nosotros container">
-    <h2>Sobre Nosotros</h2>
+    <h2>Objetivos</h2>
     <div class="cards">
       <div class="card">
         <div class="icon">🎯</div>
@@ -80,13 +82,14 @@
     <div class="container footer-content">
       <p>© 2025 Grupo FE | Todos los derechos reservados</p>
       <div class="social-icons">
-        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
         <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
       </div>
     </div>
   </footer>
 
+  <!-- FONT AWESOME -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
