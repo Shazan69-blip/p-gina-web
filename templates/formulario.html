@@ -8,26 +8,23 @@
 </head>
 <body>
   <header class="navbar">
-    <div class="logo">
-      <img src="{{ url_for('static', filename='logo de arriba.png') }}" alt="Logo" class="logo-img">
-      <h1></h1>
-    </div>
-        <!-- NUEVO: Botón menú hamburguesa -->
+  <div class="logo">
+    <img src="{{ url_for('static', filename='logo de arriba.png') }}" alt="Logo" class="logo-img">
+    <h1></h1>
+  </div>
 
-     <button class="menu-toggle" id="menuToggle">☰</button>
+  <button class="menu-toggle" id="menuToggle">☰</button>
 
-
-    </div>
-    <nav>
-      <ul>
-        <li><a href="/">Inicio</a></li>
-        <li><a href="/acerca">Acerca de nosotros</a></li>
-        <li><a href="/servicios">Servicios</a></li>
-        <li><a class="activo" href="/formulario">Formulario</a></li>
-        <li><a href="/contacto">Contacto</a></li>
-      </ul>
-    </nav>
-  </header>
+  <nav>
+    <ul id="navMenu">
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/acerca">Acerca de nosotros</a></li>
+      <li><a href="/servicios">Servicios</a></li>
+      <li><a class="activo" href="/formulario">Formulario</a></li>
+      <li><a href="/contacto">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
 
   <main class="contenedor">
     <h2>Formulario de aplicación al Bono Familiar de Vivienda – Artículo 59 (Ley 7052)</h2>
@@ -440,14 +437,14 @@
 </script>
 
 
-<script>
-const menuToggle = document.getElementById('menuToggle');
-const navMenu = document.getElementById('navMenu');
+  <script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navMenu = document.getElementById('navMenu');
 
-menuToggle.addEventListener('click', () => {
-  navMenu.classList.toggle('show');
-  menuToggle.classList.toggle('active');
-});
-</script>
+  menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('show');
+    menuToggle.classList.toggle('active');
+  });
+  </script>
 </body>
 </html>
