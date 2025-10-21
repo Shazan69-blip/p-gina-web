@@ -1,5 +1,10 @@
-/* ======= Tipografía base ======= */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+/* ============================================================
+   📘 ESTILO GENERAL - GRUPO FE
+   Autor: Dereck Loria | Grupo FE
+   ============================================================ */
+
+/* ======= Tipografía y Reset ======= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 * {
   box-sizing: border-box;
@@ -9,234 +14,250 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #1F1F1F 0%, #121212 100%);
-  color: #ECECEC;
-  min-height: 100vh;
+  background-color: #f6f8fb;
+  color: #333;
   line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-/* ======= Navbar Mejorada ======= */
+/* ======= Colores institucionales ======= */
+:root {
+  --azul-principal: #0f4c81;
+  --azul-secundario: #1768ac;
+  --gris-suave: #e9eef4;
+  --gris-claro: #f8f9fc;
+  --blanco: #ffffff;
+  --negro: #222;
+  --sombra: rgba(0, 0, 0, 0.1);
+}
+
+/* ======= Contenedor global ======= */
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+  padding: 2rem 0;
+}
+
+/* ============================================================
+   🧭 NAVBAR
+   ============================================================ */
 .navbar {
+  background: var(--azul-principal);
+  color: var(--blanco);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 28px;
-  background: rgba(18,18,18,0.95);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  position: sticky;
+  padding: 1rem 2rem;
+  position: fixed;
+  width: 100%;
   top: 0;
+  left: 0;
   z-index: 1000;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
-  transition: background 0.3s ease, padding 0.3s ease;
+  box-shadow: 0 3px 10px var(--sombra);
 }
 
-.logo h1 {
-  color: #FFD700;
-  font-size: 1.6rem;
-  letter-spacing: 1.2px;
-  font-weight: 600;
+.navbar .logo {
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
 }
 
-/* Enlaces desktop */
 .navbar ul {
   display: flex;
-  gap: 26px;
   list-style: none;
+  gap: 1.5rem;
 }
 
 .navbar a {
+  color: var(--blanco);
   text-decoration: none;
-  color: #E6E6E6;
   font-weight: 500;
-  transition: color 0.25s, transform 0.25s;
+  transition: color 0.3s ease;
 }
 
-.navbar a:hover,
-.navbar .activo {
-  color: #FFD700;
-  transform: scale(1.08);
+.navbar a:hover {
+  color: var(--gris-suave);
 }
 
-/* ======= Menú hamburguesa ======= */
-.menu-toggle {
+/* ======= Botón menú móvil ======= */
+#menuToggle {
   display: none;
-  font-size: 1.9rem;
-  color: #FFD700;
-  background: none;
-  border: none;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  flex-direction: column;
+  gap: 5px;
 }
-.menu-toggle:active {
-  transform: rotate(90deg);
+
+#menuToggle span {
+  width: 26px;
+  height: 3px;
+  background: var(--blanco);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* Overlay oscuro detrás del menú */
+#navOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 900;
 }
 
 /* ======= Menú móvil ======= */
 @media (max-width: 768px) {
-  .menu-toggle { display: block; }
+  #menuToggle {
+    display: flex;
+  }
 
   .navbar ul {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: rgba(25,25,25,0.98);
     position: fixed;
-    top: 0;
+    top: 60px;
     right: -100%;
-    width: 75%;
+    flex-direction: column;
+    background: var(--azul-principal);
+    width: 70%;
     height: 100vh;
-    padding: 40px 20px;
-    border-left: 1px solid rgba(255,255,255,0.1);
-    box-shadow: -6px 0 25px rgba(0,0,0,0.6);
+    padding-top: 2rem;
+    gap: 1.5rem;
+    text-align: center;
     transition: right 0.4s ease;
+    z-index: 999;
   }
 
   .navbar ul.show {
     right: 0;
   }
 
-  .navbar ul li {
-    margin: 18px 0;
-    text-align: center;
+  #navOverlay.active {
+    display: block;
   }
 
-  .navbar ul a {
-    font-size: 1.2rem;
-    color: #FFF;
+  #menuToggle.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
   }
-
-  .navbar ul a:hover {
-    color: #FFD700;
+  #menuToggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  #menuToggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
   }
 }
 
-/* ======= Mejora para pantallas pequeñas ======= */
-@media (max-width: 500px) {
-  .navbar {
-    padding: 12px 20px;
-  }
-  .logo h1 {
-    font-size: 1.3rem;
-  }
-  .menu-toggle {
-    font-size: 1.7rem;
-  }
-  .navbar ul {
-    width: 80%;
-  }
+/* ============================================================
+   📝 FORMULARIO BONO FAMILIAR
+   ============================================================ */
+form {
+  background: var(--blanco);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px var(--sombra);
+  margin-top: 100px;
 }
 
-/* ======= Animaciones ======= */
-@keyframes slideIn { from { opacity:0; transform: translateX(100%);} to {opacity:1; transform: translateX(0);} }
-@keyframes fadeInUp { from {opacity:0; transform: translateY(20px);} to {opacity:1; transform: translateY(0);} }
-
-/* ======= Contenedor ======= */
-.contenedor {
-  width: 94%;
-  max-width: 1050px;
-  margin: 40px auto 90px;
-  padding: 0 12px;
-}
-
-/* ======= Títulos ======= */
-h2 {
+form h2 {
+  color: var(--azul-principal);
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
   text-align: center;
-  color: #FFD700;
-  margin-bottom: 30px;
-  font-size: 2rem;
+}
+
+label {
+  display: block;
+  font-weight: 500;
+  margin-top: 1rem;
+  color: var(--negro);
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--azul-secundario);
+  outline: none;
 }
 
 /* ======= Botones ======= */
-.btn {
-  padding: 12px 18px;
-  border-radius: 10px;
-  font-weight: 600;
+button, .btn {
+  background: var(--azul-principal);
+  color: var(--blanco);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
   cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.1s ease;
+}
+
+button:hover, .btn:hover {
+  background: var(--azul-secundario);
+  transform: scale(1.02);
+}
+
+.small-btn {
+  background: #d9534f;
+  color: var(--blanco);
+  padding: 0.4rem 0.6rem;
+  font-size: 0.9rem;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.small-btn:hover {
+  background: #c9302c;
+}
+
+/* ======= Campos dinámicos ======= */
+.family-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.8rem;
+  align-items: center;
+  margin-top: 0.8rem;
+}
+
+#familyList {
+  margin-top: 1.2rem;
+}
+
+/* ======= Botón de agregar miembro ======= */
+#addMember {
+  margin-top: 1.2rem;
+  background: var(--azul-secundario);
   font-size: 0.95rem;
-  transition: all 0.3s ease;
 }
 
-.btn-gold {
-  background: linear-gradient(90deg, #FFD700, #ffea70);
-  color: #121212;
-  box-shadow: 0 4px 14px rgba(255,215,0,0.4);
-}
-
-.btn-gold:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255,215,0,0.6);
-}
-
-.btn-outline {
-  background: transparent;
-  border: 1px solid rgba(255,215,0,0.6);
-  color: #FFD700;
-}
-
-.btn-outline:hover {
-  background: rgba(255,215,0,0.15);
-}
-
-/* ======= Cards ======= */
-.card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.12));
-  border: 1px solid rgba(255,255,255,0.08);
-  backdrop-filter: blur(6px);
-  padding: 25px;
-  border-radius: 16px;
-  margin: 25px 0;
-  box-shadow: 0 6px 25px rgba(0,0,0,0.5);
-  transition: all 0.3s ease;
-  animation: fadeInUp 0.5s ease both;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-}
-
-.card h3 {
-  color: #FFD970;
-  margin-bottom: 16px;
-  font-size: 1.25rem;
-}
-
-/* ======= Inputs y Formularios ======= */
-label { display: block; margin: 10px 0 6px 0; font-size: 0.95rem; color: #D1D1D1; }
-input, textarea, select {
+/* ======= Botón de enviar ======= */
+#submitBtn {
+  display: block;
   width: 100%;
-  padding: 12px;
-  border-radius: 10px;
-  border: 1px solid transparent;
-  background: #1A1A1A;
-  color: #ECECEC;
-  margin-top: 6px;
-  outline: none;
-  transition: all 0.25s ease;
-}
-input:focus, textarea:focus, select:focus {
-  border: 1px solid #FFD700;
-  box-shadow: 0 0 12px rgba(255,215,0,0.3);
-  background: #111111;
+  margin-top: 1.5rem;
 }
 
-/* ======= Layout flexible ======= */
-.row { display: flex; gap: 12px; flex-wrap: wrap; }
-.row label { flex: 1 1 250px; }
-.row-actions { display: flex; gap: 12px; align-items: center; margin-top: 12px; }
-.top-actions { display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 25px; gap: 12px; }
-.form-actions { display: flex; gap: 12px; justify-content: flex-end; margin-top: 25px; }
+/* ======= Responsividad general ======= */
+@media (max-width: 600px) {
+  form {
+    padding: 1.5rem;
+  }
 
-/* ======= Footer ======= */
-.foot { border-top: 1px solid rgba(255,255,255,0.08); text-align:center; margin-top: 50px; padding-top: 18px; color:#aaa; font-size:0.85rem; }
+  input, select, textarea {
+    font-size: 0.95rem;
+  }
 
-/* ======= Responsive Mejorado ======= */
-@media (max-width: 500px){
-  .row label { flex: 1 1 100%; }
-  .top-actions { flex-direction: column; align-items: stretch; }
-  .btn { width: 100%; text-align: center; }
-  .navbar ul { width: 90%; max-width: 250px; }
+  .navbar .logo {
+    font-size: 1.1rem;
+  }
 }
