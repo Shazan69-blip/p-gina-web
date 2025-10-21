@@ -10,11 +10,13 @@
   <header class="navbar">
   <div class="logo">
     <img src="{{ url_for('static', filename='logo de arriba.png') }}" alt="Logo" class="logo-img">
-    <h1></h1>
+    <h1>Grupo FE</h1>
   </div>
 
+  <!-- Botón menú hamburguesa -->
   <button class="menu-toggle" id="menuToggle">☰</button>
 
+  <!-- Menú de navegación -->
   <nav>
     <ul id="navMenu">
       <li><a href="/">Inicio</a></li>
@@ -25,6 +27,7 @@
     </ul>
   </nav>
 </header>
+
 
   <main class="contenedor">
     <h2>Formulario de aplicación al Bono Familiar de Vivienda – Artículo 59 (Ley 7052)</h2>
@@ -437,14 +440,15 @@
 </script>
 
 
-  <script>
-  const menuToggle = document.getElementById('menuToggle');
-  const navMenu = document.getElementById('navMenu');
+<script>
+const menuToggle = document.getElementById('menuToggle');
+const navMenu = document.getElementById('navMenu');
 
-  menuToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('show');
-    menuToggle.classList.toggle('active');
-  });
-  </script>
+menuToggle.addEventListener('click', () => {
+  navMenu.classList.toggle('active');
+  menuToggle.classList.toggle('active');
+});
+</script>
+
 </body>
 </html>
