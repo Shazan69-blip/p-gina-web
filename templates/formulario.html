@@ -436,30 +436,14 @@
 </script>
 
 
- <!-- NUEVO: Script del menú responsivo -->
-  <script>
-  const menuToggle = document.getElementById('menuToggle');
-  const navMenu = document.getElementById('navMenu');
+<script>
+const menuToggle = document.getElementById('menuToggle');
+const navMenu = document.getElementById('navMenu');
 
-  menuToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('show');
-  });
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+menuToggle.addEventListener('click', () => {
+  navMenu.classList.toggle('show');
+  menuToggle.classList.toggle('active');
+});
+</script>
 </body>
 </html>
