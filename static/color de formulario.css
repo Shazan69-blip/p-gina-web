@@ -211,3 +211,49 @@ textarea {
   .top-actions { flex-direction: column; align-items: stretch; }
   .logo h1 { font-size: 1rem; }
 }
+
+
+
+
+/* ======= Menú Hamburguesa ======= */
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  color: #FFD700;
+  cursor: pointer;
+}
+
+/* En móviles: ocultar menú y mostrar el icono ☰ */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: rgba(10,10,10,0.98);
+    width: 100%;
+    text-align: center;
+    flex-direction: column;
+    padding: 12px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .nav-links li {
+    padding: 12px 0;
+  }
+
+  .nav-links a {
+    color: #FFD700;
+    font-size: 1.1rem;
+    display: block;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+}
