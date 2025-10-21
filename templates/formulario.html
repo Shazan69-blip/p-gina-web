@@ -2,22 +2,21 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Formulario | Grupo Fe</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='color de formulario.css') }}">
 </head>
 <body>
+
   <!-- Navbar -->
   <header class="navbar">
     <div class="logo">
-      <img src="{{ url_for('static', filename='logo de arriba.png') }}" alt="Logo" class="logo-img">
+      <img src="{{ url_for('static', filename='logo_de_arriba.png') }}" alt="Logo" class="logo-img">
       <h1>Grupo FE</h1>
     </div>
 
-    <!-- Botón menú hamburguesa -->
     <button class="menu-toggle" id="menuToggle">☰</button>
 
-    <!-- Menú de navegación -->
     <nav>
       <ul id="navMenu">
         <li><a href="/">Inicio</a></li>
@@ -29,10 +28,8 @@
     </nav>
   </header>
 
-  <!-- Overlay para menú móvil -->
   <div class="nav-overlay" id="navOverlay"></div>
 
-  <!-- Contenedor principal -->
   <main class="contenedor">
     <h2>Formulario de aplicación al Bono Familiar de Vivienda – Artículo 59 (Ley 7052)</h2>
 
@@ -43,23 +40,15 @@
       <button id="btn-fill-online" class="btn btn-outline">🖊️ Llenar en línea</button>
     </div>
 
-    <!-- Formulario -->
     <form id="mainForm" class="formulario" action="/enviar-formulario" method="POST">
+
       <!-- 1. Datos del Beneficiario Principal -->
-      <section class="card fade-up">
+      <section class="card">
         <h3>1. Datos del Beneficiario Principal</h3>
-        <label>Nombre completo:
-          <input type="text" name="beneficiario_nombre" required>
-        </label>
-        <label>Número de cédula:
-          <input type="text" name="beneficiario_cedula" required>
-        </label>
-        <label>Teléfono:
-          <input type="tel" name="beneficiario_telefono" required>
-        </label>
-        <label>Correo electrónico:
-          <input type="email" name="beneficiario_email" required>
-        </label>
+        <label>Nombre completo:<input type="text" name="beneficiario_nombre" required></label>
+        <label>Número de cédula:<input type="text" name="beneficiario_cedula" required></label>
+        <label>Teléfono:<input type="tel" name="beneficiario_telefono" required></label>
+        <label>Correo electrónico:<input type="email" name="beneficiario_email" required></label>
         <label>Estado civil:
           <select name="beneficiario_estado_civil" id="estadoCivil" required>
             <option value="">Seleccione...</option>
@@ -72,50 +61,46 @@
           </select>
         </label>
         <div id="tiempoUnionWrapper" style="display:none;">
-          <label>Tiempo de unión (meses/años):
-            <input type="text" name="beneficiario_tiempo_union" placeholder="Ej: 3 años">
-          </label>
+          <label>Tiempo de unión (meses/años):<input type="text" name="beneficiario_tiempo_union" placeholder="Ej: 3 años"></label>
         </div>
-        <label>Nacionalidad:
-          <input type="text" name="beneficiario_nacionalidad">
-        </label>
-        <label>Escolaridad:
-          <input type="text" name="beneficiario_escolaridad">
-        </label>
-        <label>Dirección exacta de residencia actual:
-          <textarea name="beneficiario_direccion" rows="2"></textarea>
-        </label>
+        <label>Nacionalidad:<input type="text" name="beneficiario_nacionalidad"></label>
+        <label>Escolaridad:<input type="text" name="beneficiario_escolaridad"></label>
+        <label>Dirección exacta de residencia actual:<textarea name="beneficiario_direccion" rows="2"></textarea></label>
         <div class="row">
-          <label>Provincia: <input type="text" name="beneficiario_provincia"></label>
-          <label>Cantón: <input type="text" name="beneficiario_canton"></label>
-          <label>Distrito: <input type="text" name="beneficiario_distrito"></label>
+          <label>Provincia:<input type="text" name="beneficiario_provincia"></label>
+          <label>Cantón:<input type="text" name="beneficiario_canton"></label>
+          <label>Distrito:<input type="text" name="beneficiario_distrito"></label>
         </div>
-        <label>Barrio: <input type="text" name="beneficiario_barrio"></label>
+        <label>Barrio:<input type="text" name="beneficiario_barrio"></label>
       </section>
 
       <!-- 2. Composición del Grupo Familiar -->
-      <section class="card fade-up">
+      <section class="card">
         <h3>2. Composición del Grupo Familiar</h3>
         <p>Indique todos los miembros del grupo familiar que habitarán la vivienda (hasta 12)</p>
-        <div id="familyList"></div>
-
+        <div id="familyList">
+          <div class="family-row">
+            <input type="text" name="f_nombre[]" placeholder="Nombre">
+            <input type="text" name="f_parentesco[]" placeholder="Parentesco">
+            <input type="number" name="f_edad[]" placeholder="Edad" min="0">
+            <input type="text" name="f_ocupacion[]" placeholder="Ocupación">
+            <input type="number" name="f_ingreso[]" placeholder="Ingreso mensual (₡)" min="0">
+            <button type="button" class="small-btn remove-row" title="Eliminar">✖</button>
+          </div>
+        </div>
         <div class="row-actions">
           <button type="button" id="addMember" class="btn">+ Agregar miembro</button>
           <small class="muted">Puedes agregar hasta 12 miembros</small>
         </div>
-
         <label>¿Existe algún miembro en estado de gestación?
-          <select name="gestacion_existe" id="gestacion" >
+          <select name="gestacion_existe" id="gestacion">
             <option value="No">No</option>
             <option value="Si">Sí</option>
           </select>
         </label>
         <div id="gestacionMeses" style="display:none;">
-          <label>Meses de gestación:
-            <input type="number" name="gestacion_meses" min="0">
-          </label>
+          <label>Meses de gestación:<input type="number" name="gestacion_meses" min="0"></label>
         </div>
-
         <label>¿Algún miembro con discapacidad?
           <select name="discapacidad_existe" id="discapacidad">
             <option value="No">No</option>
@@ -123,39 +108,29 @@
           </select>
         </label>
         <div id="discapacidadDetalle" style="display:none;">
-          <label>Explique:
-            <textarea name="discapacidad_detalle" rows="3"></textarea>
-          </label>
+          <label>Explique:<textarea name="discapacidad_detalle" rows="3"></textarea></label>
         </div>
       </section>
 
       <!-- 3. Información Socioeconómica -->
-      <section class="card fade-up">
+      <section class="card">
         <h3>3. Información Socioeconómica</h3>
-        <label>Actividad económica principal del beneficiario:
-          <input type="text" name="actividad_economica">
-        </label>
-        <label>Tiempo de laborar:
-          <input type="text" name="tiempo_laborar" placeholder="Ej: 5 años">
-        </label>
+        <label>Actividad económica principal del beneficiario:<input type="text" name="actividad_economica"></label>
+        <label>Tiempo de laborar:<input type="text" name="tiempo_laborar" placeholder="Ej: 5 años"></label>
         <label>Cotiza en la CCSS:
           <select name="cotiza_ccss">
             <option>Si</option>
             <option>No</option>
           </select>
         </label>
-        <label>Ingreso mensual familiar total (₡):
-          <input type="number" name="ingreso_mensual" min="0">
-        </label>
+        <label>Ingreso mensual familiar total (₡):<input type="number" name="ingreso_mensual" min="0"></label>
         <label>¿Recibe algún subsidio o ayuda estatal?
           <select name="recibe_subsidio">
             <option>No</option>
             <option>Si</option>
           </select>
         </label>
-        <label>¿Cuál?:
-          <input type="text" name="cual_subsidio">
-        </label>
+        <label>¿Cuál?:<input type="text" name="cual_subsidio"></label>
         <label>Recibe pensión alimentaria:
           <select name="recibe_pension">
             <option>No</option>
@@ -168,47 +143,27 @@
             <option>Obligatoria</option>
           </select>
         </label>
-        <label>Monto pensión alimentaria (₡):
-          <input type="number" name="pension_monto" min="0">
-        </label>
+        <label>Monto pensión alimentaria (₡):<input type="number" name="pension_monto" min="0"></label>
         <label>¿Posee vehículo?
           <select name="posee_vehiculo">
             <option>No</option>
             <option>Si</option>
           </select>
         </label>
-        <label>Marca/Modelo:
-          <input type="text" name="vehiculo_marca_modelo">
-        </label>
+        <label>Marca/Modelo:<input type="text" name="vehiculo_marca_modelo"></label>
       </section>
 
       <!-- 4. Información del Proyecto o Lote -->
-      <section class="card fade-up">
+      <section class="card">
         <h3>4. Información del Proyecto o Lote</h3>
-        <label>Nombre del proyecto:
-          <input type="text" name="proyecto_nombre">
-        </label>
-        <label>Ubicación exacta del lote o vivienda:
-          <textarea name="proyecto_ubicacion" rows="2"></textarea>
-        </label>
-        <label>Número de lote / identificación catastral:
-          <input type="text" name="proyecto_numero_lote">
-        </label>
-        <label>Propietario del terreno:
-          <input type="text" name="propietario_terreno">
-        </label>
-        <label>Número de cédula del vendedor:
-          <input type="text" name="vendedor_cedula">
-        </label>
-        <label>Teléfono del vendedor:
-          <input type="tel" name="vendedor_telefono">
-        </label>
-        <label>Dirección del vendedor:
-          <input type="text" name="vendedor_direccion">
-        </label>
-        <label>Monto del terreno (₡):
-          <input type="number" name="monto_terreno" min="0">
-        </label>
+        <label>Nombre del proyecto:<input type="text" name="proyecto_nombre"></label>
+        <label>Ubicación exacta del lote o vivienda:<textarea name="proyecto_ubicacion" rows="2"></textarea></label>
+        <label>Número de lote / identificación catastral:<input type="text" name="proyecto_numero_lote"></label>
+        <label>Propietario del terreno:<input type="text" name="propietario_terreno"></label>
+        <label>Número de cédula del vendedor:<input type="text" name="vendedor_cedula"></label>
+        <label>Teléfono del vendedor:<input type="tel" name="vendedor_telefono"></label>
+        <label>Dirección del vendedor:<input type="text" name="vendedor_direccion"></label>
+        <label>Monto del terreno (₡):<input type="number" name="monto_terreno" min="0"></label>
         <label>Sistema constructivo:
           <div class="checkbox-group">
             <label><input type="checkbox" name="sistema_constructivo_prefablock" checked> Prefablock</label>
@@ -226,40 +181,27 @@
       </section>
 
       <!-- 5. Declaración Jurada -->
-      <section class="card fade-up">
+      <section class="card">
         <h3>5. Declaración Jurada del Beneficiario</h3>
-        <p>Declaro bajo juramento que la información suministrada en este formulario es veraz y completa...</p>
-        <label>Firma del Beneficiario (nombre impreso):
-          <input type="text" name="firma_beneficiario">
-        </label>
-        <label>Fecha:
-          <input type="date" name="firma_fecha">
-        </label>
+        <p>Declaro bajo juramento que la información suministrada es veraz y completa.</p>
+        <label>Firma del Beneficiario:<input type="text" name="firma_beneficiario"></label>
+        <label>Fecha:<input type="date" name="firma_fecha"></label>
       </section>
 
       <!-- 6. Uso Exclusivo de Grupo Fe -->
-      <section class="card fade-up">
+      <section class="card">
         <h3>6. Uso Exclusivo de Grupo Fe</h3>
-        <label>Verificación social realizada por:
-          <input type="text" name="verificacion_social_por">
-        </label>
-        <label>Fecha verificación social:
-          <input type="date" name="verificacion_social_fecha">
-        </label>
-        <label>Verificación técnica realizada por:
-          <input type="text" name="verificacion_tecnica_por">
-        </label>
-        <label>Fecha verificación técnica:
-          <input type="date" name="verificacion_tecnica_fecha">
-        </label>
-        <label>Observaciones:
-          <textarea name="observaciones" rows="3"></textarea>
-        </label>
+        <label>Verificación social realizada por:<input type="text" name="verificacion_social_por"></label>
+        <label>Fecha verificación social:<input type="date" name="verificacion_social_fecha"></label>
+        <label>Verificación técnica realizada por:<input type="text" name="verificacion_tecnica_por"></label>
+        <label>Fecha verificación técnica:<input type="date" name="verificacion_tecnica_fecha"></label>
+        <label>Observaciones:<textarea name="observaciones" rows="3"></textarea></label>
       </section>
 
       <div class="form-actions">
         <button type="submit" class="btn btn-gold">Enviar formulario</button>
       </div>
+
     </form>
 
     <footer class="foot">
@@ -267,59 +209,6 @@
     </footer>
   </main>
 
-  <!-- Scripts -->
   <script src="{{ url_for('static', filename='formulario.js') }}"></script>
-  <script>
-    // Navbar toggle y overlay
-    const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.getElementById('navMenu');
-    const navOverlay = document.getElementById('navOverlay');
-
-    menuToggle.addEventListener('click', ()=>{
-      navMenu.classList.toggle('show');
-      menuToggle.classList.toggle('active');
-      navOverlay.classList.toggle('active');
-    });
-
-    navOverlay.addEventListener('click', ()=>{
-      navMenu.classList.remove('show');
-      menuToggle.classList.remove('active');
-      navOverlay.classList.remove('active');
-    });
-
-   document.querySelectorAll('.navbar a').forEach(anchor=>{
-  anchor.addEventListener('click', function(e){
-    const href = this.getAttribute('href');
-    if(href.startsWith('#')){
-      // Solo scroll suave para anclas internas
-      e.preventDefault();
-      const target = document.querySelector(href);
-      if(target){
-        target.scrollIntoView({behavior:'smooth', block:'start'});
-      }
-      if(navMenu.classList.contains('show')){
-        navMenu.classList.remove('show');
-        menuToggle.classList.remove('active');
-        navOverlay.classList.remove('active');
-      }
-    } 
-    // Rutas normales dejan que el navegador haga su trabajo
-  });
-});
-
-
-    // Animación de fade-up
-    const observer = new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          entry.target.classList.add('animate');
-        }
-      });
-    }, {threshold:0.15});
-
-    document.querySelectorAll('.fade-up').forEach(card=>{
-      observer.observe(card);
-    });
-  </script>
 </body>
 </html>
