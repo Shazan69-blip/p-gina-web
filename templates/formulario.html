@@ -12,6 +12,8 @@
       <img src="{{ url_for('static', filename='logo de arriba.png') }}" alt="Logo" class="logo-img">
       <h1></h1>
     </div>
+        <!-- NUEVO: Botón menú hamburguesa -->
+    <div class="menu-toggle" id="menuToggle">☰</div>
     <nav>
       <ul>
         <li><a href="/">Inicio</a></li>
@@ -432,6 +434,32 @@
   });
 })();
 </script>
+
+
+ <!-- NUEVO: Script del menú responsivo -->
+  <script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navMenu = document.getElementById('navMenu');
+
+  menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('show');
+  });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>
