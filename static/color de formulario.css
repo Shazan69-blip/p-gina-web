@@ -1,6 +1,4 @@
-/* ============================================================
-   📘 ESTILO GENERAL - GRUPO FE (MEJORADO)
-   ============================================================ */
+/* ============================================================ 📘 ESTILO GENERAL - GRUPO FE (MEJORADO) ============================================================ */
 
 /* ======= Tipografía y Reset ======= */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
@@ -39,18 +37,72 @@ body {
   padding: 2rem 0;
 }
 
-/* ============================================================
-   🧭 NAVBAR MÓVIL GLASS - ULTRA PROFESIONAL
-   ============================================================ */
+/* ============================================================ 🧭 NAVBAR PROFESIONAL ============================================================ */
+.navbar {
+  background: linear-gradient(90deg, var(--azul-principal), var(--azul-secundario));
+  color: var(--blanco);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
 
-/* Botón Hamburger */
+.navbar .logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  color: var(--blanco);
+  transition: color 0.3s;
+}
+
+.navbar .logo:hover {
+  color: var(--gris-suave);
+}
+
+.navbar a {
+  color: var(--blanco);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.navbar a::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 0;
+  background: var(--gris-suave);
+  transition: width 0.3s ease;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+}
+
+.navbar a:hover::after {
+  width: 100%;
+}
+
+.navbar a.active {
+  font-weight: 600;
+  color: var(--gris-suave);
+}
+
+/* ================= Botón hamburger ================= */
 #menuToggle {
   display: none;
   cursor: pointer;
   flex-direction: column;
   gap: 6px;
   z-index: 1001;
-  transition: all 0.3s ease;
 }
 
 #menuToggle span {
@@ -61,7 +113,7 @@ body {
   transition: all 0.4s ease;
 }
 
-/* Overlay elegante con blur */
+/* ================= Overlay oscuro ================= */
 #navOverlay {
   display: none;
   position: fixed;
@@ -69,99 +121,65 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(3px);
+  background: rgba(0,0,0,0.7);
   z-index: 900;
   opacity: 0;
   transition: opacity 0.4s ease;
 }
 
-/* Navbar móvil centrado glass */
-@media (max-width: 768px) {
-  #menuToggle {
-    display: flex;
-  }
-
-  .navbar ul {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.8);
-    flex-direction: column;
-    padding: 3rem 2.5rem;
-    gap: 2rem;
-    text-align: center;
-    background: rgba(15, 76, 129, 0.85); /* glass azul translúcido */
-    backdrop-filter: blur(10px);
-    border-radius: 16px;
-    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    opacity: 0;
-    z-index: 999;
-  }
-
-  .navbar ul.show {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-
-  #navOverlay.active {
-    display: block;
-    opacity: 1;
-  }
-
-  .navbar a {
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: var(--blanco);
-    transition: all 0.3s ease;
-  }
-
-  .navbar a:hover {
-    color: var(--gris-suave);
-  }
-
-  .navbar a::after {
-    display: none; /* quitar subrayado en móvil */
-  }
-
-  /* Animación links estilo fade + slide */
-  .navbar ul.show a {
-    animation: fadeSlide 0.5s ease forwards;
-  }
-
-  .navbar ul.show a:nth-child(1) { animation-delay: 0.05s; }
-  .navbar ul.show a:nth-child(2) { animation-delay: 0.10s; }
-  .navbar ul.show a:nth-child(3) { animation-delay: 0.15s; }
-  .navbar ul.show a:nth-child(4) { animation-delay: 0.20s; }
-  .navbar ul.show a:nth-child(5) { animation-delay: 0.25s; }
-
-  @keyframes fadeSlide {
-    0% {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Animación Hamburger */
-  #menuToggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-  #menuToggle.active span:nth-child(2) {
-    opacity: 0;
-  }
-  #menuToggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-  }
+/* ================= Navbar móvil centrado ================= */
+.navbar ul {
+  list-style: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  flex-direction: column;
+  background: linear-gradient(180deg, var(--azul-principal), var(--azul-secundario));
+  padding: 3rem 2rem;
+  border-radius: 15px;
+  gap: 2rem;
+  text-align: center;
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 1001;
+  display: flex;
+  width: 80%;
+  max-width: 400px;
 }
 
-/* ============================================================
-   📝 FORMULARIO BONO FAMILIAR - BOTONES PROFESIONALES
-   ============================================================ */
+/* Activar menú */
+.navbar ul.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Links del menú centrado */
+.navbar ul li a {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--blanco);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a.active {
+  color: var(--gris-suave);
+}
+
+/* Animación del Hamburger al abrir */
+#menuToggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+#menuToggle.active span:nth-child(2) {
+  opacity: 0;
+}
+#menuToggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ============================================================ 📝 FORMULARIO BONO FAMILIAR - BOTONES PROFESIONALES ============================================================ */
 form {
   background: var(--blanco);
   padding: 2rem;
@@ -279,7 +297,7 @@ button:hover, .btn:hover {
 }
 
 /* =================== MEDIA QUERIES =================== */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   form {
     padding: 1.5rem;
   }
@@ -292,4 +310,12 @@ button:hover, .btn:hover {
   .form-actions {
     flex-direction: column;
   }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 { font-size: 1.6rem; }
+  .hero-content p { font-size: 0.95rem; }
+  .equipo h2, .proyectos h2 { font-size: 1.5rem; }
+  .miembro { width: 90%; }
+  .card { width: 100%; }
 }
