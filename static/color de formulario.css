@@ -1,10 +1,9 @@
 /* ============================================================
-   📘 ESTILO GENERAL - GRUPO FE
-   Autor: Dereck Loria | Grupo FE
+   📘 ESTILO GENERAL - GRUPO FE (MEJORADO)
    ============================================================ */
 
 /* ======= Tipografía y Reset ======= */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 * {
   box-sizing: border-box;
@@ -18,6 +17,7 @@ body {
   color: #333;
   line-height: 1.6;
   overflow-x: hidden;
+  padding-top: 70px; /* espacio para navbar fija */
 }
 
 /* ======= Colores institucionales ======= */
@@ -40,10 +40,10 @@ body {
 }
 
 /* ============================================================
-   🧭 NAVBAR
+   🧭 NAVBAR PROFESIONAL
    ============================================================ */
 .navbar {
-  background: var(--azul-principal);
+  background: linear-gradient(90deg, var(--azul-principal), var(--azul-secundario));
   color: var(--blanco);
   display: flex;
   justify-content: space-between;
@@ -54,49 +54,76 @@ body {
   top: 0;
   left: 0;
   z-index: 1000;
-  box-shadow: 0 3px 10px var(--sombra);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
 }
 
 .navbar .logo {
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   letter-spacing: 1px;
+  color: var(--blanco);
+  transition: color 0.3s;
+}
+
+.navbar .logo:hover {
+  color: var(--gris-suave);
 }
 
 .navbar ul {
   display: flex;
   list-style: none;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .navbar a {
   color: var(--blanco);
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s ease;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: all 0.3s ease;
 }
 
-.navbar a:hover {
+.navbar a::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 0;
+  background: var(--gris-suave);
+  transition: width 0.3s ease;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+}
+
+.navbar a:hover::after {
+  width: 100%;
+}
+
+.navbar a.active {
+  font-weight: 600;
   color: var(--gris-suave);
 }
 
-/* ======= Botón menú móvil ======= */
+/* Botón hamburger */
 #menuToggle {
   display: none;
   cursor: pointer;
   flex-direction: column;
   gap: 5px;
+  z-index: 1001;
 }
 
 #menuToggle span {
-  width: 26px;
+  width: 28px;
   height: 3px;
   background: var(--blanco);
-  border-radius: 2px;
-  transition: 0.3s;
+  border-radius: 3px;
+  transition: all 0.3s ease;
 }
 
-/* Overlay oscuro detrás del menú */
+/* Overlay oscuro */
 #navOverlay {
   display: none;
   position: fixed;
@@ -104,11 +131,13 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0,0,0,0.5);
   z-index: 900;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-/* ======= Menú móvil ======= */
+/* Navbar móvil */
 @media (max-width: 768px) {
   #menuToggle {
     display: flex;
@@ -116,25 +145,32 @@ body {
 
   .navbar ul {
     position: fixed;
-    top: 60px;
+    top: 0;
     right: -100%;
     flex-direction: column;
     background: var(--azul-principal);
-    width: 70%;
+    width: 75%;
     height: 100vh;
-    padding-top: 2rem;
-    gap: 1.5rem;
+    padding-top: 6rem;
+    gap: 2rem;
     text-align: center;
-    transition: right 0.4s ease;
+    transition: right 0.4s ease, opacity 0.3s ease;
+    opacity: 0;
     z-index: 999;
   }
 
   .navbar ul.show {
     right: 0;
+    opacity: 1;
   }
 
   #navOverlay.active {
     display: block;
+    opacity: 1;
+  }
+
+  .navbar a {
+    font-size: 1.2rem;
   }
 
   #menuToggle.active span:nth-child(1) {
@@ -149,20 +185,20 @@ body {
 }
 
 /* ============================================================
-   📝 FORMULARIO BONO FAMILIAR
+   📝 FORMULARIO BONO FAMILIAR - BOTONES PROFESIONALES
    ============================================================ */
 form {
   background: var(--blanco);
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 2px 10px var(--sombra);
+  box-shadow: 0 4px 15px var(--sombra);
   margin-top: 100px;
 }
 
 form h2 {
   color: var(--azul-principal);
   margin-bottom: 1rem;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   text-align: center;
 }
 
@@ -180,47 +216,69 @@ input, select, textarea {
   border: 1px solid #ccc;
   margin-top: 0.5rem;
   font-size: 1rem;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 input:focus, select:focus, textarea:focus {
   border-color: var(--azul-secundario);
   outline: none;
+  box-shadow: 0 0 6px rgba(23,104,172,0.3);
 }
 
-/* ======= Botones ======= */
+/* Botones grandes */
 button, .btn {
   background: var(--azul-principal);
   color: var(--blanco);
   border: none;
-  padding: 0.8rem 1.5rem;
+  padding: 0.9rem 1.8rem;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-  transition: background 0.3s ease, transform 0.1s ease;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 button:hover, .btn:hover {
   background: var(--azul-secundario);
-  transform: scale(1.02);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
+/* Botones pequeños (ej. eliminar) */
 .small-btn {
   background: #d9534f;
   color: var(--blanco);
-  padding: 0.4rem 0.6rem;
+  padding: 0.45rem 0.65rem;
   font-size: 0.9rem;
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .small-btn:hover {
   background: #c9302c;
+  transform: scale(1.1);
 }
 
-/* ======= Campos dinámicos ======= */
+/* Botones especiales para formulario profesional */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.form-actions .btn {
+  flex: 1;
+  text-align: center;
+  font-size: 1rem;
+}
+
+/* Filas de familia */
 .family-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
@@ -233,31 +291,30 @@ button:hover, .btn:hover {
   margin-top: 1.2rem;
 }
 
-/* ======= Botón de agregar miembro ======= */
 #addMember {
   margin-top: 1.2rem;
   background: var(--azul-secundario);
   font-size: 0.95rem;
 }
 
-/* ======= Botón de enviar ======= */
 #submitBtn {
   display: block;
   width: 100%;
   margin-top: 1.5rem;
 }
 
-/* ======= Responsividad general ======= */
+/* =================== MEDIA QUERIES =================== */
 @media (max-width: 600px) {
   form {
     padding: 1.5rem;
   }
-
   input, select, textarea {
     font-size: 0.95rem;
   }
-
   .navbar .logo {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+  }
+  .form-actions {
+    flex-direction: column;
   }
 }
