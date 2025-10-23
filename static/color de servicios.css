@@ -37,6 +37,13 @@ body {
   color: #ffcc00;
   letter-spacing: 1px;
 }
+.navbar .logo img {
+  height: 45px;           /* Tamaño ideal para un logo */
+  width: auto;             /* Mantiene proporción */
+  display: block;
+  object-fit: contain;     /* Asegura que no se deforme */
+}
+
 
 /* Lista principal */
 .navbar ul {
