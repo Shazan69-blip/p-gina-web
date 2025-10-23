@@ -12,32 +12,127 @@ body {
 }
 
 /* ======= NAVBAR ======= */
+/* ======= NAVBAR MODERNA Y RESPONSIVE ======= */
 .navbar {
   padding: 15px 30px;
   text-align: center;
+  background: rgba(10, 10, 10, 0.9);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 204, 0, 0.2);
+  transition: background 0.3s ease;
 }
 
+/* Logo */
+.navbar .logo {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #ffcc00;
+  letter-spacing: 1px;
+}
+
+/* Lista principal */
 .navbar ul {
+  display: flex;
   list-style: none;
+  gap: 30px;
   margin: 0;
   padding: 0;
 }
 
-.navbar li {
-  display: inline-block;
-  margin: 0 15px;
-}
-
-.navbar a {
-  color: #eaeaea;
+.navbar li a {
   text-decoration: none;
+  color: #eaeaea;
   font-weight: 500;
-  transition: color 0.3s ease;
+  font-size: 1em;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
-.navbar a:hover {
+.navbar li a:hover {
   color: #ffcc00;
+  transform: translateY(-2px);
 }
+
+/* ======= BOTÓN MENÚ (MÓVIL) ======= */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 6px;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: #ffcc00;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* ======= MODO ACTIVO DEL MENÚ ======= */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(8px);
+}
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
+}
+
+/* ======= MENÚ DESPLEGABLE EN MÓVIL ======= */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  .navbar ul {
+    position: fixed;
+    top: 65px;
+    right: -100%;
+    width: 100%;
+    height: calc(100vh - 65px);
+    background: rgba(5, 5, 5, 0.97);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    transition: right 0.4s ease;
+  }
+
+  .navbar ul.active {
+    right: 0;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .navbar li a {
+    font-size: 1.3em;
+    color: #f1f1f1;
+  }
+
+  .navbar li a:hover {
+    color: #ffcc00;
+  }
+}
+
+/* ======= ANIMACIÓN PEQUEÑA AL DESPLAZAR ======= */
+@media (min-width: 769px) {
+  .navbar.scrolled {
+    background: rgba(5, 5, 5, 0.95);
+    box-shadow: 0 2px 10px rgba(255, 204, 0, 0.15);
+  }
+}
+
 
 /* ======= SECCIÓN SERVICIOS ======= */
 .servicios {
