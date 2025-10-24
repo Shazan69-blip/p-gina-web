@@ -199,23 +199,83 @@ Por otro lado, los casos de fuerza mayor tienen origen externo e imprevisible, e
     </div>
 
 <!-- SECCIÓN DIBUJOS ARTÍCULO 59 CON MODAL -->
-<section class="dibujos" id="seccion-dibujos" style="opacity: 0; transition: opacity 1s ease;">
-  <h1>Dibujos Disponibles - Artículo 59</h1>
-  <p class="subtitulo">Haga clic en un dibujo para verlo en grande</p>
+<!-- SECCIÓN DE DIBUJOS DISPONIBLES -->
+<section class="dibujos">
+  <h1>Dibujos del Grupo FE</h1>
+  <p class="subtitulo">Seleccioná un dibujo para ver más imágenes</p>
+
   <div class="contenedor-dibujos">
-    <!-- DIBUJO 1 -->
-    <div class="dibujo">
+
+    <!-- 🔹 Dibujo 1 -->
+    <div class="dibujo" onclick="abrirGaleria(1)">
+      <img src="{{ url_for('static', filename='dibujo1.jpeg') }}" alt="Dibujo 1">
       <h2>Dibujo 1</h2>
-      <img src="{{ url_for('static', filename='dibujo1.png') }}" alt="Dibujo 1" onclick="abrirModal(this)">
     </div>
 
-    <!-- DIBUJO 2 -->
-    <div class="dibujo">
+    <!-- 🔹 Dibujo 2 -->
+    <div class="dibujo" onclick="abrirGaleria(2)">
+      <img src="{{ url_for('static', filename='dibujo2ade.jpeg') }}" alt="Dibujo 2">
       <h2>Dibujo 2</h2>
-      <img src="{{ url_for('static', filename='dibujo 2.jpeg') }}" alt="Dibujo 2" onclick="abrirModal(this)">
     </div>
-  </div>
+
+ 
 </section>
+
+<!-- 🔹 Modal que muestra las imágenes -->
+<div class="modal-galeria" id="modalGaleria">
+  <span class="cerrar" onclick="cerrarGaleria()">&times;</span>
+  <div class="galeria-contenedor" id="galeriaContenedor"></div>
+</div>
+
+<script>
+  // Cada dibujo tiene su propio grupo de imágenes
+  const galerias = {
+    1: [
+      "{{ url_for('static', filename='dibujo1.jpeg') }}",
+      "{{ url_for('static', filename='dibujo2plano.jpeg') }}",
+      "{{ url_for('static', filename='dibujo1atras.jpeg') }}"
+    ],
+    2: [
+      "{{ url_for('static', filename='dibujo2ade.jpeg') }}",
+      "{{ url_for('static', filename='dibujoplano.jpeg') }}",
+      "{{ url_for('static', filename='dibujo2atras.jpeg') }}"
+    ],
+    
+  };
+
+  const modal = document.getElementById("modalGaleria");
+  const contenedor = document.getElementById("galeriaContenedor");
+
+  function abrirGaleria(id) {
+    const imagenes = galerias[id];
+    contenedor.innerHTML = "";
+
+    imagenes.forEach((src, index) => {
+      const div = document.createElement("div");
+      div.classList.add("galeria-imagen");
+      if (index === 0) div.classList.add("principal");
+      div.innerHTML = `<img src="${src}" alt="Imagen ${index + 1}">`;
+      contenedor.appendChild(div);
+    });
+
+    modal.style.display = "flex";
+  }
+
+  function cerrarGaleria() {
+    modal.style.display = "none";
+  }
+</script>
+
+<script>
+  // Mostrar la sección después de la intro
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const seccion = document.getElementById("seccion-dibujos");
+      if (seccion) seccion.style.opacity = "1";
+    }, 3000);
+  });
+</script>
+
 
 <!-- MODAL -->
 <div id="modalDibujo" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:10000;">
