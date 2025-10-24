@@ -197,7 +197,63 @@ Por otro lado, los casos de fuerza mayor tienen origen externo e imprevisible, e
         </div>
       </div>
     </div>
-  </section>
+
+<!-- SECCIÓN DIBUJOS ARTÍCULO 59 CON MODAL -->
+<section class="dibujos" id="seccion-dibujos" style="opacity: 0; transition: opacity 1s ease;">
+  <h1>Dibujos Disponibles - Artículo 59</h1>
+  <p class="subtitulo">Haga clic en un dibujo para verlo en grande</p>
+  <div class="contenedor-dibujos">
+    <!-- DIBUJO 1 -->
+    <div class="dibujo">
+      <h2>Dibujo 1</h2>
+      <img src="{{ url_for('static', filename='dibujo1.png') }}" alt="Dibujo 1" onclick="abrirModal(this)">
+    </div>
+
+    <!-- DIBUJO 2 -->
+    <div class="dibujo">
+      <h2>Dibujo 2</h2>
+      <img src="{{ url_for('static', filename='dibujo 2.jpeg') }}" alt="Dibujo 2" onclick="abrirModal(this)">
+    </div>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div id="modalDibujo" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:10000;">
+  <span style="position:absolute; top:20px; right:30px; font-size:40px; color:#fff; cursor:pointer;" onclick="cerrarModal()">&times;</span>
+  <img id="imagenModal" src="" alt="Dibujo" style="max-width:90%; max-height:90%; border-radius:10px; box-shadow:0 0 20px #000;">
+</div>
+
+<script>
+  // Mostrar sección después de intro
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const sectionDibujos = document.getElementById("seccion-dibujos");
+      if(sectionDibujos) sectionDibujos.style.opacity = "1";
+    }, 3000);
+  });
+
+  // Abrir modal
+  function abrirModal(img) {
+    const modal = document.getElementById('modalDibujo');
+    const imagenModal = document.getElementById('imagenModal');
+    imagenModal.src = img.src;
+    modal.style.display = "flex";
+  }
+
+  // Cerrar modal
+  function cerrarModal() {
+    const modal = document.getElementById('modalDibujo');
+    modal.style.display = "none";
+  }
+
+  // Cerrar modal al hacer clic fuera de la imagen
+  window.addEventListener('click', function(e) {
+    const modal = document.getElementById('modalDibujo');
+    if(e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+</script>
 
   <script>
     // Mostrar servicios después de la intro

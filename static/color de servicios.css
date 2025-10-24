@@ -361,3 +361,66 @@ body {
     font-size: 0.95em;
   }
 }
+
+
+
+
+
+
+
+
+
+  /* Estilo de los dibujos en tarjeta */
+  .contenedor-dibujos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px;
+  }
+  .dibujo {
+    background:#111;
+    color:#fff;
+    padding:10px;
+    border-radius:8px;
+    flex:1 1 300px;
+    text-align:center;
+    cursor:pointer;
+    transition: transform 0.3s ease;
+  }
+  .dibujo:hover { transform:scale(1.05); }
+  .dibujo img { width:100%; border-radius:8px; margin-top:10px; }
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  /* Estilo de los dibujos en tarjeta */
+  .contenedor-dibujos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px;
+  }
+  .dibujo {
+    background:#111;
+    color:#fff;
+    padding:10px;
+    border-radius:8px;
+    flex:1 1 300px;
+    text-align:center;
+    cursor:pointer;
+    transition: transform 0.3s ease;
+  }
+  .dibujo:hover { transform:scale(1.05); }
+  .dibujo img { width:100%; border-radius:8px; margin-top:10px; }
+
