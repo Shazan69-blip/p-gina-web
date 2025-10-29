@@ -13,10 +13,10 @@ body {
   padding:15px 40px;
   position:fixed; width:100%; top:0; z-index:1000;
   transition: all 0.4s ease;
-  background: rgba(17, 45, 78, 0.2);
+  background: rgba(8, 20, 43, 0.98);
   box-shadow:none;
 }
-.navbar.scrolled { background:#112d4e; box-shadow:0 4px 15px rgba(0,0,0,0.3); }
+.navbar.scrolled { background:#071021; box-shadow:0 4px 15px rgba(0,0,0,0.3); }
 
 .logo { display:flex; align-items:center; gap:10px; font-size:1.5rem; font-weight:bold; color:#ffd700; cursor:pointer; }
 .logo img { height:50px; width:auto; transition: transform 0.3s ease; }
@@ -83,7 +83,7 @@ footer .socials a:hover { color:#ffd700; transform:translateY(-2px); }
 /* RESPONSIVE */
 @media(max-width:768px){
   .hamburger { display:flex; }
-  .nav-links { position:absolute; top:70px; left:0; width:100%; flex-direction:column; background:#112d4e; display:none; gap:0; }
+  .nav-links { position:absolute; top:70px; left:0; width:100%; flex-direction:column; background:#08142b;; display:none; gap:0; }
   .nav-links.active { display:flex; }
   .nav-links li { width:100%; text-align:center; padding:15px 0; }
   .nav-links li a { font-size:1.2rem; }
