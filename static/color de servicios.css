@@ -3,8 +3,8 @@ body {
   font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
-  background: radial-gradient(circle at center, #0f0f0f 0%, #050505 100%);
-  color: #f1f1f1;
+  background: radial-gradient(circle at center, #0b1d33 0%, #0b1d33 100%);
+  color: #ffffff;
   overflow-x: hidden;
   line-height: 1.6;
   text-rendering: optimizeLegibility;
@@ -16,7 +16,7 @@ body {
 /* ======= NAVBAR ======= */
 .navbar {
   padding: 15px 25px;
-  background: rgba(10, 10, 10, 0.9);
+  background: rgba(8, 20, 43, 0.98);
   backdrop-filter: blur(10px);
   display: flex;
   justify-content: space-between;
@@ -50,7 +50,7 @@ body {
 
 .navbar li a {
   text-decoration: none;
-  color: #eaeaea;
+  color: #ffffff;
   font-weight: 500;
   font-size: 1em;
   transition: color 0.3s ease, transform 0.2s ease;
@@ -104,7 +104,7 @@ body {
     right: -100%;
     width: 100%;
     height: calc(100vh - 65px);
-    background: rgba(5, 5, 5, 0.97);
+    background: rgba(8, 20, 43, 0.98);
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -135,7 +135,7 @@ body {
 }
 
 .servicios.enfocado {
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(8, 20, 43, 0.98);
 }
 
 /* ======= TÍTULOS ======= */
@@ -147,7 +147,7 @@ body {
 }
 
 .subtitulo {
-  color: #cccccc;
+  color: #ffffff;
   font-size: 1.15em;
   margin-bottom: 50px;
 }
@@ -163,8 +163,8 @@ body {
 
 /* ======= TARJETAS DE BONOS ======= */
 .bono {
-  background: #111;
-  color: #f1f1f1;
+  background: #01162f;
+  color: #ffffff;
   border-radius: 20px;
   box-shadow: 0 0 15px rgba(255, 204, 0, 0.1);
   width: 320px;
@@ -206,7 +206,7 @@ body {
   max-width: 850px;
   padding: 50px;
   z-index: 999;
-  background: #151515;
+  background:#0b1d33;
   box-shadow: 0 0 60px rgba(255, 204, 0, 0.4);
   cursor: default;
   border: 1px solid rgba(255, 204, 0, 0.2);
@@ -224,7 +224,7 @@ body {
   border-radius: 10px;
 }
 .bono.expandido::-webkit-scrollbar-track {
-  background: #222;
+  background: #0b1d33;
 }
 
 .bono.expandido .contenido {
@@ -266,7 +266,7 @@ body {
 
 .bono li, 
 .bono ul p {
-  background: #1b1b1b;
+  background: #0b1d33;
   margin-bottom: 8px;
   padding: 10px 14px;
   border-radius: 10px;
@@ -279,7 +279,7 @@ body {
 .volver {
   background: #ffcc00;
   border: none;
-  color: #111;
+  color: #0b1d33;
   font-weight: 600;
   padding: 10px 24px;
   border-radius: 8px;
@@ -354,7 +354,7 @@ body {
     margin: 20px;
   }
   .dibujo {
-    background:#111;
+    background:#0b1d33;
     color:#fff;
     padding:10px;
     border-radius:8px;
@@ -385,7 +385,7 @@ body {
 
 /* ======= ESTILO GENERAL ======= */
 body {
-  background-color: #0a0a0a;
+  background-color:#0b1d33;
   color: #fff;
   font-family: "Poppins", sans-serif;
   margin: 0;
@@ -419,7 +419,7 @@ body {
 }
 
 .dibujo {
-  background: #111;
+  background: #0b1d33;
   border-radius: 12px;
   padding: 15px;
   width: 300px;
@@ -451,7 +451,7 @@ body {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.92);
+  background: #0b1d33;
   justify-content: center;
   align-items: center;
   z-index: 10000;
