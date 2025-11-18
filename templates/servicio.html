@@ -5,53 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Servicios | Grupo Fe</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='color de servicios.css') }}">
-  <style>
-    /* ======= INTRODUCCIÓN SERVICIOS ======= */
-    #intro-servicios {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #000;
-      color: #ffcc00;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      text-align: center;
-      animation: fadeOutIntro 3s ease 3s forwards;
-    }
-
-    .intro-contenido h1 {
-      font-size: 2.2em;
-      margin-bottom: 10px;
-      letter-spacing: 1px;
-    }
-
-    .intro-contenido p {
-      font-size: 1.2em;
-      color: #eaeaea;
-      opacity: 0.9;
-    }
-
-    @keyframes fadeOutIntro {
-      0% { opacity: 1; }
-      80% { opacity: 1; }
-      100% { opacity: 0; visibility: hidden; }
-    }
-  </style>
 </head>
 <body>
-
-  <!-- INTRODUCCIÓN -->
-  <div id="intro-servicios">
-    <div class="intro-contenido">
-      <h1>Bienvenido al apartado de servicios</h1>
-      <p>Estos son los servicios que te ofrecemos</p>
-    </div>
-  </div>
 
 <header class="navbar">
   <div class="logo">
@@ -75,7 +30,7 @@
 </header>
 
 
-  <section class="servicios" id="seccion-servicios" style="opacity: 0; transition: opacity 1s ease;">
+  <section class="servicios" id="seccion-servicios">
     <h1>Nuestros Servicios</h1>
     <p class="subtitulo">Seleccione el tipo de servicio según su situación</p>
 
@@ -141,32 +96,33 @@ Las personas mayores de 65 años pueden acceder a un bono especial para mejorar 
         <div class="contenido">
           <p>
           Para familias que no cuentan con un lote propio, con ingresos familiares reducidos y cuyo análisis socioeconómico indica que viven en condiciones de extrema vulnerabilidad, está disponible el Programa de Bono Especial. Este bono puede gestionarse de manera individual o como parte de un proyecto habitacional.
-
-Los bonos de vivienda dentro del marco del artículo 59 de la Ley del Sistema Financiero Nacional para la Vivienda (SFNV) se otorgan a quienes cumplen con los criterios de extrema necesidad, incluyendo situaciones de emergencia o procesos de erradicación de tugurios y asentamientos precarios.
           </p>
           <h3>Casos de Emergencia:</h3>
+
           <ul class="requisitos-lista">
-          <h2>En aquellos casos calificados como emergencia debe adjuntar los siguientes documentos:</h2>
+            <h2>En aquellos casos calificados como emergencia debe adjuntar los siguientes documentos:</h2>
             <li>1.Informe de la Comisión Nacional de Prevención de Riesgos y Atención de Emergencias (CNE), recomendando la reubicación o declarando como inhabitable la propiedad.</li>
             <li>2.Informe del Ministerio de Vivienda y Asentamientos Humanos recomendando la reubicación de la familia o la reconstrucción total o parcial de la vivienda</li>
-            <li>3.Ficha de Información Social (FIS) del núcleo familiar. La aplicación de este documento solo rige en casos de emergencias, debidamente declarados por el Poder Ejecutivo.</li>
-            <h4>En cualquiera de estas situaciones, si la familia es propietaria del terreno debe presentar un informe del Instituto Nacional de Seguros (INS) que indique si la familia recibió o no indemnización.  En caso de recibirla, el monto del bono será complemento esta indemnización.</h4>
+            <li>3.Ficha de Información Social (FIS) del núcleo familiar.</li>
+
+            <h4>En cualquiera de estas situaciones, si la familia es propietaria del terreno debe presentar un informe del Instituto Nacional de Seguros (INS)…</h4>
+
             <h3>Solicitud de Segundo Bono</h3>
-            <h4>Según lo establecido en el artículo 50 de la Ley del SFNV, una familia puede acceder a un segundo bono de vivienda si ha sufrido la pérdida total o parcial de su hogar debido a catástrofes naturales, siniestros, caso fortuito o fuerza mayor.
-Para poder optar por este bono, la familia debe seguir cumpliendo con los requisitos establecidos para ser beneficiaria y comprobar que los seguros de la vivienda no cubren los daños ocasionados por la catástrofe.
-Asimismo, es obligatorio que la familia postulante mantenga vigente la póliza de seguro de la vivienda. En estos casos, se requiere presentar la siguiente documentación:</h4>
-<li>1. Informe de la Comisión Nacional de Prevención de Riesgos y Atención de Emergencias, recomendando la reubicación, declarando como inhabitable el inmueble o en su defecto indicando la posible reutilización del lote o que la vivienda requiera algún tipo de mejora.</li>
-<li>2. En aquellos casos en que el lote pueda reutilizarse el perito del avaluó debe indicar que dicho terreno es apto para construir. De igual forma en los casos de viviendas con necesidad de mejoras el profesional debe indicar en forma detallada las mejoras a realizar de tal forma que la casa sea habitable y funcional.</li>
-<li>3. Informe del Instituto Nacional de Seguros, en el cual se indique si la familia fue indemnizada por los daños que sufrió la vivienda.  En caso de existir indemnización, el monto del bono solicitado debe ser por la suma estrictamente necesaria para complementar la indemnización.</li>
-<h3>Casos Fortuitos</h3>
-<h4>Los casos fortuitos son aquellos que se originan por causas internas, como incendios, explosiones en la vivienda o derrumbes no relacionados con fenómenos naturales.
-Por otro lado, los casos de fuerza mayor tienen origen externo e imprevisible, e incluyen situaciones como guerras, terremotos, huracanes, inundaciones o caída de rayos.</h4>
-<li>1. Documentación emitida por una instancia competente, lo cual respaldaría el imprevisto o siniestro que sufrió la vivienda.</li>
-<li>2. Informe del Instituto Nacional de Seguros, en el cual se indique si la familia fue indemnizada por los daños que sufrió la vivienda.  En caso de existir indemnización, el monto del Bono solicitado debe ser por la suma estrictamente necesaria para complementar la indemnización.</li>
-<li>3. Análisis del estado de la vivienda, donde se determine si existe algún material reutilizable en la nueva casa y el impacto de esta medida sobre el monto del bono. Lo anterior debe presentarse por medio de una nota avalada por el profesional responsable de la obra en la cual certifique el valor de los materiales y mano de obra.</li>
-<li>4. Si el lote fue declarado inhabitable, la familia debe donarlo a la municipalidad respectiva y aportar el acuerdo u oficio con el cual la municipalidad acepta la donación.</li>
 
+            <h4>Según lo establecido en el artículo 50…</h4>
 
+            <li>1. Informe de la Comisión Nacional de Prevención de Riesgos…</li>
+            <li>2. En aquellos casos…</li>
+            <li>3. Informe del Instituto Nacional de Seguros…</li>
+
+            <h3>Casos Fortuitos</h3>
+
+            <h4>Los casos fortuitos…</h4>
+
+            <li>1. Documentación emitida…</li>
+            <li>2. Informe del Instituto Nacional de Seguros…</li>
+            <li>3. Análisis del estado de la vivienda…</li>
+            <li>4. Si el lote fue declarado inhabitable…</li>
           </ul>
           <button class="volver" onclick="volver(event)">Volver</button>
         </div>
@@ -185,7 +141,7 @@ Por otro lado, los casos de fuerza mayor tienen origen externo e imprevisible, e
             <li>2. Gestión de trámites y documentación.</li>
             <li>3. Consultoría técnica y social en proyectos habitacionales.</li>
             <li>4. Acompañamiento personalizado durante todo el proceso.</li>
-            <li>5. Servicios profesionales de ingeneria y construcción</li>
+            <li>5. Servicios profesionales de ingeniería y construcción</li>
             <li>6. Diseño de Planos</li>
             <li>7. Presupuestos</li>
             <li>8. Construcción Llave en Mano</li>
@@ -198,37 +154,35 @@ Por otro lado, los casos de fuerza mayor tienen origen externo e imprevisible, e
       </div>
     </div>
 
-<!-- SECCIÓN DIBUJOS ARTÍCULO 59 CON MODAL -->
-<!-- SECCIÓN DE DIBUJOS DISPONIBLES -->
-<section class="dibujos">
+<!-- SECCIÓN DIBUJOS ARTÍCULO 59 -->
+<section class="dibujos" id="seccion-dibujos">
   <h1>Dibujos del Grupo FE</h1>
   <p class="subtitulo">Seleccioná un dibujo para ver más imágenes</p>
 
   <div class="contenedor-dibujos">
 
-    <!-- 🔹 Dibujo 1 -->
+    <!-- Dibujo 1 -->
     <div class="dibujo" onclick="abrirGaleria(1)">
       <img src="{{ url_for('static', filename='dibujo1.jpeg') }}" alt="Dibujo 1">
       <h2>Modelo 1</h2>
     </div>
 
-    <!-- 🔹 Dibujo 2 -->
+    <!-- Dibujo 2 -->
     <div class="dibujo" onclick="abrirGaleria(2)">
       <img src="{{ url_for('static', filename='dibujo2ade.jpeg') }}" alt="Dibujo 2">
       <h2>Modelo 2</h2>
     </div>
 
- 
+  </div>
 </section>
 
-<!-- 🔹 Modal que muestra las imágenes -->
+<!-- Modal Galería -->
 <div class="modal-galeria" id="modalGaleria">
   <span class="cerrar" onclick="cerrarGaleria()">&times;</span>
   <div class="galeria-contenedor" id="galeriaContenedor"></div>
 </div>
 
 <script>
-  // Cada dibujo tiene su propio grupo de imágenes
   const galerias = {
     1: [
       "{{ url_for('static', filename='dibujo1.jpeg') }}",
@@ -240,7 +194,6 @@ Por otro lado, los casos de fuerza mayor tienen origen externo e imprevisible, e
       "{{ url_for('static', filename='dibujoplano.jpeg') }}",
       "{{ url_for('static', filename='dibujo2atras.jpeg') }}"
     ],
-    
   };
 
   const modal = document.getElementById("modalGaleria");
@@ -266,33 +219,13 @@ Por otro lado, los casos de fuerza mayor tienen origen externo e imprevisible, e
   }
 </script>
 
-<script>
-  // Mostrar la sección después de la intro
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      const seccion = document.getElementById("seccion-dibujos");
-      if (seccion) seccion.style.opacity = "1";
-    }, 3000);
-  });
-</script>
-
-
-<!-- MODAL -->
+<!-- Modal de imágenes antiguas -->
 <div id="modalDibujo" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:10000;">
   <span style="position:absolute; top:20px; right:30px; font-size:40px; color:#fff; cursor:pointer;" onclick="cerrarModal()">&times;</span>
   <img id="imagenModal" src="" alt="Dibujo" style="max-width:90%; max-height:90%; border-radius:10px; box-shadow:0 0 20px #000;">
 </div>
 
 <script>
-  // Mostrar sección después de intro
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      const sectionDibujos = document.getElementById("seccion-dibujos");
-      if(sectionDibujos) sectionDibujos.style.opacity = "1";
-    }, 3000);
-  });
-
-  // Abrir modal
   function abrirModal(img) {
     const modal = document.getElementById('modalDibujo');
     const imagenModal = document.getElementById('imagenModal');
@@ -300,30 +233,20 @@ Por otro lado, los casos de fuerza mayor tienen origen externo e imprevisible, e
     modal.style.display = "flex";
   }
 
-  // Cerrar modal
   function cerrarModal() {
     const modal = document.getElementById('modalDibujo');
     modal.style.display = "none";
   }
 
-  // Cerrar modal al hacer clic fuera de la imagen
   window.addEventListener('click', function(e) {
     const modal = document.getElementById('modalDibujo');
-    if(e.target === modal) {
+    if (e.target === modal) {
       modal.style.display = "none";
     }
   });
 </script>
 
-  <script>
-    // Mostrar servicios después de la intro
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById("intro-servicios").style.display = "none";
-        document.getElementById("seccion-servicios").style.opacity = "1";
-      }, 3000); // 3s visible + 3s fadeOut
-    });
-
+<script>
     function expandirBono(bonoSeleccionado) {
       const bonos = document.querySelectorAll('.bono');
       const seccion = document.querySelector('.servicios');
@@ -342,24 +265,22 @@ Por otro lado, los casos de fuerza mayor tienen origen externo e imprevisible, e
       seccion.classList.remove('enfocado');
     }
 
+    // Navbar interactiva
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
 
-    // ======= NAVBAR INTERACTIVA =======
-const menuToggle = document.getElementById('menuToggle');
-const navMenu = document.getElementById('navMenu');
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
 
-menuToggle.addEventListener('click', () => {
-  menuToggle.classList.toggle('active');
-  navMenu.classList.toggle('active');
-});
-
-document.querySelectorAll('#navMenu a').forEach(link => {
-  link.addEventListener('click', () => {
-    menuToggle.classList.remove('active');
-    navMenu.classList.remove('active');
-  });
-});
-
-  </script>
+    document.querySelectorAll('#navMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
+</script>
 
 </body>
 </html>
