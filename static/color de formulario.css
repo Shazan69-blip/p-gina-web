@@ -3,14 +3,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #0b1d33;
-  color: #fff;
+  background: #0D1A21; /* Azul petróleo oscuro */
+  color: #F7F3EC; /* Crema */
   padding: 15px 30px;
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 2000;
-  flex-wrap: wrap; /* Evita cortes en resoluciones intermedias */
+  flex-wrap: wrap;
   gap: 15px;
 }
 
@@ -32,7 +32,7 @@
   font-size: 1.8rem;
   background: none;
   border: none;
-  color: #fff;
+  color: #F7F3EC;
   cursor: pointer;
   display: none;
 }
@@ -49,7 +49,7 @@ nav ul {
   gap: 25px;
   flex-wrap: wrap;
   justify-content: flex-end;
-  overflow: visible; /* Evita que “Contacto” se oculte */
+  overflow: visible;
 }
 
 nav ul li {
@@ -57,7 +57,7 @@ nav ul li {
 }
 
 nav ul li a {
-  color: #fff;
+  color: #F7F3EC; /* Crema */
   text-decoration: none;
   font-weight: 500;
   padding: 5px 10px;
@@ -66,7 +66,7 @@ nav ul li a {
 
 nav ul li a:hover,
 nav ul li a.activo {
-  color: #f1c40f;
+  color: #c68e52; /* Dorado */
 }
 
 /* ====== NAV OVERLAY MÓVIL ====== */
@@ -87,7 +87,7 @@ nav ul li a.activo {
     position: fixed;
     top: 0;
     right: -100%;
-    background: #0b1d33;
+    background: #0D1A21;
     flex-direction: column;
     width: 70%;
     height: 100%;
@@ -95,7 +95,7 @@ nav ul li a.activo {
     align-items: center;
     transition: right 0.3s ease;
     z-index: 1600;
-    padding-bottom: 50px; /* deja espacio al final */
+    padding-bottom: 50px;
   }
 
   nav ul.active {
@@ -124,30 +124,31 @@ nav ul li a.activo {
 }
 
 .btn-gold {
-  background: linear-gradient(90deg, #f1c40f, #f39c12);
-  color: #111;
+  background: #C6A052;
+  color: #0D1A21;
 }
 
 .btn-outline {
-  border: 2px solid #f1c40f;
-  color: #f1c40f;
+  border: 2px solid #C6A052;
+  color: #C6A052;
   background: none;
 }
 
 .btn-gold:hover {
-  background: linear-gradient(90deg, #f39c12, #f1c40f);
+  background: #d7b774;
 }
 
 .btn-outline:hover {
-  background: #f1c40f;
-  color: #111;
+  background: #C6A052;
+  color: #0D1A21;
 }
 
 /* ====== FORMULARIO ====== */
 body {
-  padding-top: 90px; /* evita que el contenido quede debajo del navbar */
-  background: #0b1d33; /* mantiene el diseño original */
-  color: #fff;
+  padding-top: 90px;
+  background: #F7F3EC; /* Crema suave */
+  color: #C6A052; /* amarillo */ /* aqui*/
+  font-family: "Poppins", sans-serif;
 }
 
 .contenedor {
@@ -159,16 +160,18 @@ body {
 }
 
 .card {
-  background: #142b4f;
+  background: #0D1A29; /* Azul petróleo oscuro */
   border-radius: 12px;
   padding: 20px;
   margin-bottom: 25px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  border: 1px solid #e5e2dc;
 }
 
 label {
   display: block;
   margin-bottom: 10px;
+  color: #C6A052;
 }
 
 input, select, textarea {
@@ -177,6 +180,8 @@ input, select, textarea {
   border-radius: 6px;
   border: 1px solid #ddd;
   margin-top: 5px;
+  background: #fff;
+  color: #0D1A21;
 }
 
 .top-actions {
@@ -191,18 +196,16 @@ input, select, textarea {
   text-align: center;
   margin-top: 50px;
   font-size: 0.9rem;
-  color: #bbb;
+  color: #555;
 }
 
 /* === FIX FINAL NAVBAR CORTADO === */
 
-/* Asegura que el body deje suficiente espacio para el navbar */
 body {
-  padding-top: 130px !important; /* Aumenta el margen superior según el alto real de la barra */
-  background: #0b1d33; /* Mantiene tu fondo original */
+  padding-top: 130px !important;
+  background: #F7F3EC;
 }
 
-/* Evita que los enlaces del navbar se corten */
 .navbar {
   position: fixed;
   width: 100%;
@@ -210,12 +213,11 @@ body {
   left: 0;
   flex-wrap: wrap;
   overflow: visible;
-  background: #0b1d33;
-  padding-bottom: 10px; /* da un poco más de aire abajo */
+  background: #0D1A21;
+  padding-bottom: 10px;
   z-index: 3000;
 }
 
-/* Forzar visibilidad de “Contacto” */
 nav ul {
   display: flex;
   flex-wrap: wrap;
@@ -229,16 +231,20 @@ nav ul li {
 }
 
 nav ul li a {
-  color: #fff;
-  white-space: nowrap; /* evita saltos de línea feos */
+  color: #F7F3EC;
+  white-space: nowrap;
 }
 
-/* En móviles, asegura que todo el menú sea visible */
 @media (max-width: 768px) {
   nav ul {
     height: auto;
     max-height: 100vh;
     overflow-y: auto;
-    padding-bottom: 70px; /* espacio extra para Contacto */
+    padding-bottom: 70px;
   }
+}
+
+
+h2 {
+  color: rgba(13, 26, 33, 0.98); /* Negro */
 }
