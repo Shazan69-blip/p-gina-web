@@ -43,7 +43,6 @@
     </div>
 
     <form id="mainForm" class="formulario" action="/enviar-formulario" method="POST">
-      <!-- (todo tu formulario se mantiene igual) -->
 
       <!-- 1. Datos del Beneficiario Principal -->
       <section class="card">
@@ -212,209 +211,160 @@
     </footer>
   </main>
 
+  <!-- ======= JAVASCRIPT CORREGIDO ======= -->
   <script>
-  // ======= MENU MOBILE (mantener comportamiento actual) =======
-  const menuToggle = document.getElementById('menuToggle');
-  const navMenu = document.getElementById('navMenu');
-  const navOverlay = document.getElementById('navOverlay');
+  document.addEventListener("DOMContentLoaded", () => {
 
-  if (menuToggle) {
-    menuToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-      navOverlay.classList.toggle('active');
-    });
-    navOverlay.addEventListener('click', () => {
-      navMenu.classList.remove('active');
-      navOverlay.classList.remove('active');
-    });
-  }
+    console.log("✅ JavaScript sí fue leído correctamente");
 
-  // ======= FUNCION: recoger campos y generar PDF limpio por secciones =======
-  document.getElementById('mainForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
+    // --- MENU MOBILE ---
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    const navOverlay = document.getElementById('navOverlay');
 
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF({ unit: 'pt', format: 'letter' });
-    const left = 40;
-    let y = 60;
-    const lineHeight = 14;
-    const pageHeight = doc.internal.pageSize.height - 40;
+    if (menuToggle && navMenu && navOverlay) {
+      menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        navOverlay.classList.toggle('active');
+      });
 
-    // Helper: salto de línea y nueva página si hace falta
-    function ensureSpace(linesNeeded = 1) {
-      if (y + (linesNeeded * lineHeight) > pageHeight) {
-        doc.addPage();
-        y = 60;
-      }
-    }
-
-    // Helper: escribe líneas (texto o array de líneas)
-    function write(text) {
-      const lines = Array.isArray(text) ? text : doc.splitTextToSize(String(text), doc.internal.pageSize.width - left - 40);
-      ensureSpace(lines.length);
-      doc.text(lines, left, y);
-      y += lines.length * lineHeight;
-    }
-
-    // Recolectar datos (ordenados por secciones)
-    const form = this;
-
-    // 1. Datos del Beneficiario Principal
-    write("1. Datos del Beneficiario Principal");
-    write("-----------------------------------");
-    const b_nombre = form.querySelector('[name="beneficiario_nombre"]')?.value || '';
-    const b_cedula = form.querySelector('[name="beneficiario_cedula"]')?.value || '';
-    const b_telefono = form.querySelector('[name="beneficiario_telefono"]')?.value || '';
-    const b_email = form.querySelector('[name="beneficiario_email"]')?.value || '';
-    const b_estado = form.querySelector('[name="beneficiario_estado_civil"]')?.value || '';
-    const b_tiempo_union = form.querySelector('[name="beneficiario_tiempo_union"]')?.value || '';
-    const b_nacionalidad = form.querySelector('[name="beneficiario_nacionalidad"]')?.value || '';
-    const b_escolaridad = form.querySelector('[name="beneficiario_escolaridad"]')?.value || '';
-    const b_direccion = form.querySelector('[name="beneficiario_direccion"]')?.value || '';
-    const b_provincia = form.querySelector('[name="beneficiario_provincia"]')?.value || '';
-    const b_canton = form.querySelector('[name="beneficiario_canton"]')?.value || '';
-    const b_distrito = form.querySelector('[name="beneficiario_distrito"]')?.value || '';
-    const b_barrio = form.querySelector('[name="beneficiario_barrio"]')?.value || '';
-
-    write(`Nombre completo: ${b_nombre}`);
-    write(`Cédula: ${b_cedula}`);
-    write(`Teléfono: ${b_telefono}`);
-    write(`Correo: ${b_email}`);
-    write(`Estado civil: ${b_estado}`);
-    if (b_tiempo_union) write(`Tiempo de unión: ${b_tiempo_union}`);
-    write(`Nacionalidad: ${b_nacionalidad}`);
-    write(`Escolaridad: ${b_escolaridad}`);
-    write(`Dirección: ${b_direccion}`);
-    write(`Provincia: ${b_provincia} | Cantón: ${b_canton} | Distrito: ${b_distrito}`);
-    write(`Barrio: ${b_barrio}`);
-    write(" ");
-
-    // 2. Composición del Grupo Familiar
-    write("2. Composición del Grupo Familiar");
-    write("---------------------------------");
-    // obtener arrays de miembros
-    const nombres = Array.from(form.querySelectorAll('input[name="f_nombre[]"]')).map(i => i.value).filter(v=>v);
-    const parentescos = Array.from(form.querySelectorAll('input[name="f_parentesco[]"]')).map(i => i.value);
-    const edades = Array.from(form.querySelectorAll('input[name="f_edad[]"]')).map(i => i.value);
-    const ocupaciones = Array.from(form.querySelectorAll('input[name="f_ocupacion[]"]')).map(i => i.value);
-    const ingresos = Array.from(form.querySelectorAll('input[name="f_ingreso[]"]')).map(i => i.value);
-
-    if (nombres.length === 0) {
-      write("No se ingresaron miembros del grupo familiar.");
-    } else {
-      nombres.forEach((nm, idx) => {
-        const p = parentescos[idx] || '';
-        const e = edades[idx] || '';
-        const o = ocupaciones[idx] || '';
-        const ing = ingresos[idx] || '';
-        write(`${idx + 1}. ${nm} — Parentesco: ${p} | Edad: ${e} | Ocupación: ${o} | Ingreso: ${ing}`);
+      navOverlay.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        navOverlay.classList.remove('active');
       });
     }
-    write(" ");
 
-    // Gestación / discapacidad
-    const gestacion = form.querySelector('[name="gestacion_existe"]')?.value || '';
-    const gest_meses = form.querySelector('[name="gestacion_meses"]')?.value || '';
-    const discapacidad = form.querySelector('[name="discapacidad_existe"]')?.value || '';
-    const discapacidad_detalle = form.querySelector('[name="discapacidad_detalle"]')?.value || '';
+    // --- GENERAR PDF AL ENVIAR ---
+    const form = document.getElementById('mainForm');
 
-    write(`Existe miembro en gestación: ${gestacion}${gestacion === 'Si' && gest_meses ? ` (Meses: ${gest_meses})` : ''}`);
-    write(`Algún miembro con discapacidad: ${discapacidad}${discapacidad === 'Si' && discapacidad_detalle ? ` (Detalle: ${discapacidad_detalle})` : ''}`);
-    write(" ");
+    if (form) {
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
 
-    // 3. Información Socioeconómica
-    write("3. Información Socioeconómica");
-    write("-----------------------------");
-    const actividad = form.querySelector('[name="actividad_economica"]')?.value || '';
-    const tiempo_lab = form.querySelector('[name="tiempo_laborar"]')?.value || '';
-    const cotiza = form.querySelector('[name="cotiza_ccss"]')?.value || '';
-    const ingreso_total = form.querySelector('[name="ingreso_mensual"]')?.value || '';
-    const recibe_sub = form.querySelector('[name="recibe_subsidio"]')?.value || '';
-    const cual_sub = form.querySelector('[name="cual_subsidio"]')?.value || '';
-    const recibe_pension = form.querySelector('[name="recibe_pension"]')?.value || '';
-    const pension_tipo = form.querySelector('[name="pension_tipo"]')?.value || '';
-    const pension_monto = form.querySelector('[name="pension_monto"]')?.value || '';
-    const posee_vehiculo = form.querySelector('[name="posee_vehiculo"]')?.value || '';
-    const marca_modelo = form.querySelector('[name="vehiculo_marca_modelo"]')?.value || '';
+        console.log("📥 Formulario enviado, creando PDF...");
 
-    write(`Actividad económica: ${actividad}`);
-    write(`Tiempo laborando: ${tiempo_lab}`);
-    write(`Cotiza en CCSS: ${cotiza}`);
-    write(`Ingreso mensual familiar total (₡): ${ingreso_total}`);
-    write(`Recibe subsidio: ${recibe_sub}${recibe_sub === 'Si' ? ` (Cuál: ${cual_sub})` : ''}`);
-    write(`Recibe pensión alimentaria: ${recibe_pension} (${pension_tipo}) — Monto: ${pension_monto}`);
-    write(`Posee vehículo: ${posee_vehiculo} — Marca/Modelo: ${marca_modelo}`);
-    write(" ");
+        const doc = new window.jspdf.jsPDF();
+        const left = 40;
+        let y = 60;
+        const lineHeight = 14;
+        const pageHeight = doc.internal.pageSize.height - 40;
 
-    // 4. Información del Proyecto o Lote
-    write("4. Información del Proyecto o Lote");
-    write("----------------------------------");
-    const proyecto_nombre = form.querySelector('[name="proyecto_nombre"]')?.value || '';
-    const proyecto_ubicacion = form.querySelector('[name="proyecto_ubicacion"]')?.value || '';
-    const proyecto_numero = form.querySelector('[name="proyecto_numero_lote"]')?.value || '';
-    const propietario = form.querySelector('[name="propietario_terreno"]')?.value || '';
-    const vendedor_ced = form.querySelector('[name="vendedor_cedula"]')?.value || '';
-    const vendedor_tel = form.querySelector('[name="vendedor_telefono"]')?.value || '';
-    const vendedor_dir = form.querySelector('[name="vendedor_direccion"]')?.value || '';
-    const monto_terreno = form.querySelector('[name="monto_terreno"]')?.value || '';
-    const sistema_prefab = form.querySelector('[name="sistema_constructivo_prefablock"]')?.checked ? 'Prefablock' : '';
-    const sistema_otro = form.querySelector('[name="sistema_constructivo_otro"]')?.checked ? (form.querySelector('[name="sistema_constructivo_otro_text"]')?.value || 'Otro') : '';
-    const tipo_vivienda = form.querySelector('input[name="tipo_vivienda"]:checked')?.value || '';
+        function ensureSpace(linesNeeded = 1) {
+          if (y + (linesNeeded * lineHeight) > pageHeight) {
+            doc.addPage();
+            y = 60;
+          }
+        }
 
-    write(`Nombre del proyecto: ${proyecto_nombre}`);
-    write(`Ubicación: ${proyecto_ubicacion}`);
-    write(`Número de lote / catastral: ${proyecto_numero}`);
-    write(`Propietario del terreno: ${propietario}`);
-    write(`Vendedor - Cédula: ${vendedor_ced} | Tel: ${vendedor_tel} | Dir: ${vendedor_dir}`);
-    write(`Monto del terreno (₡): ${monto_terreno}`);
-    write(`Sistema constructivo: ${[sistema_prefab, sistema_otro].filter(Boolean).join(', ')}`);
-    write(`Tipo de vivienda: ${tipo_vivienda}`);
-    write(" ");
+        function write(text) {
+          const lines = Array.isArray(text) ? text : doc.splitTextToSize(String(text), doc.internal.pageSize.width - left - 40);
+          ensureSpace(lines.length);
+          doc.text(lines, left, y);
+          y += lines.length * lineHeight;
+        }
 
-    // 5. Declaración Jurada
-    write("5. Declaración Jurada del Beneficiario");
-    write("-------------------------------------");
-    const firma = form.querySelector('[name="firma_beneficiario"]')?.value || '';
-    const fecha_firma = form.querySelector('[name="firma_fecha"]')?.value || '';
-    write(`Firma: ${firma}`);
-    write(`Fecha: ${fecha_firma}`);
-    write(" ");
+        // --- RECOGER DATOS ---
+        const b_nombre = form.querySelector('[name="beneficiario_nombre"]')?.value || '';
 
-    // 6. Uso Exclusivo
-    write("6. Uso Exclusivo de Grupo Fe");
-    write("----------------------------");
-    const ver_social_por = form.querySelector('[name="verificacion_social_por"]')?.value || '';
-    const ver_social_fecha = form.querySelector('[name="verificacion_social_fecha"]')?.value || '';
-    const ver_tecnica_por = form.querySelector('[name="verificacion_tecnica_por"]')?.value || '';
-    const ver_tecnica_fecha = form.querySelector('[name="verificacion_tecnica_fecha"]')?.value || '';
-    const observaciones = form.querySelector('[name="observaciones"]')?.value || '';
+        write("1. Datos del Beneficiario Principal");
+        write("-----------------------------------");
+        write(`Nombre completo: ${form.querySelector('[name="beneficiario_nombre"]')?.value || ''}`);
+        write(`Cédula: ${form.querySelector('[name="beneficiario_cedula"]')?.value || ''}`);
+        write(`Teléfono: ${form.querySelector('[name="beneficiario_telefono"]')?.value || ''}`);
+        write(`Correo: ${form.querySelector('[name="beneficiario_email"]')?.value || ''}`);
+        write(`Estado civil: ${form.querySelector('[name="beneficiario_estado_civil"]')?.value || ''}`);
+        write(`Nacionalidad: ${form.querySelector('[name="beneficiario_nacionalidad"]')?.value || ''}`);
+        write(`Escolaridad: ${form.querySelector('[name="beneficiario_escolaridad"]')?.value || ''}`);
+        write(`Dirección: ${form.querySelector('[name="beneficiario_direccion"]')?.value || ''}`);
+        write(`Provincia: ${form.querySelector('[name="beneficiario_provincia"]')?.value || ''} | Cantón: ${form.querySelector('[name="beneficiario_canton"]')?.value || ''} | Distrito: ${form.querySelector('[name="beneficiario_distrito"]')?.value || ''}`);
+        write(`Barrio: ${form.querySelector('[name="beneficiario_barrio"]')?.value || ''}`);
+        write(" ");
 
-    write(`Verificación social por: ${ver_social_por}`);
-    write(`Fecha verificación social: ${ver_social_fecha}`);
-    write(`Verificación técnica por: ${ver_tecnica_por}`);
-    write(`Fecha verificación técnica: ${ver_tecnica_fecha}`);
-    write(`Observaciones: ${observaciones}`);
+        write("2. Composición del Grupo Familiar");
+        write("---------------------------------");
+        const nombres = Array.from(form.querySelectorAll('input[name="f_nombre[]"]')).map(i => i.value).filter(Boolean);
+        if (nombres.length === 0) {
+          write("No se ingresaron miembros del grupo familiar.");
+        } else {
+          const parentescos = Array.from(form.querySelectorAll('input[name="f_parentesco[]"]')).map(i => i.value);
+          const edades = Array.from(form.querySelectorAll('input[name="f_edad[]"]')).map(i => i.value);
+          const ocupaciones = Array.from(form.querySelectorAll('input[name="f_ocupacion[]"]')).map(i => i.value);
+          const ingresos = Array.from(form.querySelectorAll('input[name="f_ingreso[]"]')).map(i => i.value);
 
-    // -------------- FIN CONTENIDO PDF --------------
+          nombres.forEach((nm, idx) => {
+            write(`${idx + 1}. ${nm} — Parentesco: ${parentescos[idx] || ''} | Edad: ${edades[idx] || ''} | Ocupación: ${ocupaciones[idx] || ''} | Ingreso: ${ingresos[idx] || ''}`);
+          });
+        }
+        write(" ");
 
-    // Nombre del archivo con el nombre del beneficiario (sanitizado)
-    const nombreArchivoBase = b_nombre ? b_nombre.replace(/[^a-zA-Z0-9_\- ]/g, '').trim().replace(/\s+/g, "_") : "Beneficiario";
-    const filename = `Formulario_GrupoFe_${nombreArchivoBase}.pdf`;
+        const gestacion = form.querySelector('[name="gestacion_existe"]')?.value || '';
+        const gest_meses = form.querySelector('[name="gestacion_meses"]')?.value || '';
+        const discapacidad = form.querySelector('[name="discapacidad_existe"]')?.value || '';
+        const discapacidad_detalle = form.querySelector('[name="discapacidad_detalle"]')?.value || '';
 
-    // Guardar / descargar PDF
-    doc.save(filename);
+        write(`Existe miembro en gestación: ${gestacion}${gestacion === 'Si' && gest_meses ? ` (Meses: ${gest_meses})` : ''}`);
+        write(`Algún miembro con discapacidad: ${discapacidad}${discapacidad === 'Si' && discapacidad_detalle ? ` (Detalle: ${discapacidad_detalle})` : ''}`);
+        write(" ");
 
-    // Esperar un poco para dar tiempo a que comience la descarga y luego abrir Gmail
-    setTimeout(() => {
-      const destinatario = "informaciongrupofe@gmail.com";
-      const asunto = encodeURIComponent("Formulario Bono Familiar de Vivienda – Grupo Fe");
-      const cuerpo = encodeURIComponent("Adjunto el formulario de aplicación al Bono Familiar de Vivienda.\n\nSaludos.");
-      // Abrir Gmail (en nueva pestaña)
-      window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${destinatario}&su=${asunto}&body=${cuerpo}`, '_blank');
-    }, 800);
+        write("3. Información Socioeconómica");
+        write("-----------------------------");
+        write(`Actividad económica: ${form.querySelector('[name="actividad_economica"]')?.value || ''}`);
+        write(`Tiempo laborando: ${form.querySelector('[name="tiempo_laborar"]')?.value || ''}`);
+        write(`Cotiza en CCSS: ${form.querySelector('[name="cotiza_ccss"]')?.value || ''}`);
+        write(`Ingreso mensual familiar total (₡): ${form.querySelector('[name="ingreso_mensual"]')?.value || ''}`);
+        write(`Recibe subsidio: ${form.querySelector('[name="recibe_subsidio"]')?.value || ''} — ¿Cuál?: ${form.querySelector('[name="cual_subsidio"]')?.value || ''}`);
+        write(`Recibe pensión alimentaria: ${form.querySelector('[name="recibe_pension"]')?.value || ''} (${form.querySelector('[name="pension_tipo"]')?.value || ''}) — Monto: ${form.querySelector('[name="pension_monto"]')?.value || ''}`);
+        write(`Posee vehículo: ${form.querySelector('[name="posee_vehiculo"]')?.value || ''} — Marca/Modelo: ${form.querySelector('[name="vehiculo_marca_modelo"]')?.value || ''}`);
+        write(" ");
+
+        write("4. Información del Proyecto o Lote");
+        write("----------------------------------");
+        write(`Nombre del proyecto: ${form.querySelector('[name="proyecto_nombre"]')?.value || ''}`);
+        write(`Ubicación: ${form.querySelector('[name="proyecto_ubicacion"]')?.value || ''}`);
+        write(`Número de lote / catastral: ${form.querySelector('[name="proyecto_numero_lote"]')?.value || ''}`);
+        write(`Propietario del terreno: ${form.querySelector('[name="propietario_terreno"]')?.value || ''}`);
+        write(`Vendedor - Cédula: ${form.querySelector('[name="vendedor_cedula"]')?.value || ''} | Tel: ${form.querySelector('[name="vendedor_telefono"]')?.value || ''} | Dir: ${form.querySelector('[name="vendedor_direccion"]')?.value || ''}`);
+        write(`Monto del terreno (₡): ${form.querySelector('[name="monto_terreno"]')?.value || ''}`);
+        write(`Sistema constructivo: ${[
+          form.querySelector('[name="sistema_constructivo_prefabblock"]')?.checked ? 'Prefablock' : '',
+          form.querySelector('[name="sistema_constructivo_otro"]')?.checked ? (form.querySelector('[name="sistema_constructivo_otro_text"]')?.value || 'Otro') : ''
+        ].filter(Boolean).join(', ')}`);
+        write(`Tipo de vivienda: ${form.querySelector('input[name="tipo_vivienda"]:checked')?.value || ''}`);
+        write(" ");
+
+        write("5. Declaración Jurada del Beneficiario");
+        write("-------------------------------------");
+        write(`Firma: ${form.querySelector('[name="firma_beneficiario"]')?.value || ''}`);
+        write(`Fecha Firma: ${form.querySelector('[name="firma_fecha"]')?.value || ''}`);
+        write(" ");
+
+        write("6. Uso Exclusivo de Grupo Fe");
+        write("----------------------------");
+        write(`Verificación social por: ${form.querySelector('[name="verificacion_social_por"]')?.value || ''}`);
+        write(`Fecha verificación social: ${form.querySelector('[name="verificacion_social_fecha"]')?.value || ''}`);
+        write(`Verificación técnica por: ${form.querySelector('[name="verificacion_tecnica_por"]')?.value || ''}`);
+        write(`Fecha verificación técnica: ${form.querySelector('[name="verificacion_tecnica_fecha"]')?.value || ''}`);
+        write(`Observaciones: ${form.querySelector('[name="observaciones"]')?.value || ''}`);
+
+        const nombreArchivoBase = b_nombre ? b_nombre.replace(/[^a-zA-Z0-9_\- ]/g, '').trim().replace(/\s+/g, "_") : "Beneficiario";
+        const filename = `Formulario_GrupoFe_${nombreArchivoBase}.pdf`;
+
+        doc.save(filename);
+
+        setTimeout(() => {
+          const destinatario = "informaciongrupofe@gmail.com";
+          const asunto = encodeURIComponent("Formulario Bono Familiar de Vivienda – Grupo Fe");
+          const cuerpo = encodeURIComponent("Adjunto el formulario de aplicación al Bono Familiar de Vivienda.\n\nSaludos.");
+          window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${destinatario}&su=${asunto}&body=${cuerpo}`, "_blank");
+        }, 800);
+
+      });
+    }
 
   });
   </script>
+
   <script src="{{ url_for('static', filename='formulario.js') }}"></script>
+
 </body>
 </html>

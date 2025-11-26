@@ -331,36 +331,47 @@ body {
 /* =========================
    RESPONSIVE
 ========================= */
-@media (max-width: 992px) {
-  .hero-text h1 {
-    font-size: 2.5rem;
-  }
-}
-
 @media (max-width: 768px) {
-  .hero {
-    flex-direction: column-reverse;
-    text-align: center;
+
+  /* Mostrar botón hamburguesa */
+  .menu-toggle {
+    display: flex;
   }
 
-  .hero-image {
+  /* Menu móvil */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 65%;           /* Ajustá el ancho si querés más/menos */
+    height: 100vh;        /* Alto completo */
+    background: #000;     /* NEGRO SÓLIDO */
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    gap: 2rem;
+    opacity: 1;
+    pointer-events: none;
+    transition: right 0.3s ease;
   }
 
-  .hero-image img {
-    max-width: 90%;
+  /* Cuando está activo */
+  .nav-links.active {
+    right: 0;
+    pointer-events: auto;
   }
-}
 
-@media (max-width: 480px) {
-  .hero-text h1 {
-    font-size: 2rem;
+  /* Links más grandes */
+  .nav-links a {
+    font-size: 1.3rem;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    color: #F7F3EC; /* Crema */
   }
-  .cta-button {
-    padding: 0.8rem 2rem;
-    font-size: 0.95rem;
-  }
-  .card {
-    padding: 1.5rem;
+
+  /* Hover en móvil */
+  .nav-links a:hover {
+    color: #C6A052; /* dorado */
   }
 }

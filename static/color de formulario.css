@@ -248,3 +248,118 @@ nav ul li a {
 h2 {
   color: rgba(13, 26, 33, 0.98); /* Negro */
 }
+
+
+
+/* ======= NAVBAR GLOBAL SUPERIOR (PONER AL FINAL DEL CSS) ======= */
+.navbar-global {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 99999; /* NO LO TAPARÁ NADA */
+  background: #0D1A21;
+  color: #F7F3EC;
+  font-family: "Poppins", sans-serif;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.navbar-global .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.navbar-global .logo img {
+  height: 50px;
+  width: auto;
+}
+
+.navbar-global .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.navbar-global .nav-links li a {
+  color: #F7F3EC;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 5px 0;
+  position: relative;
+}
+
+.navbar-global .nav-links li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #C6A052;
+  transition: 0.3s;
+}
+
+.navbar-global .nav-links li a:hover::after,
+.navbar-global .nav-links li a.active::after {
+  width: 100%;
+}
+
+.navbar-global .nav-links li a:hover,
+.navbar-global .nav-links li a.active {
+  color: #C6A052;
+  transform: translateY(-2px);
+  transition: 0.3s;
+}
+
+.navbar-global .hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.navbar-global .hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #C6A052;
+  border-radius: 2px;
+}
+
+@media(max-width:768px){
+  .navbar-global .hamburger { display: flex; }
+
+  .navbar-global .nav-links {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background: #0D1A21;
+    display: none;
+    gap: 0;
+  }
+
+  .navbar-global .nav-links.active {
+    display: flex;
+  }
+
+  .navbar-global .nav-links li {
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+  }
+
+  .navbar-global .nav-links li a {
+    font-size: 1.2rem;
+  }
+}
+/* ============================================================ */
