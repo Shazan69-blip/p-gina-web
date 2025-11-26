@@ -349,54 +349,25 @@ h2 {
 }
 
 /* ====== MODO MÓVIL ====== */
-@media(max-width:768px) {
+/* Botón móvil del menú */
+.menu-toggle {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #C6A052;
+  cursor: pointer;
+  display: none;
+  position: absolute; /* Permitimos moverlo libre */
+  top: 15px;          /* distancia del borde superior */
+  right: 20px;        /* Pegado a la ESQUINA derecha ✅ */
+  line-height: 1;
+  font-weight: bold;
+  z-index: 99999;     /* Siempre arriba */
+}
 
-  /* Mostrar solo el "=" */
-  .navbar-global .menu-toggle {
+/* Mostrarlo solo en móvil */
+@media (max-width: 768px) {
+  .menu-toggle {
     display: block;
   }
-
-  /* Ocultar menú escritorio */
-  .navbar-global nav ul {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 75%;
-    height: 100vh;
-    background: #000;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    z-index: 1600;
-    transition: right 0.35s ease;
-  }
-
-  /* Menú entra desde derecha */
-  .navbar-global nav ul.active {
-    right: 0;
-  }
-
-  /* Links más grandes en móvil */
-  .navbar-global nav ul li a {
-    font-size: 1.4rem;
-    color: #F7F3EC;
-  }
-
-  .navbar-global nav ul li a:hover {
-    color: #C6A052;
-  }
-
-}
-
-/* ====== FORMULARIO & GENERAL ====== */
-body {
-  padding-top: 130px !important;
-  background: #F7F3EC;
-  font-family: "Poppins", sans-serif;
-  color: #1F2A33;
-}
-
-h2 {
-  color: rgba(13, 26, 33, 0.98);
 }
