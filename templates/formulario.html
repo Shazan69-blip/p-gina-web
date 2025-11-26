@@ -210,9 +210,20 @@
       <small>Documento de uso interno – Grupo Fe Constructora de Vivienda de Interés Social</small>
     </footer>
   </main>
+  
 
   <!-- ======= JAVASCRIPT CORREGIDO ======= -->
   <script>
+    const toggle = document.querySelector(".menu-toggle");
+const menu = document.querySelector("nav ul");
+const overlay = document.querySelector(".nav-overlay");
+
+toggle.addEventListener("click", () => {
+  menu.classList.toggle("active");
+  overlay.classList.toggle("active");
+  toggle.textContent = toggle.textContent === "=" ? "✕" : "=";
+});
+
   document.addEventListener("DOMContentLoaded", () => {
 
     console.log("✅ JavaScript sí fue leído correctamente");

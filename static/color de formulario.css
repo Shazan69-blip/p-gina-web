@@ -251,7 +251,7 @@ h2 {
 
 
 
-/* ======= NAVBAR GLOBAL SUPERIOR (PONER AL FINAL DEL CSS) ======= */
+/* ====== NAVBAR GLOBAL ====== */
 .navbar-global {
   display: flex;
   justify-content: space-between;
@@ -261,7 +261,7 @@ h2 {
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 99999; /* NO LO TAPARÁ NADA */
+  z-index: 99999;
   background: #0D1A21;
   color: #F7F3EC;
   font-family: "Poppins", sans-serif;
@@ -282,23 +282,58 @@ h2 {
   width: auto;
 }
 
-.navbar-global .nav-links {
+/* Botón móvil (el "=") */
+.navbar-global .menu-toggle {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #C6A052;
+  cursor: pointer;
+  display: none;
+  line-height: 1;
+  font-weight: bold;
+  user-select: none;
+}
+
+/* Overlay negro que tapa TODO en móvil */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 1500;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.nav-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Menú normal escritorio */
+.navbar-global nav ul {
   list-style: none;
   display: flex;
   gap: 30px;
 }
 
-.navbar-global .nav-links li a {
+.navbar-global nav ul li a {
   color: #F7F3EC;
   text-decoration: none;
   font-weight: 500;
   font-size: 1rem;
-  padding: 5px 0;
   position: relative;
+  padding: 5px 0;
 }
 
-.navbar-global .nav-links li a::after {
-  content: "";
+.navbar-global nav ul li a:hover,
+.navbar-global nav ul li a.active {
+  color: #C6A052;
+}
+
+.navbar-global nav ul li a::after {
+  content:"";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -308,58 +343,60 @@ h2 {
   transition: 0.3s;
 }
 
-.navbar-global .nav-links li a:hover::after,
-.navbar-global .nav-links li a.active::after {
+.navbar-global nav ul li a:hover::after,
+.navbar-global nav ul li a.active::after {
   width: 100%;
 }
 
-.navbar-global .nav-links li a:hover,
-.navbar-global .nav-links li a.active {
-  color: #C6A052;
-  transform: translateY(-2px);
-  transition: 0.3s;
-}
+/* ====== MODO MÓVIL ====== */
+@media(max-width:768px) {
 
-.navbar-global .hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 5px;
-}
+  /* Mostrar solo el "=" */
+  .navbar-global .menu-toggle {
+    display: block;
+  }
 
-.navbar-global .hamburger span {
-  width: 25px;
-  height: 3px;
-  background: #C6A052;
-  border-radius: 2px;
-}
-
-@media(max-width:768px){
-  .navbar-global .hamburger { display: flex; }
-
-  .navbar-global .nav-links {
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
+  /* Ocultar menú escritorio */
+  .navbar-global nav ul {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 75%;
+    height: 100vh;
+    background: #000;
     flex-direction: column;
-    background: #0D1A21;
-    display: none;
-    gap: 0;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    z-index: 1600;
+    transition: right 0.35s ease;
   }
 
-  .navbar-global .nav-links.active {
-    display: flex;
+  /* Menú entra desde derecha */
+  .navbar-global nav ul.active {
+    right: 0;
   }
 
-  .navbar-global .nav-links li {
-    width: 100%;
-    text-align: center;
-    padding: 15px 0;
+  /* Links más grandes en móvil */
+  .navbar-global nav ul li a {
+    font-size: 1.4rem;
+    color: #F7F3EC;
   }
 
-  .navbar-global .nav-links li a {
-    font-size: 1.2rem;
+  .navbar-global nav ul li a:hover {
+    color: #C6A052;
   }
+
 }
-/* ============================================================ */
+
+/* ====== FORMULARIO & GENERAL ====== */
+body {
+  padding-top: 130px !important;
+  background: #F7F3EC;
+  font-family: "Poppins", sans-serif;
+  color: #1F2A33;
+}
+
+h2 {
+  color: rgba(13, 26, 33, 0.98);
+}
