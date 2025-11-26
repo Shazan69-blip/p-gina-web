@@ -22,29 +22,26 @@
 <body>
 
   <!-- HEADER -->
-  <header class="header">
-    <div class="container nav-container">
-      <div class="logo">
-        🏗️ <span>GRUPO FE</span>
-      </div>
+<!-- Navbar Premium -->
+<nav class="navbar">
+  <div class="logo">
+    <img src="{{ url_for('static', filename='logo de arriba.png') }}" alt="Logo">
+    <span></span>
+  </div>
+  <div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="/" class="active">Inicio</a></li>
+    <li><a href="/acerca">Acerca de Nosotros</a></li>
+    <li><a href="/servicios">Servicios</a></li>
+    <li><a href="/formulario">Formulario</a></li>
+    <li><a href="/contacto">Contacto</a></li>
+  </ul>
+</nav>
 
-      <!-- Botón Hamburguesa -->
-      <div class="menu-toggle" id="menuToggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
-      <!-- Menú de Navegación -->
-      <ul class="nav-links" id="navMenu">
-        <li><a href="/" class="active">Inicio</a></li>
-        <li><a href="/acerca">Acerca de nosotros</a></li>
-        <li><a href="/servicios">Servicios</a></li>
-        <li><a href="/formulario">Formulario</a></li>
-        <li><a href="/contacto">Contacto</a></li>
-      </ul>
-    </div>
-  </header>
 
   <!-- HERO -->
   <section class="hero container">
@@ -101,6 +98,36 @@
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
   <!-- SCRIPT NAVBAR -->
+
+<script>
+const navbar = document.querySelector('.navbar');
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+// Activar menú hamburguesa
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+  hamburger.classList.toggle('open');
+});
+
+// Navbar al hacer scroll
+window.addEventListener('scroll', () => {
+  if(window.scrollY > 50){
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
+</script>
+
+
+
+
+
+
+
+
+
   <script>
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
