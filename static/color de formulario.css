@@ -1,128 +1,111 @@
-/* ======= ESTILO GENERAL ======= */
-body {
-  font-family: "Poppins", sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #F7F3EC; /* Crema suave */
-  color: #C6A052; /* amarillo */
-  line-height: 1.6;
-  overflow-x: hidden;
-  padding-top: 130px !important;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
-
-/* ✅ NAVBAR REEMPLAZADO (igual al del primer CSS) */
+/* ====== NAVBAR ====== */
 .navbar {
-  padding: 15px 25px;
-  background: #0D1A21; /* Azul petróleo */
-  backdrop-filter: blur(10px);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: #0D1A21; /* Azul petróleo oscuro */
+  color: #F7F3EC; /* Crema */
+  padding: 15px 30px;
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
-  z-index: 3000;
-  border-bottom: 1px solid rgba(198,160,82,0.25); /* Dorado suave */
-  transition: background 0.3s ease;
-  box-sizing: border-box;
+  top: 0;
+  z-index: 2000;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
-.navbar .logo img {
-  height: 40px;
-  width: auto;
-  display: block;
-  object-fit: contain;
-}
-
-/* Lista principal */
-.navbar ul {
+.logo {
   display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.logo-img {
+  height: 45px;
+  width: auto;
+  border-radius: 6px;
+}
+
+/* Botón hamburguesa */
+.menu-toggle {
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: #F7F3EC;
+  cursor: pointer;
+  display: none;
+}
+
+nav {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+nav ul {
   list-style: none;
-  gap: 18px;
-  margin: 0;
-  padding: 0;
-  flex-wrap: nowrap;
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   overflow: visible;
 }
 
-.navbar li a {
-  text-decoration: none;
+nav ul li {
+  overflow: visible;
+}
+
+nav ul li a {
   color: #F7F3EC; /* Crema */
+  text-decoration: none;
   font-weight: 500;
-  font-size: 1em;
-  white-space: nowrap;
-  transition: color 0.3s ease, transform 0.2s ease;
+  padding: 5px 10px;
+  transition: color 0.3s ease;
 }
 
-.navbar li a:hover,
-.navbar li a.activo {
-  color: #C6A052; /* Dorado premium */
-  transform: translateY(-2px);
+nav ul li a:hover,
+nav ul li a.activo {
+  color: #c68e52; /* Dorado */
 }
 
-/* Botón 3 líneas (hamburguesa) */
-.menu-toggle {
+/* ====== NAV OVERLAY MÓVIL ====== */
+.nav-overlay {
   display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 6px;
-  margin-right: 10px;
-  padding: 8px;
-  border-radius: 8px;
-  transition: background 0.3s ease;
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  z-index: 9999;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 1500;
 }
 
-.menu-toggle span {
-  width: 25px;
-  height: 3px;
-  background: #C6A052; /* Dorado */
-  border-radius: 3px;
-  transition: all 0.3s ease;
-}
-
-.menu-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translateY(8px);
-}
-.menu-toggle.active span:nth-child(2) {
-  opacity: 0;
-}
-.menu-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translateY(-8px);
-}
-
-/* ✅ MENÚ MOVIL IGUAL AL PRIMER CSS */
-@media (max-width: 1024px) {
-  .navbar ul {
-    position: fixed;
-    top: 65px;
-    right: -100%;
-    width: 100%;
-    height: calc(100vh - 65px);
-    background: #0D1A21;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    transition: right 0.4s ease;
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
   }
 
-  .navbar ul.active {
+  nav ul {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    background: #0D1A21;
+    flex-direction: column;
+    width: 70%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    transition: right 0.3s ease;
+    z-index: 1600;
+    padding-bottom: 50px;
+  }
+
+  nav ul.active {
     right: 0;
   }
 
-  .menu-toggle {
-    display: flex;
+  .nav-overlay.active {
+    display: block;
   }
 
-  .navbar li a {
+  nav ul li a {
     font-size: 1.3em;
   }
 }
@@ -160,6 +143,13 @@ body {
 }
 
 /* ====== FORMULARIO ====== */
+body {
+  padding-top: 90px;
+  background: #F7F3EC; /* Crema suave */
+  color: #C6A052; /* amarillo */ /* aqui*/
+  font-family: "Poppins", sans-serif;
+}
+
 .contenedor {
   margin-top: 20px;
   padding: 20px;
@@ -169,7 +159,7 @@ body {
 }
 
 .card {
-  background: #0D1A29;
+  background: #0D1A29; /* Azul petróleo oscuro */
   border-radius: 12px;
   padding: 20px;
   margin-bottom: 25px;
@@ -208,6 +198,42 @@ input, select, textarea {
   color: #555;
 }
 
+/* === FIX FINAL NAVBAR CORTADO === */
+
+body {
+  padding-top: 130px !important;
+  background: #F7F3EC;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  flex-wrap: wrap;
+  overflow: visible;
+  background: #0D1A21;
+  padding-bottom: 10px;
+  z-index: 3000;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 25px;
+  overflow: visible;
+}
+
+nav ul li {
+  overflow: visible;
+}
+
+nav ul li a {
+  color: #F7F3EC;
+  white-space: nowrap;
+}
+
 @media (max-width: 768px) {
   nav ul {
     height: auto;
@@ -217,6 +243,196 @@ input, select, textarea {
   }
 }
 
+
 h2 {
   color: rgba(13, 26, 33, 0.98); /* Negro */
+}
+
+
+
+/* ====== NAVBAR GLOBAL ====== */
+.navbar-global {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  background: #0D1A21;
+  color: #F7F3EC;
+  font-family: "Poppins", sans-serif;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.navbar-global .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.navbar-global .logo img {
+  height: 50px;
+  width: auto;
+}
+
+/* Botón móvil (el "=") */
+.navbar-global .menu-toggle {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #C6A052;
+  cursor: pointer;
+  display: none;
+  line-height: 1;
+  font-weight: bold;
+  user-select: none;
+}
+
+/* Overlay negro que tapa TODO en móvil */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 1500;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.nav-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Menú normal escritorio */
+.navbar-global nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.navbar-global nav ul li a {
+  color: #F7F3EC;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  position: relative;
+  padding: 5px 0;
+}
+
+.navbar-global nav ul li a:hover,
+.navbar-global nav ul li a.active {
+  color: #C6A052;
+}
+
+.navbar-global nav ul li a::after {
+  content:"";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #C6A052;
+  transition: 0.3s;
+}
+
+.navbar-global nav ul li a:hover::after,
+.navbar-global nav ul li a.active::after {
+  width: 100%;
+}
+
+/* ====== MODO MÓVIL ====== */
+/* Botón móvil del menú */
+.menu-toggle {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #C6A052;
+  cursor: pointer;
+  display: none;
+  position: absolute; /* Permitimos moverlo libre */
+  top: 15px;          /* distancia del borde superior */
+  right: 20px;        /* Pegado a la ESQUINA derecha ✅ */
+  line-height: 1;
+  font-weight: bold;
+  z-index: 99999;     /* Siempre arriba */
+}
+
+/* Mostrarlo solo en móvil */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+}
+/* ====== NAVBAR SUPERIOR ====== */
+.navbar {
+  padding: 15px 30px;
+  background: #0D1A21;
+  color: #F7F3EC;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+}
+
+/* ====== BOTÓN HAMBURGUESA (IDENTICO AL PRIMERO) ====== */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 18px;
+  right: 30px;
+  z-index: 2100;
+  padding: 5px;
+  margin: 0;
+}
+
+.menu-toggle span {
+  width: 30px;         /* mismo largo ✅ */
+  height: 4px;         /* mismo grosor ✅ */
+  background: #C6A052; /* mismo amarillo ✅ */
+  border-radius: 5px;  /* mismas esquinas ✅ */
+  display: block;
+  margin: 3px 0;       /* misma separación ✅ */
+}
+
+/* Mostrar en móvil */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .navbar nav ul {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    background: #0D1A21;
+    flex-direction: column;
+    width: 70%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    transition: right 0.3s ease;
+    z-index: 2000;
+  }
+
+  .navbar nav ul.active {
+    right: 0;
+  }
 }
