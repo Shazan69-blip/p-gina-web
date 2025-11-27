@@ -1,257 +1,24 @@
-/* ====== NAVBAR ====== */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #0D1A21; /* Azul petróleo oscuro */
-  color: #F7F3EC; /* Crema */
-  padding: 15px 30px;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 2000;
-  flex-wrap: wrap;
-  gap: 15px;
+/* =========================
+   RESET GLOBAL
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-}
-.logo-img {
-  height: 45px;
-  width: auto;
-  border-radius: 6px;
-}
-
-/* Botón hamburguesa */
-.menu-toggle {
-  font-size: 1.8rem;
-  background: none;
-  border: none;
-  color: #F7F3EC;
-  cursor: pointer;
-  display: none;
-}
-
-nav {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  overflow: visible;
-}
-
-nav ul li {
-  overflow: visible;
-}
-
-nav ul li a {
-  color: #F7F3EC; /* Crema */
-  text-decoration: none;
-  font-weight: 500;
-  padding: 5px 10px;
-  transition: color 0.3s ease;
-}
-
-nav ul li a:hover,
-nav ul li a.activo {
-  color: #c68e52; /* Dorado */
-}
-
-/* ====== NAV OVERLAY MÓVIL ====== */
-.nav-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
-  z-index: 1500;
-}
-
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  nav ul {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    background: #0D1A21;
-    flex-direction: column;
-    width: 70%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-    transition: right 0.3s ease;
-    z-index: 1600;
-    padding-bottom: 50px;
-  }
-
-  nav ul.active {
-    right: 0;
-  }
-
-  .nav-overlay.active {
-    display: block;
-  }
-
-  nav ul li a {
-    font-size: 1.3em;
-  }
-}
-
-/* ====== BOTONES ====== */
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: none;
-}
-
-.btn-gold {
-  background: #C6A052;
-  color: #0D1A21;
-}
-
-.btn-outline {
-  border: 2px solid #C6A052;
-  color: #C6A052;
-  background: none;
-}
-
-.btn-gold:hover {
-  background: #d7b774;
-}
-
-.btn-outline:hover {
-  background: #C6A052;
-  color: #0D1A21;
-}
-
-/* ====== FORMULARIO ====== */
 body {
-  padding-top: 90px;
-  background: #F7F3EC; /* Crema suave */
-  color: #C6A052; /* amarillo */ /* aqui*/
   font-family: "Poppins", sans-serif;
-}
-
-.contenedor {
-  margin-top: 20px;
-  padding: 20px;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.card {
-  background: #0D1A29; /* Azul petróleo oscuro */
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 25px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  border: 1px solid #e5e2dc;
-}
-
-label {
-  display: block;
-  margin-bottom: 10px;
-  color: #C6A052;
-}
-
-input, select, textarea {
-  width: 100%;
-  padding: 8px;
-  border-radius: 6px;
-  border: 1px solid #ddd;
-  margin-top: 5px;
-  background: #fff;
-  color: #0D1A21;
-}
-
-.top-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.foot {
-  text-align: center;
-  margin-top: 50px;
-  font-size: 0.9rem;
-  color: #555;
-}
-
-/* === FIX FINAL NAVBAR CORTADO === */
-
-body {
-  padding-top: 130px !important;
   background: #F7F3EC;
+  color: #C6A052;
+  padding-top: 120px; /* espacio para navbar fijo */
+  line-height: 1.6;
 }
 
+/* =========================
+   NAVBAR PREMIUM (IGUAL ACERCA DE NOSOTROS)
+========================= */
 .navbar {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  flex-wrap: wrap;
-  overflow: visible;
-  background: #0D1A21;
-  padding-bottom: 10px;
-  z-index: 3000;
-}
-
-nav ul {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 25px;
-  overflow: visible;
-}
-
-nav ul li {
-  overflow: visible;
-}
-
-nav ul li a {
-  color: #F7F3EC;
-  white-space: nowrap;
-}
-
-@media (max-width: 768px) {
-  nav ul {
-    height: auto;
-    max-height: 100vh;
-    overflow-y: auto;
-    padding-bottom: 70px;
-  }
-}
-
-
-h2 {
-  color: rgba(13, 26, 33, 0.98); /* Negro */
-}
-
-
-
-/* ====== NAVBAR GLOBAL ====== */
-.navbar-global {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -259,80 +26,57 @@ h2 {
   position: fixed;
   width: 100%;
   top: 0;
-  left: 0;
-  z-index: 99999;
+  z-index: 1000;
   background: #0D1A21;
-  color: #F7F3EC;
-  font-family: "Poppins", sans-serif;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  min-height: 80px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.4s ease;
 }
 
-.navbar-global .logo {
+.navbar.scrolled {
+  background: #0D1A21;
+}
+
+/* LOGO */
+.logo {
   display: flex;
   align-items: center;
   gap: 10px;
   font-size: 1.5rem;
   font-weight: bold;
-  cursor: pointer;
-}
-
-.navbar-global .logo img {
-  height: 50px;
-  width: auto;
-}
-
-/* Botón móvil (el "=") */
-.navbar-global .menu-toggle {
-  font-size: 2rem;
-  background: none;
-  border: none;
   color: #C6A052;
   cursor: pointer;
-  display: none;
-  line-height: 1;
-  font-weight: bold;
-  user-select: none;
 }
 
-/* Overlay negro que tapa TODO en móvil */
-.nav-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
-  z-index: 1500;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+.logo img {
+  height: 50px;
+  width: auto;
+  transition: transform 0.3s ease;
 }
 
-.nav-overlay.active {
-  display: block;
-  opacity: 1;
+.logo:hover img {
+  transform: rotate(-5deg) scale(1.1);
 }
 
-/* Menú normal escritorio */
-.navbar-global nav ul {
+/* LINKS DESKTOP */
+.nav-links {
   list-style: none;
   display: flex;
   gap: 30px;
 }
 
-.navbar-global nav ul li a {
+.nav-links li a {
   color: #F7F3EC;
   text-decoration: none;
   font-weight: 500;
   font-size: 1rem;
-  position: relative;
   padding: 5px 0;
+  position: relative;
+  transition: all 0.3s ease;
 }
 
-.navbar-global nav ul li a:hover,
-.navbar-global nav ul li a.active {
-  color: #C6A052;
-}
-
-.navbar-global nav ul li a::after {
-  content:"";
+.nav-links li a::after {
+  content: '';
   position: absolute;
   bottom: 0;
   left: 0;
@@ -342,157 +86,55 @@ h2 {
   transition: 0.3s;
 }
 
-.navbar-global nav ul li a:hover::after,
-.navbar-global nav ul li a.active::after {
+.nav-links li a:hover::after,
+.nav-links li a.active::after {
   width: 100%;
-}
-
-/* ====== MODO MÓVIL ====== */
-/* Botón móvil del menú */
-.menu-toggle {
-  font-size: 2rem;
-  background: none;
-  border: none;
-  color: #C6A052;
-  cursor: pointer;
-  display: none;
-  position: absolute; /* Permitimos moverlo libre */
-  top: 15px;          /* distancia del borde superior */
-  right: 20px;        /* Pegado a la ESQUINA derecha ✅ */
-  line-height: 1;
-  font-weight: bold;
-  z-index: 99999;     /* Siempre arriba */
-}
-
-/* Mostrarlo solo en móvil */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-}
-/* ====== NAVBAR SUPERIOR ====== */
-.navbar {
-  padding: 15px 30px;
-  background: #0D1A21;
-  color: #F7F3EC;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 2000;
-}
-
-/* ====== BOTÓN HAMBURGUESA (IDENTICO AL PRIMERO) ====== */
-/* NAVBAR PREMIUM */
-.navbar {
-  display:flex; 
-  justify-content:space-between; 
-  align-items:center;
-  padding:15px 40px;
-  position:fixed; 
-  width:100%; 
-  top:0; 
-  z-index:1000;
-  transition: all 0.4s ease;
-  background: #0D1A21; /* Azul petróleo oscuro */
-  box-shadow:0 4px 15px rgba(0,0,0,0.1);
-}
-
-.navbar.scrolled { background:#0D1A21; }
-
-.logo { 
-  display:flex; 
-  align-items:center; 
-  gap:10px; 
-  font-size:1.5rem; 
-  font-weight:bold; 
-  color:#C6A052; 
-  cursor:pointer; 
-}
-
-.logo img { 
-  height:50px; 
-  width:auto; 
-  transition: transform 0.3s ease; 
-}
-.logo:hover img { 
-  transform: rotate(-5deg) scale(1.1); 
-}
-
-.nav-links { 
-  list-style:none; 
-  display:flex; 
-  gap:30px; 
-}
-
-.nav-links li a {
-  color:#F7F3EC; /* Crema */
-  text-decoration:none; 
-  font-weight:500; 
-  font-size:1rem;
-  position:relative; 
-  padding:5px 0; 
-  transition: all 0.3s ease;
-}
-
-.nav-links li a::after {
-  content:''; 
-  position:absolute; 
-  bottom:0; 
-  left:0;
-  width:0%; 
-  height:2px; 
-  background:#C6A052; 
-  transition:0.3s;
-}
-
-.nav-links li a:hover::after, 
-.nav-links li a.active::after { 
-  width:100%; 
 }
 
 .nav-links li a:hover,
-.nav-links li a.active { 
-  color:#C6A052; 
-  transform:translateY(-2px); 
+.nav-links li a.active {
+  color: #C6A052;
+  transform: translateY(-2px);
 }
 
 /* HAMBURGER */
-.hamburger { 
-  display:none; 
-  flex-direction:column; 
-  cursor:pointer; 
-  gap:5px; 
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
 }
-.hamburger span { 
-  width:25px; 
-  height:3px; 
-  background:#C6A052; 
-  border-radius:2px; 
-  transition:all 0.3s ease; 
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #C6A052;
+  border-radius: 2px;
+  transition: all 0.3s ease;
 }
 
 /* HAMBURGER OPEN ANIMATION */
 .hamburger.open span:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
-.hamburger.open span:nth-child(2) { opacity:0; }
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
 .hamburger.open span:nth-child(3) {
   transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* RESPONSIVE */
+/* =========================
+   RESPONSIVE MÓVIL (MENÚ MITAD SUPERIOR)
+========================= */
+/* =========================
+   RESPONSIVE MÓVIL (MENÚ MITAD SUPERIOR)
+========================= */
 @media(max-width:768px){
   .hamburger { display:flex; }
 
   .nav-links { 
-    position:absolute; 
-    top:70px; 
-    left:0; 
-    width:100%; 
+    position:absolute; top:70px; left:0; width:100%; 
     flex-direction:column; 
     background:#0D1A21; 
     display:none; 
@@ -504,3 +146,22 @@ h2 {
   .nav-links li { width:100%; text-align:center; padding:15px 0; }
   .nav-links li a { font-size:1.2rem; }
 }
+
+
+
+/* =========================
+   BOTONES Y FORMULARIOS (No se toca)
+========================= */
+.btn { display:inline-block; padding:10px 20px; border-radius:8px; font-weight:600; text-decoration:none; cursor:pointer; border:none; transition:all 0.3s ease; }
+.btn-gold { background:#C6A052; color:#0D1A21; }
+.btn-gold:hover { transform:scale(1.05); opacity:0.9; }
+.btn-outline { background:none; border:2px solid #C6A052; color:#C6A052; }
+.btn-outline:hover { background:#C6A052; color:#0D1A21; transform:scale(1.05); }
+
+.contenedor { max-width:900px; margin:auto; padding:20px; }
+.card { background:#0D1A29; border-radius:12px; padding:20px; margin-bottom:25px; box-shadow:0 4px 10px rgba(0,0,0,0.15); border:1px solid #e5e2dc; }
+label { display:block; margin-bottom:10px; color:#C6A052; font-weight:500; }
+input, select, textarea { width:100%; padding:8px; border-radius:6px; border:1px solid #ddd; margin-top:5px; background:#fff; color:#0D1A21; }
+h2 { color:rgba(13,26,33,0.98); text-align:center; margin-bottom:20px; }
+.top-actions { display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin-bottom:20px; }
+.foot { text-align:center; margin-top:50px; font-size:0.9rem; color:#555; }
