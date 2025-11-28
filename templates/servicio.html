@@ -7,27 +7,27 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='color de servicios.css') }}">
 </head>
 <body>
-
-<header class="navbar">
+  
+<nav class="navbar">
   <div class="logo">
-    <img src="{{ url_for('static', filename='logo de arriba.png') }}" alt="Logo Grupo FE">
+    <img src="{{ url_for('static', filename='logo de arriba.png') }}" alt="Logo">
+  </div>
+
+  <div class="hamburger">
+    <span></span>
+    <span></span>
     <span></span>
   </div>
 
-  <div class="menu-toggle" id="menuToggle">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-
-  <ul id="navMenu">
+  <ul class="nav-links">
     <li><a href="/">Inicio</a></li>
     <li><a href="/acerca">Acerca de Nosotros</a></li>
-    <li><a href="/servicios">Servicios</a></li>
+    <li><a href="/servicios" class="active">Servicios</a></li>
     <li><a href="/formulario">Formulario</a></li>
     <li><a href="/contacto">Contacto</a></li>
   </ul>
-</header>
+</nav>
+
 
 
   <section class="servicios" id="seccion-servicios">
@@ -228,19 +228,16 @@ Las personas mayores de 65 años pueden acceder a un bono especial para mejorar 
 
 
 
-
 <script>
 const navbar = document.querySelector('.navbar');
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 
-// Activar menú hamburguesa
 hamburger.addEventListener('click', () => {
   navLinks.classList.toggle('active');
   hamburger.classList.toggle('open');
 });
 
-// Navbar al hacer scroll
 window.addEventListener('scroll', () => {
   if(window.scrollY > 50){
     navbar.classList.add('scrolled');

@@ -13,116 +13,199 @@ body {
 
 /* ======= NAVBAR ======= */
 /* ======= NAVBAR MODERNA Y RESPONSIVE ======= */
+/* ======= NAVBAR PREMIUM (IDÉNTICA EN COMPORTAMIENTO A ACERCA) ======= */
+/* ========= NAVBAR PREMIUM ========= */
+/* ===== RESET ===== */
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family:"Poppins", sans-serif;
+  background:#F7F3EC;
+  color:#1F2A33;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* ===== NAVBAR PREMIUM (IDÉNTICA A ACERCA DE NOSOTROS) ===== */
 .navbar {
-  padding: 15px 25px;
-  background: #0D1A21; /* Azul petróleo */
-  backdrop-filter: blur(10px);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  border-bottom: 1px solid rgba(198,160,82,0.25); /* Dorado suave */
-  transition: background 0.3s ease;
-  box-sizing: border-box;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 40px;
+  position:fixed;
+  width:100%;
+  top:0;
+  left:0;
+  z-index:10000;
+  background:#0D1A21;
+  box-shadow:0 4px 15px rgba(0,0,0,0.1);
+  transition: background 0.4s ease;
 }
 
-.navbar .logo img {
-  height: 40px;
-  width: auto;
-  display: block;
-  object-fit: contain;
+/* Logo */
+.logo {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:1.5rem;
+  font-weight:bold;
+  color:#C6A052;
+  cursor:pointer;
 }
 
-/* Lista principal */
-.navbar ul {
-  display: flex;
+.logo img {
+  height:50px; /* 👈 mismo tamaño exacto del original */
+  width:auto;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover img {
+  transform: rotate(-5deg) scale(1.1);
+}
+
+/* Links en PC */
+.nav-links {
+  list-style:none;
+  display:flex;
+  gap:30px;
+}
+
+.nav-links li a {
+  color:#F7F3EC;
+  text-decoration:none;
+  font-weight:500;
+  font-size:1rem; /* 👈 tamaño exacto en PC */
+  white-space:nowrap;
+  position:relative;
+  padding:5px 0;
+  transition:all 0.3s ease;
+}
+
+/* Línea dorada bajo hover */
+.nav-links li a::after {
+  content:'';
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:0%;
+  height:2px;
+  background:#C6A052;
+  transition:0.3s;
+}
+
+.nav-links li a:hover::after,
+.nav-links li a.active::after {
+  width:100%;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  color:#C6A052;
+  transform:translateY(-2px);
+}
+
+/* Hamburger */
+.hamburger {
+  display:none;
+  flex-direction:column;
+  cursor:pointer;
+  gap:5px;
+}
+
+.hamburger span {
+  width:28px;
+  height:3px;
+  background:#C6A052;
+  border-radius:3px;
+  transition:all 0.3s ease;
+}
+
+/* ===== RESPONSIVE MÓVIL (IDÉNTICO A ACERCA DE NOSOTROS) ===== */
+/* ===== ESTADO BASE (PC) — links visibles en computadora ===== */
+.nav-links {
   list-style: none;
-  gap: 18px;
-  margin: 0;
-  padding: 0;
-  flex-wrap: nowrap;
+  display: flex;       /* 👈 ahora sí se ve en PC */
+  gap: 30px;
+  margin-left:auto;
 }
 
-.navbar li a {
-  text-decoration: none;
-  color: #F7F3EC; /* Crema */
-  font-weight: 500;
-  font-size: 1em;
-  transition: color 0.3s ease, transform 0.2s ease;
-  white-space: nowrap;
-}
+/* ===== RESPONSIVE MOBILE (solo afecta móvil) ===== */
+@media (max-width:768px){
 
-.navbar li a:hover {
-  color: #C6A052; /* Dorado premium */
-  transform: translateY(-2px);
-}
-
-/* ======= BOTÓN MENÚ (MÓVIL) ======= */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 6px;
-  margin-right: 10px;
-  padding: 8px;
-  border-radius: 8px;
-  transition: background 0.3s ease;
-}
-
-.menu-toggle span {
-  width: 25px;
-  height: 3px;
-  background: #C6A052; /* Dorado */
-  border-radius: 3px;
-  transition: all 0.3s ease;
-}
-
-.menu-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translateY(8px);
-}
-.menu-toggle.active span:nth-child(2) {
-  opacity: 0;
-}
-.menu-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translateY(-8px);
-}
-
-/* ======= MENÚ RESPONSIVE ======= */
-@media (max-width: 1024px) {
-  .navbar {
-    padding: 15px 20px;
+  /* Ícono del menú a la derecha, igual que ya te servía */
+  .hamburger {
+    display:flex !important;
+    position:relative;
+    top:0;
+    right:0;
+    margin-left:auto;
+    z-index:9999;
   }
 
-  .navbar ul {
-    position: fixed;
-    top: 65px;
-    right: -100%;
-    width: 100%;
-    height: calc(100vh - 65px);
-    background: #0D1A21; /* Azul petróleo */
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    transition: right 0.4s ease;
+  .hamburger span {
+    width:25px;
+    height:3px;
+    background:#C6A052;
+    border-radius:2px;
+    transition:all 0.3s ease;
+    display:block;
   }
 
-  .navbar ul.active {
-    right: 0;
+  /* Animación de la X, igual que la que te funciona bien */
+  .hamburger.open span:nth-child(1){
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .hamburger.open span:nth-child(2){
+    opacity: 0;
+  }
+  .hamburger.open span:nth-child(3){
+    transform: rotate(-45deg) translate(6px, -6px);
   }
 
-  .menu-toggle {
-    display: flex;
+  /* Menú móvil sin scroll raro y con tamaño igual al original */
+  .nav-links {
+    display:none;
+    position:fixed;
+    top:70px;          /* MISMO top que el original */
+    left:0;
+    width:100%;        /* MISMO ancho que el original */
+
+    background:#0D1A21;
+    flex-direction:column;
+
+    justify-content:center; /* 👈 misma alineación visual centrada */
+    align-items:center;     /* 👈 centrado horizontal igual */
+
+    padding:20px 0;  /* 👈 menos alto para que no tape, pero muestra TODO */
+    gap:18px;        /* 👈 espacio entre links igual visualmente */
+
+    z-index:9000;
+
+    overflow:visible;   /* 👈 evita scroll raro */
+    max-height:none;    /* 👈 NO limita altura para que contacto sí salga */
   }
 
-  .navbar li a {
-    font-size: 1.3em;
+  .nav-links.active {
+    display:flex !important;
+  }
+
+  .nav-links li {
+    width:100%;
+    text-align:center;
+    padding:10px 0; /* 👈 mismo padding visual */
+  }
+
+  .nav-links li a {
+    font-size:1.2rem;
+    color:#F7F3EC;
+    text-decoration:none;
+    padding:0;
+    width:auto;
+    max-width:none;
+    display:inline-block;
   }
 }
+
 
 /* ======= SECCIÓN SERVICIOS ======= */
 .servicios {
@@ -496,111 +579,3 @@ body {
 
 
 
-
-/* NAVBAR PREMIUM */
-.navbar {
-  display:flex; 
-  justify-content:space-between; 
-  align-items:center;
-  padding:15px 40px;
-  position:fixed; 
-  width:100%; 
-  top:0; 
-  z-index:1000;
-  background:#0D1A21;
-  box-shadow:0 4px 15px rgba(0,0,0,0.1);
-  transition: background 0.4s ease;
-}
-
-.navbar.scrolled { background:#0D1A21; }
-
-.logo {
-  display:flex; 
-  align-items:center; 
-  gap:10px; 
-  font-size:1.5rem; 
-  font-weight:bold; 
-  color:#C6A052; 
-  cursor:pointer; 
-}
-
-.logo img { height:50px; width:auto; transition: transform 0.3s ease; }
-.logo:hover img { transform: rotate(-5deg) scale(1.1); }
-
-.nav-links {
-  list-style:none; 
-  display:flex; 
-  gap:30px;
-}
-
-.nav-links li a {
-  color:#F7F3EC; 
-  text-decoration:none; 
-  font-weight:500; 
-  font-size:1rem;
-  position:relative; 
-  padding:5px 0; 
-  transition: all 0.3s ease;
-}
-
-.nav-links li a::after {
-  content:''; 
-  position:absolute; 
-  bottom:0; 
-  left:0;
-  width:0%; 
-  height:2px; 
-  background:#C6A052; 
-  transition:0.3s;
-}
-
-.nav-links li a:hover::after,
-.nav-links li a.active::after {
-  width:100%;
-}
-
-.nav-links li a:hover,
-.nav-links li a.active {
-  color:#C6A052; 
-  transform:translateY(-2px); 
-}
-
-/* HAMBURGER */
-.hamburger {
-  display:none; 
-  flex-direction:column; 
-  cursor:pointer; 
-  gap:5px; 
-}
-.hamburger span { 
-  width:25px; 
-  height:3px; 
-  background:#C6A052; 
-  border-radius:2px; 
-  transition:all 0.3s ease; 
-}
-
-.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-.hamburger.open span:nth-child(2) { opacity:0; }
-.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  .hamburger { display:flex; }
-
-  .nav-links { 
-    position:absolute; 
-    top:70px; 
-    left:0; 
-    width:100%; 
-    flex-direction:column; 
-    background:#0D1A21; 
-    display:none; 
-    gap:0; 
-  }
-
-  .nav-links.active { display:flex; }
-
-  .nav-links li { width:100%; text-align:center; padding:15px 0; }
-  .nav-links li a { font-size:1.2rem; }
-}

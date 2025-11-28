@@ -206,3 +206,35 @@ footer .socials a:hover { color:#d7b774; transform:translateY(-2px); }
   .nav-links li { width:100%; text-align:center; padding:15px 0; }
   .nav-links li a { font-size:1.2rem; }
 }
+@media (max-width:768px){
+  .hamburger {
+    display:flex !important;
+    position:relative;
+    top:0;
+    right:0;
+    margin-left:auto;
+    z-index:9999;
+  }
+
+  .hamburger span {
+    width:25px;  /* tamaño original */
+    height:3px;
+    background:#C6A052;
+    border-radius:2px;
+    transition:all 0.3s ease;
+    display:block;
+  }
+
+  /* ===== ANIMACIÓN X (IDÉNTICA en proporción y alineación) ===== */
+  .hamburger.open span:nth-child(1){
+    transform: rotate(45deg) translate(5px, 5px); /* valores exactos del original que se veía bien */
+  }
+
+  .hamburger.open span:nth-child(2){
+    opacity: 0;
+  }
+
+  .hamburger.open span:nth-child(3){
+    transform: rotate(-45deg) translate(6px, -6px); /* mismo desplazamiento exacto */
+  }
+}
