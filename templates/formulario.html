@@ -249,22 +249,26 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
+    // 1️⃣ Descargar el PDF normalmente
     const doc = new window.jspdf.jsPDF();
     doc.text("Formulario generado automáticamente", 20, 20);
     doc.save("Formulario_GrupoFe.pdf");
 
+    // 2️⃣ Abrir Gmail automáticamente en Redactar, permitiendo adjuntar
     setTimeout(() => {
-      const destinatario = "informaciongrupofe@gmail.com";
       const asunto = encodeURIComponent("Formulario Bono de Vivienda – Grupo Fe");
-      const cuerpo = encodeURIComponent("Adjunto el formulario generado.\n\nSaludos.");
+      const body = encodeURIComponent("Hola, adjunto el formulario solicitado en PDF.\n\nSaludos.");
+
       window.open(
-        `https://mail.google.com/mail/?view=cm&fs=1&to=${destinatario}&su=${asunto}&body=${cuerpo}`,
+        `https://mail.google.com/mail/?view=cm&fs=1&to=informaciongrupofe@gmail.com&su=${asunto}&body=${body}`,
         "_blank"
       );
-    }, 800);
+    }, 700);
   });
 });
 </script>
+
+
 
 <!-- JS externo si lo ocupás -->
 <script src="{{ url_for('static', filename='formulario.js') }}"></script>
