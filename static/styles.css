@@ -367,6 +367,11 @@ body {
 
 
 
+  .hero-image img {
+    margin-top: 25px; /* 🔥 esto la baja más abajo */
+  }
+
+
 
 
 

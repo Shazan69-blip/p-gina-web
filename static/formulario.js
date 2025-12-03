@@ -2,21 +2,6 @@
 // 📁 formulario.js - Grupo FE
 // ============================
 
-// ==== MENU RESPONSIVO ====
-const menuToggle = document.getElementById('menuToggle');
-const navMenu = document.getElementById('navMenu');
-const navOverlay = document.getElementById('navOverlay');
-
-menuToggle.addEventListener('click', () => {
-  navMenu.classList.toggle('active');
-  navOverlay.classList.toggle('active');
-});
-
-navOverlay.addEventListener('click', () => {
-  navMenu.classList.remove('active');
-  navOverlay.classList.remove('active');
-});
-
 // ==== CAMPOS CONDICIONALES ====
 const estadoCivil = document.getElementById('estadoCivil');
 const tiempoUnionWrapper = document.getElementById('tiempoUnionWrapper');
