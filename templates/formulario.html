@@ -249,26 +249,39 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    // 1️⃣ Generar y descargar el PDF
+    // ✅ Genera y descarga el PDF
     const doc = new window.jspdf.jsPDF();
     doc.text("Formulario generado automáticamente", 20, 20);
-    doc.save("Formulario_GrupoFe.pdf");
+    const nombreArchivo = "Formulario_GrupoFe.pdf";
+    doc.save(nombreArchivo);
 
-    // 2️⃣ Abrir Gmail en COMPOSER (redactar)
+    // ✅ Abrir Gmail en redactar correcto
     setTimeout(() => {
       const destinatario = "informaciongrupofe@gmail.com";
       const asunto = encodeURIComponent("Formulario Bono de Vivienda – Grupo Fe");
       const cuerpo = encodeURIComponent("Hola, adjunto el formulario en PDF.\n\nSaludos.");
 
-      const gmailComposerURL = `https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${destinatario}&su=${asunto}&body=${cuerpo}`;
+      // 📌 URL Gmail composer
+      const gmailURL = `https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${destinatario}&su=${asunto}&body=${cuerpo}`;
 
-      window.open(gmailComposerURL, "_blank");
-    }, 1200); // ⏳ 1.2s para que Gmail inicie bien
+      // Si es celular → intentamos abrir Gmail App, si falla abre web móvil Gmail
+      if(/Android|iPhone|iPad/i.test(navigator.userAgent)){
+        const gmailApp = `googlegmail://co?to=${destinatario}&subject=${asunto}&body=${cuerpo}`;
+        window.location.href = gmailApp; // 📱 app
+        setTimeout(() => {
+          window.open(gmailURL, "_blank"); // por si no abre app, abre Gmail web mobile
+        }, 500);
+      } else {
+        // 💻 PC siempre Gmail Web composer
+        window.open(gmailURL, "_blank");
+      }
+
+      // ✅ Mostrar mensaje de ayuda para adjuntar
+      alert(`📌 El PDF llamado "${nombreArchivo}" ya fue descargado.\n\n1. Adjuntalo en Gmail\n2. Envíalo a ${destinatario}`);
+    }, 1200);
 
   });
 });
-</script>
-
 </script>
 
 
