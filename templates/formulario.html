@@ -249,24 +249,26 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    // 1️⃣ Crear y descargar el PDF automáticamente
+    // 1️⃣ Generar y descargar el PDF
     const doc = new window.jspdf.jsPDF();
     doc.text("Formulario generado automáticamente", 20, 20);
     doc.save("Formulario_GrupoFe.pdf");
 
-    // 2️⃣ Abrir Gmail directamente en redactar
+    // 2️⃣ Abrir Gmail en COMPOSER (redactar)
     setTimeout(() => {
       const destinatario = "informaciongrupofe@gmail.com";
       const asunto = encodeURIComponent("Formulario Bono de Vivienda – Grupo Fe");
       const cuerpo = encodeURIComponent("Hola, adjunto el formulario en PDF.\n\nSaludos.");
 
-      window.open(
-        `https://mail.google.com/mail/?view=cm&fs=1&to=${destinatario}&su=${asunto}&body=${cuerpo}`,
-        "_blank"
-      );
-    }, 600);
+      const gmailComposerURL = `https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${destinatario}&su=${asunto}&body=${cuerpo}`;
+
+      window.open(gmailComposerURL, "_blank");
+    }, 1200); // ⏳ 1.2s para que Gmail inicie bien
+
   });
 });
+</script>
+
 </script>
 
 
