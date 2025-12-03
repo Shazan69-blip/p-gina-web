@@ -243,32 +243,29 @@
 
 <!-- js PDF + Gmail sigue intacto -->
 <script>
-const form = document.getElementById("mainForm");
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("mainForm");
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-  // descargar PDF
-  const doc = new window.jspdf.jsPDF();
-  doc.text("Formulario generado automáticamente", 20, 20);
-  doc.save("Formulario_GrupoFe.pdf");
+    // 1️⃣ Crear y descargar el PDF automáticamente
+    const doc = new window.jspdf.jsPDF();
+    doc.text("Formulario generado automáticamente", 20, 20);
+    doc.save("Formulario_GrupoFe.pdf");
 
-  // abrir gmail según dispositivo
-  setTimeout(() => {
-    const mailURL = "Formulario Bono de Vivienda – Grupo Fe";
-    const mailBODY = "Hola, adjunto el formulario en PDF.\n\nSaludos.";
+    // 2️⃣ Abrir Gmail directamente en redactar
+    setTimeout(() => {
+      const destinatario = "informaciongrupofe@gmail.com";
+      const asunto = encodeURIComponent("Formulario Bono de Vivienda – Grupo Fe");
+      const cuerpo = encodeURIComponent("Hola, adjunto el formulario en PDF.\n\nSaludos.");
 
-    if(/Android|iPhone|iPad/i.test(navigator.userAgent)){
-      // 📱 celular → app real Gmail
-      window.location.href = `googlegmail://co?to=informaciongrupofe@gmail.com&subject=${mailURL}&body=${mailBODY}`;
-    } else {
-      // 💻 computadora → Gmail web redactar (adjuntable)
       window.open(
-        `https://mail.google.com/mail/?view=cm&fs=1&to=informaciongrupofe@gmail.com&su=${encodeURIComponent(mailURL)}&body=${encodeURIComponent(mailBODY)}`,
+        `https://mail.google.com/mail/?view=cm&fs=1&to=${destinatario}&su=${asunto}&body=${cuerpo}`,
         "_blank"
       );
-    }
-  }, 600);
+    }, 600);
+  });
 });
 </script>
 
